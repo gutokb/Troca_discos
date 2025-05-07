@@ -21,6 +21,17 @@ Como se trata de um e-shop relacionado à musica, a loja terá junto à página 
 
 Todos os arquivos de entrega do Milestone 1 estão na pasta Milestone1.
 
+#### Mockup de Telas
+
+Página de admin
+![Mockup Admin](Milestone1/tela_admin.png)
+
+Página de cadastro
+![Mockup cadastro](Milestone1/tela_cadastro.png)
+
+Página de produto
+![Mockup produto](Milestone1/tela_produto.png)
+
 #### Diagrama de Navegação 
 
 Disponível em formato .drawio no arquivo "Diagrama_De_Navegacao.drawio"
