@@ -34,7 +34,7 @@ Página de produto
 
 #### Diagrama de Navegação 
 
-Disponível em formato .drawio no arquivo "Diagrama_De_Navegacao.drawio"
+![Diagrama De Navegacao](Milestone1/DiagramaDeNavegacao.png)
 
 #### Mockups implementados em HTML e CSS
 
