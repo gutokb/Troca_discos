@@ -36,6 +36,8 @@ Página de produto
 
 Disponível em formato .drawio no arquivo "Diagrama_De_Navegacao.drawio"
 
+Disponível em formato .png:
+
 #### Mockups implementados em HTML e CSS
 
 Foram implementadas as telas: 
