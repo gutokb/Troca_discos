@@ -34,9 +34,9 @@ Página de produto
 
 #### Diagrama de Navegação 
 
+Disponível em formato .png:
 ![Diagrama De Navegacao](Milestone1/DiagramaDeNavegacao.png)
 
-Disponível em formato .png:
 
 #### Mockups implementados em HTML e CSS
 
