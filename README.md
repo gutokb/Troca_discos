@@ -36,6 +36,8 @@ Página de produto
 
 ![Diagrama De Navegacao](Milestone1/DiagramaDeNavegacao.png)
 
+Disponível em formato .png:
+
 #### Mockups implementados em HTML e CSS
 
 Foram implementadas as telas: 
