@@ -51,3 +51,10 @@ Com o Figma, foram desenhadas as telas:
 - Tela de Cadastro: (tela_cadastro.png)
 - Tela de Administração: (tela_admin.png)
 
+#### Comentários sobre o código
+
+Todo o código desenvolvido está na pasta Milestone1. Como é só um mockup, não foi feita uma estrutura de diretórios.
+
+#### Plano de testes
+
+Não são necessários testes nesta etapa, por se tratar apenas de um mockup. Porém, para etapas seguintes, planeja-se realizar testes de API com Postman e testes unitários para cada módulo.
