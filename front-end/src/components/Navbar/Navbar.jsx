@@ -2,7 +2,9 @@ import "./Navbar.css"
 import {Link, useNavigate} from "react-router-dom";
 import { IoSearchOutline } from "react-icons/io5";
 
-
+/*
+Component for the header/navbar for all pages
+ */
 
 // @Params
 // loggedIn : boolean, toggles display of login buttons
