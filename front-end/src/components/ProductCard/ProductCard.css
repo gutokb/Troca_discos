@@ -22,8 +22,15 @@
 .product-card > p {
     max-width: calc(100% - 80px);
     text-align: center;
+    font-size: 18px;
 }
 
 .product-card > p:nth-child(2) {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.product-card > h4 {
+    font-weight: bold;
     font-size: 25px;
 }

@@ -20,13 +20,15 @@ export default function Home() {
     return (
         <>
             <Navbar/>
-            <div className="product-display">
-                {products === null ? null : products.map(product => {
-                    console.log(products)
-                    return (<ProductCard key={product.id} product={product} />)
-                })}
-            </div>
-
+            <main className="home-main-content">
+                <h1 className="mais-vendidos">Mais vendidos</h1>
+                <div className="product-display">
+                    {products === null ? null : products.map(product => {
+                        console.log(products)
+                        return (<ProductCard key={product.id} product={product} />)
+                    })}
+                </div>
+            </main>
         </>
     )
 }
