@@ -12,7 +12,6 @@ export default function Home() {
     // Requires useEffect because will be a fetch to the server
     useEffect(() => {
         setProducts(mockProducts);
-        // console.log(products);
     }, [])
 
 
@@ -30,7 +29,6 @@ export default function Home() {
                 <h1 className="mais-vendidos">Novas adições</h1>
                 <div className="product-display">
                     {products === null ? null : products.map(product => {
-                        console.log(products)
                         return (<ProductCard key={product.id} product={product} />)
                     })}
                 </div>
