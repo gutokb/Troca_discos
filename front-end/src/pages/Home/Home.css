@@ -32,20 +32,20 @@
     padding: 0;
 }
 
-.home-main-content > h1:first-child {
+.home-main-content > h1 {
     align-self: center;
     font-size: 50px;
 }
 
 /* Make h1 responsive */
 @media (max-width: 768px) {
-    .home-main-content > h1:first-child {
+    .home-main-content > h1 {
         font-size: 36px;
     }
 }
 
 @media (max-width: 480px) {
-    .home-main-content > h1:first-child {
+    .home-main-content > h1 {
         font-size: 28px;
     }
 }
