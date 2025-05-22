@@ -49,11 +49,32 @@
     border-radius: 5px;
     height: 35px;
     width: 90px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.header-button:hover {
+    background-color: #333333;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    color: #FFFFFF;
+}
+
+.header-button:active {
+    transform: translateY(0px) scale(1.02);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
 
 .nav-img {
     height: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 5px;
 }
 
+.nav-img:hover {
+    transform: scale(1.1) rotate(5deg);
+    filter: brightness(1.2) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
 

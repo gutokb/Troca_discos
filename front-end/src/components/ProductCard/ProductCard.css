@@ -2,35 +2,68 @@
     background-color: #C0710A;
     display: flex;
     flex-direction: column;
-    /*justify-content: space-arou;*/
-    max-width: 300px;
+    width: 300px; /* Fixed width instead of max-width */
+    height: 450px; /* Keep fixed height */
     align-items: center;
-    padding: 40px;
-    flex: 1 1 0;
+    padding: 20px; /* Reduced padding to give more space for content */
     border-radius: 10px;
-    height: 400px;
+    box-sizing: border-box; /* Include padding in width/height calculations */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    background-color: #D4800F;
 }
 
 .product-card > img {
-    flex: 1 1 auto;
-    /*object-fit: contain;*/
-    max-width: 250px;
+    width: 100%; /* Use full available width */
+    height: 200px; /* Fixed height for consistency */
+    object-fit: cover; /* Ensure image covers the area properly */
     border-radius: 10px;
-    max-height: 200px;
+    flex-shrink: 0; /* Prevent image from shrinking */
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover > img {
+    transform: scale(1.05);
 }
 
 .product-card > p {
-    max-width: calc(100% - 80px);
+    width: 100%; /* Use full width */
     text-align: center;
     font-size: 18px;
+    margin: 8px 0; /* Add consistent margins */
+    /* Text overflow handling */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* Single line with ellipsis */
+    transition: color 0.3s ease;
+}
+
+.product-card:hover > p {
+    color: #FFFFFF;
 }
 
 .product-card > p:nth-child(2) {
-    font-size: 25px;
+    font-size: 22px; /* Slightly smaller to fit better */
     font-weight: bold;
+    margin-top: 15px; /* More space after image */
 }
 
 .product-card > h4 {
     font-weight: bold;
     font-size: 25px;
+    margin: 10px 0 0 0; /* Remove bottom margin, add top margin */
+    margin-top: auto; /* Push price to bottom of card */
+    flex-shrink: 0; /* Prevent price from shrinking */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.product-card:hover > h4 {
+    color: #FFFFFF;
+    transform: scale(1.05);
 }
