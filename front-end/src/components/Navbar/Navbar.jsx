@@ -34,7 +34,7 @@ export default function Navbar({loggedIn, handleSearch}) {
                 </form>
                 </div>
             <div className="nav-container-2">
-                {loggedIn ? null :<button  className="header-button">Cadastro</button>}
+                {loggedIn ? null :<button onClick={(event) => navigate("/register")} className="header-button">Cadastro</button>}
                 {loggedIn ? null :<button onClick={(event) => navigate("/login")} className="header-button">Login</button>}
                 <img onClick={shoppingCartNavigate} className="nav-img" src="/src/assets/user.png" alt=""/>
                 <img onClick={profileNavigate} className="nav-img" src="/src/assets/shopping-cart.png" alt=""/>
