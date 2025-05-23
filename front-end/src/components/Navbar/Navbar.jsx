@@ -9,7 +9,13 @@ Component for the header/navbar for all pages
 // @Params
 // loggedIn : boolean, toggles display of login buttons
 // handleSearch : function, executed when the search input is submitted, must follow format of action handling in forms
-export default function Navbar({loggedIn, handleSearch}) {
+export default function Navbar({handleSearch}) {
+
+    // Requires auth logic
+    let admin = true;
+
+    // Requires auth logic
+    let loggedIn = false;
 
     const navigate = useNavigate();
 
@@ -34,6 +40,7 @@ export default function Navbar({loggedIn, handleSearch}) {
                 </form>
                 </div>
             <div className="nav-container-2">
+                {admin ? <button onClick={(event) => navigate("/admin")} className="header-button">Admin</button> : null}
                 {loggedIn ? null :<button onClick={(event) => navigate("/register")} className="header-button">Cadastro</button>}
                 {loggedIn ? null :<button onClick={(event) => navigate("/login")} className="header-button">Login</button>}
                 <img onClick={shoppingCartNavigate} className="nav-img" src="/src/assets/user.png" alt=""/>
