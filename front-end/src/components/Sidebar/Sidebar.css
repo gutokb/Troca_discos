@@ -1,0 +1,78 @@
+.sidebar {
+    position: fixed;
+    left: 0;
+    /*bottom: 0;*/
+    top: 0; /* After navbar height */
+    z-index: 0;
+    width: 250px;
+    height: calc(100vh - 80px);
+    background-color: #C0710A;
+    padding: 100px 0;
+    overflow-y: auto;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px 30px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 20px;
+}
+
+.sidebar-logo {
+    height: 40px;
+    margin-bottom: 10px;
+    filter: brightness(1.2);
+}
+
+.sidebar-title {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    text-align: center;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0 10px;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.sidebar-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-link.active {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-left: 4px solid white;
+    font-weight: 600;
+}
+
+.sidebar-icon {
+    margin-right: 15px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-label {
+    font-size: 16px;
+}
