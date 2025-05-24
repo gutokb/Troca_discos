@@ -238,7 +238,6 @@ export default function UserPage() {
                                     >
                                         <option value="Cliente">Cliente</option>
                                         <option value="Admin">Admin</option>
-                                        <option value="Moderador">Moderador</option>
                                     </select>
                                 </div>
 
