@@ -259,6 +259,70 @@
     color: #333;
 }
 
+.form-genre {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: 1fr 1fr;
+    gap: 3px;
+}
+
+.form-genre label {
+    grid-column: 1/-1;
+}
+.form-genre input {
+    grid-column: 1/-2;
+}
+.form-genre button {
+    background-color: #C0710A;
+    border-style: none;
+    border-radius: 6px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.form-genre button:hover {
+    background-color: #A05909;
+    transform: translateY(-1px);
+}
+
+.genre-list > ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.genre-list-item {
+    background-color: #C0710A;
+    text-align: center;
+    color: white;
+    text-wrap: wrap;
+    padding: 10px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+.genre-list-item:hover {
+    background-color: #A05909;
+    transform: translateY(-1px);
+}
+
+.genre-list-item:hover .genre-list-button {
+    background-color: #A05909;
+    transform: translateY(-1px);
+}
+
+.genre-list-button {
+    background-color: #C0710A;
+    border: none;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+
+
 .form-group input,
 .form-group select {
     width: 100%;

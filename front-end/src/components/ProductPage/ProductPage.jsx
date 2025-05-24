@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import './ProductPage.css';
 import { IoSearchOutline, IoAdd, IoCreate, IoTrash, IoEye } from 'react-icons/io5';
 
@@ -7,13 +7,27 @@ export default function ProductPage() {
     const [showModal, setShowModal] = useState(false);
     const [modalMode, setModalMode] = useState('create'); // 'create', 'edit', 'view'
     const [selectedProduct, setSelectedProduct] = useState(null);
+    // Used for adding/updating genres
+    const [currenteGenres, setCurrenteGenres] = useState([]);
+
+    useEffect(() => {
+        if (selectedProduct !== null) {
+            setCurrenteGenres(selectedProduct.genre)
+        }
+        else {
+            setCurrenteGenres([])
+        }
+    }, [showModal]);
+
 
     // TODO: Replace with actual data from API
     const [products, setProducts] = useState([
         {
             id: 1,
             name: 'Vinyl Classic Rock',
-            category: 'Música',
+            artist : "artista",
+            year : "1990",
+            genre: ['Música', "samba"],
             price: 89.90,
             stock: 25,
             status: 'Ativo',
@@ -22,7 +36,9 @@ export default function ProductPage() {
         {
             id: 2,
             name: 'Vintage Jazz Collection',
-            category: 'Música',
+            artist : "artista",
+            year : "1990",
+            genre: ['Música', "jazz"],
             price: 124.50,
             stock: 12,
             status: 'Ativo',
@@ -31,7 +47,9 @@ export default function ProductPage() {
         {
             id: 3,
             name: 'Electronic Beats',
-            category: 'Música',
+            artist : "artista",
+            year : "1990",
+            genre: ['Música', "jazz"],
             price: 67.90,
             stock: 0,
             status: 'Inativo',
@@ -88,7 +106,11 @@ export default function ProductPage() {
 
     const filteredProducts = products.filter(product =>
         product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.category.toLowerCase().includes(searchTerm.toLowerCase())
+        product.genre.some(s => s.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        product.artist.toLowerCase().includes(searchTerm.toLowerCase())
+
+
+
     );
 
     return (
@@ -123,11 +145,12 @@ export default function ProductPage() {
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
-                        <th>Categoria</th>
+                        <th>Artista</th>
+                        <th>Lançamento</th>
+                        <th>Gênero</th>
                         <th>Preço</th>
                         <th>Estoque</th>
-                        <th>Status</th>
-                        <th>Criado em</th>
+                        <th>Adicionado  em</th>
                         <th>Ações</th>
                     </tr>
                     </thead>
@@ -136,15 +159,12 @@ export default function ProductPage() {
                         <tr key={product.id}>
                             <td>{product.id}</td>
                             <td>{product.name}</td>
-                            <td>{product.category}</td>
+                            <td>{product.artist}</td>
+                            <td>{product.year}</td>
+                            <td>{product.genre.join(", ")}</td>
                             <td>R$ {product.price.toFixed(2)}</td>
                             <td className={product.stock === 0 ? 'out-of-stock' : ''}>
                                 {product.stock}
-                            </td>
-                            <td>
-                                    <span className={`status ${product.status.toLowerCase()}`}>
-                                        {product.status}
-                                    </span>
                             </td>
                             <td>{new Date(product.createdAt).toLocaleDateString('pt-BR')}</td>
                             <td>
@@ -190,16 +210,39 @@ export default function ProductPage() {
                                 />
                             </div>
 
-                            <div className="form-group">
-                                <label>Categoria:</label>
-                                <input
+                            <div className="form-group form-genre">
+                                <label>Genêros:</label>
+                                <input id="genre-input"
                                     type="text"
-                                    name="category"
-                                    defaultValue={selectedProduct?.category || ''}
+                                    name="genre"
+                                    defaultValue=""
                                     disabled={modalMode === 'view'}
-                                    required
                                 />
+                                <button type="button" onClick={(e) => {
+                                    let inp = document.getElementById("genre-input")
+                                    console.log(inp.value)
+                                    setCurrenteGenres([...currenteGenres, inp.value])
+                                    inp.value = ""
+                                    console.log(currenteGenres)
+                                }}><IoAdd/></button>
                             </div>
+
+                            <div className="genre-list">
+                                <ul>
+                                    {currenteGenres.map((genre, index) => {
+                                        return (
+                                        <li className="genre-list-item">{genre}
+                                            <button className="genre-list-button" type="button" onClick={() => {
+                                            setCurrenteGenres(currenteGenres.filter(g => g !== genre))
+                                        }}>
+                                                <IoTrash/>
+                                            </button>
+                                        </li>)
+                                    })}
+                                </ul>
+                            </div>
+
+
 
                             <div className="form-row">
                                 <div className="form-group">
@@ -226,17 +269,6 @@ export default function ProductPage() {
                                 </div>
                             </div>
 
-                            <div className="form-group">
-                                <label>Status:</label>
-                                <select
-                                    name="status"
-                                    defaultValue={selectedProduct?.status || 'Ativo'}
-                                    disabled={modalMode === 'view'}
-                                >
-                                    <option value="Ativo">Ativo</option>
-                                    <option value="Inativo">Inativo</option>
-                                </select>
-                            </div>
 
                             {modalMode !== 'view' && (
                                 <div className="modal-actions">

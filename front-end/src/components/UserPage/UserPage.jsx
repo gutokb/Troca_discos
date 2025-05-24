@@ -130,7 +130,6 @@ export default function UserPage() {
                         <th>Email</th>
                         <th>Telefone</th>
                         <th>Função</th>
-                        <th>Status</th>
                         <th>Cadastrado em</th>
                         <th>Último Login</th>
                         <th>Ações</th>
@@ -160,11 +159,6 @@ export default function UserPage() {
                             <td>
                                     <span className={`role ${user.role.toLowerCase()}`}>
                                         {user.role}
-                                    </span>
-                            </td>
-                            <td>
-                                    <span className={`status ${user.status.toLowerCase()}`}>
-                                        {user.status}
                                     </span>
                             </td>
                             <td>{new Date(user.createdAt).toLocaleDateString('pt-BR')}</td>
@@ -248,18 +242,7 @@ export default function UserPage() {
                                     </select>
                                 </div>
 
-                                <div className="form-group">
-                                    <label>Status:</label>
-                                    <select
-                                        name="status"
-                                        defaultValue={selectedUser?.status || 'Ativo'}
-                                        disabled={modalMode === 'view'}
-                                    >
-                                        <option value="Ativo">Ativo</option>
-                                        <option value="Inativo">Inativo</option>
-                                        <option value="Suspenso">Suspenso</option>
-                                    </select>
-                                </div>
+
                             </div>
 
                             {modalMode === 'create' && (
