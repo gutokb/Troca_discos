@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import './UserPage.css';
 import { IoSearchOutline, IoAdd, IoCreate, IoTrash, IoEye, IoMail, IoCall } from 'react-icons/io5';
+import {API_URL} from "../../config/api.js";
 
 export default function UserPage() {
     const [searchTerm, setSearchTerm] = useState('');
@@ -8,39 +9,20 @@ export default function UserPage() {
     const [modalMode, setModalMode] = useState('create'); // 'create', 'edit', 'view'
     const [selectedUser, setSelectedUser] = useState(null);
 
-    // TODO: Replace with actual data from API
-    const [users, setUsers] = useState([
-        {
-            id: 1,
-            name: 'João Silva',
-            email: 'joao.silva@email.com',
-            phone: '(11) 99999-9999',
-            role: 'Cliente',
-            status: 'Ativo',
-            createdAt: '2024-01-15',
-            lastLogin: '2024-05-20'
-        },
-        {
-            id: 2,
-            name: 'Maria Santos',
-            email: 'maria.santos@email.com',
-            phone: '(11) 88888-8888',
-            role: 'Admin',
-            status: 'Ativo',
-            createdAt: '2024-02-20',
-            lastLogin: '2024-05-23'
-        },
-        {
-            id: 3,
-            name: 'Carlos Oliveira',
-            email: 'carlos.oliveira@email.com',
-            phone: '(11) 77777-7777',
-            role: 'Cliente',
-            status: 'Inativo',
-            createdAt: '2024-03-10',
-            lastLogin: '2024-04-15'
+
+    const [users, setUsers] = useState([]);
+
+    const [reload, setReload] = useState(false);
+    // Gambiarra
+    const forceReload = () => {setReload(!reload);};
+    useEffect(() => {
+        async function fetchUsers() {
+            const response = await fetch(API_URL + "/users");
+            const data = await response.json();
+            setUsers(data);
         }
-    ]);
+        fetchUsers();
+    }, [reload])
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -68,8 +50,13 @@ export default function UserPage() {
 
     const handleDelete = (userId) => {
         if (window.confirm('Tem certeza que deseja excluir este usuário?')) {
-            // TODO: Implement delete logic with API call
-            console.log('Deleting user:', userId);
+            setUsers(users.filter(user => user.id !== userId));
+            const url = `${API_URL}/users/${userId}`;
+            console.log(url);
+            fetch(url, {
+                method: 'DELETE',
+
+            }).catch((err) => console.log(err));
         }
     };
 
@@ -79,11 +66,33 @@ export default function UserPage() {
         const userData = Object.fromEntries(formData);
 
         if (modalMode === 'create') {
-            // TODO: Implement create user API call
-            console.log('Creating user:', userData);
+            const newUser = {
+                ...userData,
+                id : Math.floor(Math.random() * 100).toString(),
+                shopping_cart : [],
+                createdAt: new Date(),
+                lastLogin: new Date(),
+            };
+
+            const url = `${API_URL}/users`;
+            const body = JSON.stringify(newUser);
+            setUsers([...users, newUser]);
+            fetch(url, {
+                method: 'POST',
+                body: body,
+            }).catch((err) => console.log(err));
+
         } else if (modalMode === 'edit') {
-            // TODO: Implement update user API call
-            console.log('Updating user:', selectedUser.id, userData);
+            const url = `${API_URL}/users/${selectedUser.id}`;
+            const body = JSON.stringify(userData);
+            fetch(url, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: body,
+            }).catch((err) => console.log(err));
+            forceReload()
         }
 
         setShowModal(false);
@@ -153,7 +162,7 @@ export default function UserPage() {
                             <td>
                                 <div className="contact-info">
                                     <IoCall className="contact-icon" />
-                                    {user.phone}
+                                    {user.telephone}
                                 </div>
                             </td>
                             <td>
@@ -207,6 +216,17 @@ export default function UserPage() {
                             </div>
 
                             <div className="form-group">
+                                <label>CPF:</label>
+                                <input
+                                    type="text"
+                                    name="cpf"
+                                    defaultValue={selectedUser?.cpf || ''}
+                                    disabled={modalMode === 'view'}
+                                    required
+                                />
+                            </div>
+
+                            <div className="form-group">
                                 <label>Email:</label>
                                 <input
                                     type="email"
@@ -221,8 +241,8 @@ export default function UserPage() {
                                 <label>Telefone:</label>
                                 <input
                                     type="tel"
-                                    name="phone"
-                                    defaultValue={selectedUser?.phone || ''}
+                                    name="telephone"
+                                    defaultValue={selectedUser?.telephone || ''}
                                     disabled={modalMode === 'view'}
                                     required
                                 />
@@ -236,8 +256,8 @@ export default function UserPage() {
                                         defaultValue={selectedUser?.role || 'Cliente'}
                                         disabled={modalMode === 'view'}
                                     >
-                                        <option value="Cliente">Cliente</option>
-                                        <option value="Admin">Admin</option>
+                                        <option value="USER">Cliente</option>
+                                        <option value="ADMIN">Admin</option>
                                     </select>
                                 </div>
 

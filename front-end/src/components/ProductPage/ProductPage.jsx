@@ -218,12 +218,10 @@ export default function ProductPage() {
                                     defaultValue=""
                                     disabled={modalMode === 'view'}
                                 />
-                                <button type="button" onClick={(e) => {
+                                <button type="button" disabled={modalMode === 'view'} onClick={(e) => {
                                     let inp = document.getElementById("genre-input")
-                                    console.log(inp.value)
-                                    setCurrenteGenres([...currenteGenres, inp.value])
+                                    if (inp.value !== "") setCurrenteGenres([...currenteGenres, inp.value])
                                     inp.value = ""
-                                    console.log(currenteGenres)
                                 }}><IoAdd/></button>
                             </div>
 
@@ -233,9 +231,9 @@ export default function ProductPage() {
                                         return (
                                         <li className="genre-list-item">{genre}
                                             <button className="genre-list-button" type="button" onClick={() => {
-                                            setCurrenteGenres(currenteGenres.filter(g => g !== genre))
+                                            if (modalMode ===  "create") setCurrenteGenres(currenteGenres.filter(g => g !== genre))
                                         }}>
-                                                <IoTrash/>
+                                                {modalMode === "create" && <IoTrash/>}
                                             </button>
                                         </li>)
                                     })}

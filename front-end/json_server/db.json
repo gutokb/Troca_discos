@@ -1,0 +1,394 @@
+{
+  "records": [
+    {
+      "id": "1",
+      "title": "Abbey Road",
+      "artist": "The Beatles",
+      "year": 1969,
+      "genre": [
+        "Rock",
+        "Pop"
+      ],
+      "price": 29.99,
+      "stock": 15,
+      "addedTimestamp": "2024-01-15T10:30:00.000Z"
+    },
+    {
+      "id": "2",
+      "title": "The Dark Side of the Moon",
+      "artist": "Pink Floyd",
+      "year": 1973,
+      "genre": [
+        "Progressive Rock",
+        "Psychedelic"
+      ],
+      "price": 34.99,
+      "stock": 8,
+      "addedTimestamp": "2024-01-16T14:22:00.000Z"
+    },
+    {
+      "id": "3",
+      "title": "Thriller",
+      "artist": "Michael Jackson",
+      "year": 1982,
+      "genre": [
+        "Pop",
+        "R&B"
+      ],
+      "price": 24.99,
+      "stock": 12,
+      "addedTimestamp": "2024-01-17T09:15:00.000Z"
+    },
+    {
+      "id": "4",
+      "title": "Back in Black",
+      "artist": "AC/DC",
+      "year": 1980,
+      "genre": [
+        "Hard Rock",
+        "Heavy Metal"
+      ],
+      "price": 27.99,
+      "stock": 6,
+      "addedTimestamp": "2024-01-18T16:45:00.000Z"
+    },
+    {
+      "id": "5",
+      "title": "Rumours",
+      "artist": "Fleetwood Mac",
+      "year": 1977,
+      "genre": [
+        "Rock",
+        "Pop Rock"
+      ],
+      "price": 31.99,
+      "stock": 20,
+      "addedTimestamp": "2024-01-19T11:00:00.000Z"
+    },
+    {
+      "id": "6",
+      "title": "Hotel California",
+      "artist": "Eagles",
+      "year": 1976,
+      "genre": [
+        "Rock",
+        "Country Rock"
+      ],
+      "price": 28.99,
+      "stock": 9,
+      "addedTimestamp": "2024-01-20T13:30:00.000Z"
+    },
+    {
+      "id": "7",
+      "title": "Nevermind",
+      "artist": "Nirvana",
+      "year": 1991,
+      "genre": [
+        "Grunge",
+        "Alternative Rock"
+      ],
+      "price": 26.99,
+      "stock": 14,
+      "addedTimestamp": "2024-01-21T08:20:00.000Z"
+    },
+    {
+      "id": "8",
+      "title": "Kind of Blue",
+      "artist": "Miles Davis",
+      "year": 1959,
+      "genre": [
+        "Jazz",
+        "Cool Jazz"
+      ],
+      "price": 39.99,
+      "stock": 5,
+      "addedTimestamp": "2024-01-22T15:10:00.000Z"
+    },
+    {
+      "id": "9",
+      "title": "Born to Run",
+      "artist": "Bruce Springsteen",
+      "year": 1975,
+      "genre": [
+        "Rock",
+        "Heartland Rock"
+      ],
+      "price": 30.99,
+      "stock": 11,
+      "addedTimestamp": "2024-01-23T12:45:00.000Z"
+    },
+    {
+      "id": "10",
+      "title": "OK Computer",
+      "artist": "Radiohead",
+      "year": 1997,
+      "genre": [
+        "Alternative Rock",
+        "Art Rock"
+      ],
+      "price": 33.99,
+      "stock": 7,
+      "addedTimestamp": "2024-01-24T17:00:00.000Z"
+    },
+    {
+      "id": "11",
+      "title": "Pet Sounds",
+      "artist": "The Beach Boys",
+      "year": 1966,
+      "genre": [
+        "Pop",
+        "Psychedelic Pop"
+      ],
+      "price": 35.99,
+      "stock": 4,
+      "addedTimestamp": "2024-01-25T10:15:00.000Z"
+    },
+    {
+      "id": "12",
+      "title": "The Wall",
+      "artist": "Pink Floyd",
+      "year": 1979,
+      "genre": [
+        "Progressive Rock",
+        "Concept Album"
+      ],
+      "price": 42.99,
+      "stock": 3,
+      "addedTimestamp": "2024-01-26T14:30:00.000Z"
+    },
+    {
+      "id": "13",
+      "title": "What's Going On",
+      "artist": "Marvin Gaye",
+      "year": 1971,
+      "genre": [
+        "Soul",
+        "R&B"
+      ],
+      "price": 29.99,
+      "stock": 8,
+      "addedTimestamp": "2024-01-27T11:20:00.000Z"
+    },
+    {
+      "id": "14",
+      "title": "Led Zeppelin IV",
+      "artist": "Led Zeppelin",
+      "year": 1971,
+      "genre": [
+        "Hard Rock",
+        "Heavy Metal"
+      ],
+      "price": 32.99,
+      "stock": 10,
+      "addedTimestamp": "2024-01-28T09:40:00.000Z"
+    },
+    {
+      "id": "15",
+      "title": "Blue",
+      "artist": "Joni Mitchell",
+      "year": 1971,
+      "genre": [
+        "Folk",
+        "Singer-Songwriter"
+      ],
+      "price": 28.99,
+      "stock": 6,
+      "addedTimestamp": "2024-01-29T16:25:00.000Z"
+    }
+  ],
+  "users": [
+    {
+      "id": "3",
+      "name": "Carlos Oliveiraaa",
+      "cpf": "11122233344",
+      "email": "carlos.oliveira@email.com",
+      "telephone": "(31) 97777-6666",
+      "role": "USER",
+      "password": "carlos789",
+      "createdAt": "2024-01-10T10:15:00.000Z",
+      "lastLogin": "2024-05-22T20:10:00.000Z",
+      "shopping_cart": []
+    },
+    {
+      "id": "4",
+      "name": "Ana Costa",
+      "cpf": "55566677788",
+      "email": "ana.costa@email.com",
+      "telephone": "(41) 96666-5555",
+      "role": "USER",
+      "password": "ana321",
+      "createdAt": "2024-01-15T16:45:00.000Z",
+      "lastLogin": "2024-05-24T07:20:00.000Z",
+      "shopping_cart": [
+        5,
+        9,
+        12,
+        14
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Pedro Ferreira",
+      "cpf": "99988877766",
+      "email": "pedro.ferreira@email.com",
+      "telephone": "(51) 95555-4444",
+      "role": "USER",
+      "password": "pedro654",
+      "createdAt": "2024-02-01T12:00:00.000Z",
+      "lastLogin": "2024-05-21T15:30:00.000Z",
+      "shopping_cart": [
+        6
+      ]
+    },
+    {
+      "id": "7",
+      "name": "Roberto Lima",
+      "cpf": "77788899900",
+      "email": "roberto.lima@email.com",
+      "telephone": "(71) 93333-2222",
+      "role": "USER",
+      "password": "roberto147",
+      "createdAt": "2024-02-10T13:20:00.000Z",
+      "lastLogin": "2024-05-20T19:45:00.000Z",
+      "shopping_cart": [
+        4,
+        13,
+        15
+      ]
+    },
+    {
+      "id": "8",
+      "name": "Fernanda Souza",
+      "cpf": "22233344455",
+      "email": "fernanda.souza@email.com",
+      "telephone": "(81) 92222-1111",
+      "role": "USER",
+      "password": "fernanda258",
+      "createdAt": "2024-02-15T11:10:00.000Z",
+      "lastLogin": "2024-05-23T21:00:00.000Z",
+      "shopping_cart": []
+    },
+    {
+      "id": "1",
+      "name": "João Silva",
+      "cpf": "12345678901",
+      "email": "joao.silva@email.com",
+      "telephone": "(11) 99999-8888",
+      "role": "ADMIN",
+      "password": "admin123",
+      "createdAt": "2024-01-01T08:00:00.000Z",
+      "lastLogin": "2024-05-24T09:30:00.000Z",
+      "shopping_cart": [
+        2,
+        7
+      ]
+    }
+  ],
+  "sales": [
+    {
+      "id": "1",
+      "productId": 1,
+      "buyerId": 2,
+      "price": 29.99,
+      "saleTimestamp": "2024-02-20T14:30:00.000Z"
+    },
+    {
+      "id": "2",
+      "productId": 3,
+      "buyerId": 4,
+      "price": 24.99,
+      "saleTimestamp": "2024-02-21T10:15:00.000Z"
+    },
+    {
+      "id": "3",
+      "productId": 5,
+      "buyerId": 3,
+      "price": 31.99,
+      "saleTimestamp": "2024-02-22T16:45:00.000Z"
+    },
+    {
+      "id": "4",
+      "productId": 2,
+      "buyerId": 5,
+      "price": 34.99,
+      "saleTimestamp": "2024-02-25T09:20:00.000Z"
+    },
+    {
+      "id": "5",
+      "productId": 7,
+      "buyerId": 2,
+      "price": 26.99,
+      "saleTimestamp": "2024-03-01T13:00:00.000Z"
+    },
+    {
+      "id": "6",
+      "productId": 4,
+      "buyerId": 7,
+      "price": 27.99,
+      "saleTimestamp": "2024-03-05T11:30:00.000Z"
+    },
+    {
+      "id": "7",
+      "productId": 6,
+      "buyerId": 4,
+      "price": 28.99,
+      "saleTimestamp": "2024-03-10T15:45:00.000Z"
+    },
+    {
+      "id": "8",
+      "productId": 8,
+      "buyerId": 6,
+      "price": 39.99,
+      "saleTimestamp": "2024-03-15T12:20:00.000Z"
+    },
+    {
+      "id": "9",
+      "productId": 9,
+      "buyerId": 3,
+      "price": 30.99,
+      "saleTimestamp": "2024-03-20T17:10:00.000Z"
+    },
+    {
+      "id": "10",
+      "productId": 1,
+      "buyerId": 5,
+      "price": 29.99,
+      "saleTimestamp": "2024-03-25T08:55:00.000Z"
+    },
+    {
+      "id": "11",
+      "productId": 10,
+      "buyerId": 8,
+      "price": 33.99,
+      "saleTimestamp": "2024-04-01T14:15:00.000Z"
+    },
+    {
+      "id": "12",
+      "productId": 13,
+      "buyerId": 2,
+      "price": 29.99,
+      "saleTimestamp": "2024-04-10T10:40:00.000Z"
+    },
+    {
+      "id": "13",
+      "productId": 11,
+      "buyerId": 7,
+      "price": 35.99,
+      "saleTimestamp": "2024-04-15T16:25:00.000Z"
+    },
+    {
+      "id": "14",
+      "productId": 14,
+      "buyerId": 4,
+      "price": 32.99,
+      "saleTimestamp": "2024-04-20T12:50:00.000Z"
+    },
+    {
+      "id": "15",
+      "productId": 15,
+      "buyerId": 6,
+      "price": 28.99,
+      "saleTimestamp": "2024-05-01T09:35:00.000Z"
+    }
+  ]
+}
