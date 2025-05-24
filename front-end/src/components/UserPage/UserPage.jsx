@@ -79,6 +79,9 @@ export default function UserPage() {
             setUsers([...users, newUser]);
             fetch(url, {
                 method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
                 body: body,
             }).catch((err) => console.log(err));
 

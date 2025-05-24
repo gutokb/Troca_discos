@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './ProductPage.css';
 import { IoSearchOutline, IoAdd, IoCreate, IoTrash, IoEye } from 'react-icons/io5';
+import {API_URL} from "../../config/api.js";
 
 export default function ProductPage() {
     const [searchTerm, setSearchTerm] = useState('');
@@ -8,54 +9,34 @@ export default function ProductPage() {
     const [modalMode, setModalMode] = useState('create'); // 'create', 'edit', 'view'
     const [selectedProduct, setSelectedProduct] = useState(null);
     // Used for adding/updating genres
-    const [currenteGenres, setCurrenteGenres] = useState([]);
+    const [products, setProducts] = useState([]);
 
+    // Data fetching
+    // Gambiarra
+    const [reload, setReload] = useState(false);
+    const forceReload = () => {setReload(!reload);};
+    useEffect(() => {
+        async function fetchProducts() {
+            const response =  await fetch(`${API_URL}/records`);
+            const data = await response.json();
+            setProducts(data);
+        }
+        fetchProducts();
+    }, [reload])
+
+    // Logic for displaying and updating genres as a list
+    const [currentGenres, setCurrentGenres] = useState([]);
     useEffect(() => {
         if (selectedProduct !== null) {
-            setCurrenteGenres(selectedProduct.genre)
+            setCurrentGenres(selectedProduct.genre)
         }
         else {
-            setCurrenteGenres([])
+            setCurrentGenres([])
         }
     }, [showModal]);
 
 
-    // TODO: Replace with actual data from API
-    const [products, setProducts] = useState([
-        {
-            id: 1,
-            name: 'Vinyl Classic Rock',
-            artist : "artista",
-            year : "1990",
-            genre: ['Música', "samba"],
-            price: 89.90,
-            stock: 25,
-            status: 'Ativo',
-            createdAt: '2024-01-15'
-        },
-        {
-            id: 2,
-            name: 'Vintage Jazz Collection',
-            artist : "artista",
-            year : "1990",
-            genre: ['Música', "jazz"],
-            price: 124.50,
-            stock: 12,
-            status: 'Ativo',
-            createdAt: '2024-02-20'
-        },
-        {
-            id: 3,
-            name: 'Electronic Beats',
-            artist : "artista",
-            year : "1990",
-            genre: ['Música', "jazz"],
-            price: 67.90,
-            stock: 0,
-            status: 'Inativo',
-            createdAt: '2024-03-10'
-        }
-    ]);
+
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -83,8 +64,12 @@ export default function ProductPage() {
 
     const handleDelete = (productId) => {
         if (window.confirm('Tem certeza que deseja excluir este produto?')) {
-            // TODO: Implement delete logic with API call
-            console.log('Deleting product:', productId);
+            setProducts(products.filter(product => product.id !== productId));
+            const url = `${API_URL}/records/${productId}`;
+            fetch(url, {
+                method: 'DELETE',
+
+            }).catch((err) => console.log(err));
         }
     };
 
@@ -94,29 +79,57 @@ export default function ProductPage() {
         const productData = Object.fromEntries(formData);
 
         if (modalMode === 'create') {
-            // TODO: Implement create product API call
-            console.log('Creating product:', productData);
+            const newProduct = {
+                ...productData,
+                id : Math.floor(Math.random() * 100).toString(),
+                createdAt: new Date(),
+            };
+            newProduct.genre = currentGenres;
+            newProduct.price = parseFloat(newProduct.price)
+            newProduct.stock = parseInt(newProduct.stock)
+            newProduct.year = parsenInt(newProduct.year)
+            const url = `${API_URL}/records`;
+
+            const body = JSON.stringify(newProduct);
+            setProducts([...products, newProduct]);
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: body,
+            }).catch((err) => console.log(err));
+
         } else if (modalMode === 'edit') {
-            // TODO: Implement update product API call
-            console.log('Updating product:', selectedProduct.id, productData);
+            const url = `${API_URL}/records/${selectedProduct.id}`;
+            productData.genre = currentGenres;
+            productData.price = parseFloat(productData.price)
+            productData.stock = parseInt(productData.stock)
+            productData.year = parseInt(productData.year)
+            const body = JSON.stringify(productData);
+            fetch(url, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: body,
+            }).catch((err) => console.log(err));
+            forceReload()
         }
 
         setShowModal(false);
     };
 
     const filteredProducts = products.filter(product =>
-        product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         product.genre.some(s => s.toLowerCase().includes(searchTerm.toLowerCase())) ||
         product.artist.toLowerCase().includes(searchTerm.toLowerCase())
-
-
-
     );
 
     return (
         <div className="product-page">
             <div className="page-header">
-                <h1 className="page-title">Gerenciar Produtos</h1>
+                <h1 className="page-.title">Gerenciar Produtos</h1>
                 <button onClick={handleCreate} className="create-btn">
                     <IoAdd /> Novo Produto
                 </button>
@@ -158,7 +171,7 @@ export default function ProductPage() {
                     {filteredProducts.map(product => (
                         <tr key={product.id}>
                             <td>{product.id}</td>
-                            <td>{product.name}</td>
+                            <td>{product.title}</td>
                             <td>{product.artist}</td>
                             <td>{product.year}</td>
                             <td>{product.genre.join(", ")}</td>
@@ -200,11 +213,33 @@ export default function ProductPage() {
 
                         <form onSubmit={handleSubmit} className="modal-form">
                             <div className="form-group">
-                                <label>Nome do Produto:</label>
+                                <label>Titulo do disco:</label>
                                 <input
                                     type="text"
-                                    name="name"
-                                    defaultValue={selectedProduct?.name || ''}
+                                    name="title"
+                                    defaultValue={selectedProduct?.title || ''}
+                                    disabled={modalMode === 'view'}
+                                    required
+                                />
+                            </div>
+
+                            <div className="form-group">
+                                <label>Artista:</label>
+                                <input
+                                    type="text"
+                                    name="artist"
+                                    defaultValue={selectedProduct?.artist || ''}
+                                    disabled={modalMode === 'view'}
+                                    required
+                                />
+                            </div>
+
+                            <div className="form-group">
+                                <label>Ano:</label>
+                                <input
+                                    type="text"
+                                    name="year"
+                                    defaultValue={selectedProduct?.year || ''}
                                     disabled={modalMode === 'view'}
                                     required
                                 />
@@ -220,18 +255,18 @@ export default function ProductPage() {
                                 />
                                 <button type="button" disabled={modalMode === 'view'} onClick={(e) => {
                                     let inp = document.getElementById("genre-input")
-                                    if (inp.value !== "") setCurrenteGenres([...currenteGenres, inp.value])
+                                    if (inp.value !== "") setCurrentGenres([...currentGenres, inp.value])
                                     inp.value = ""
                                 }}><IoAdd/></button>
                             </div>
 
                             <div className="genre-list">
                                 <ul>
-                                    {currenteGenres.map((genre, index) => {
+                                    {currentGenres.map((genre, index) => {
                                         return (
-                                        <li className="genre-list-item">{genre}
+                                        <li key={index} className="genre-list-item">{genre}
                                             <button className="genre-list-button" type="button" onClick={() => {
-                                            if (modalMode ===  "create") setCurrenteGenres(currenteGenres.filter(g => g !== genre))
+                                            if (modalMode ===  "create") setCurrentGenres(currentGenres.filter(g => g !== genre))
                                         }}>
                                                 {modalMode === "create" && <IoTrash/>}
                                             </button>
