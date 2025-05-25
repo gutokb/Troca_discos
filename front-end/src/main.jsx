@@ -6,6 +6,7 @@ import Home from "./pages/Home/Home.jsx";
 import Login from "./pages/Login/Login.jsx";
 import Register from "./pages/Register/Register.jsx";
 import AdminDashboard from "./pages/Admin/AdminDashboard.jsx";
+import Cart from './pages/Cart/Cart.jsx';
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -15,6 +16,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/register" element={<Register/>}/>
           <Route path="/product" element={<Home/>}/>
           <Route path="/admin/*" element={<AdminDashboard/>}/>
+          <Route path="/shopping-cart" element={<Cart/>}/>
       </Routes>
   </BrowserRouter>
 )

@@ -87,7 +87,7 @@ export default function ProductPage() {
             newProduct.genre = currentGenres;
             newProduct.price = parseFloat(newProduct.price)
             newProduct.stock = parseInt(newProduct.stock)
-            newProduct.year = parsenInt(newProduct.year)
+            newProduct.year = parseInt(newProduct.year)
             const url = `${API_URL}/records`;
 
             const body = JSON.stringify(newProduct);

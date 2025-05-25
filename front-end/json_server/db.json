@@ -16,7 +16,7 @@
     {
       "id": "2",
       "title": "The Dark Side of the Moon",
-      "artist": "Pink Floyd",
+      "artist": "Pink Freud",
       "year": 1973,
       "genre": [
         "Progressive Rock",
@@ -206,6 +206,16 @@
       "price": 666,
       "stock": 111,
       "createdAt": "2025-05-24T21:29:27.267Z"
+    },
+    {
+      "id": "98",
+      "title": "as mais novas do playboyzinho",
+      "artist": "dj playboyzinho",
+      "year": 2014,
+      "genre": [],
+      "price": 12.36,
+      "stock": 7,
+      "createdAt": "2025-05-25T00:50:30.383Z"
     }
   ],
   "users": [
@@ -234,8 +244,7 @@
       "shopping_cart": [
         5,
         9,
-        12,
-        14
+        12,13
       ]
     },
     {

@@ -43,8 +43,8 @@ export default function Navbar({handleSearch}) {
                 {admin ? <button onClick={(event) => navigate("/admin")} className="header-button">Admin</button> : null}
                 {loggedIn ? null :<button onClick={(event) => navigate("/register")} className="header-button">Cadastro</button>}
                 {loggedIn ? null :<button onClick={(event) => navigate("/login")} className="header-button">Login</button>}
-                <img onClick={shoppingCartNavigate} className="nav-img" src="/src/assets/user.png" alt=""/>
-                <img onClick={profileNavigate} className="nav-img" src="/src/assets/shopping-cart.png" alt=""/>
+                <img onClick={profileNavigate} className="nav-img" src="/src/assets/user.png" alt=""/>
+                <img onClick={shoppingCartNavigate} className="nav-img" src="/src/assets/shopping-cart.png" alt=""/>
             </div>
         </header>
     )
