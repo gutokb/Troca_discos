@@ -5,12 +5,10 @@
       "title": "Abbey Road",
       "artist": "The Betinhas moggados",
       "year": 1969,
-      "genre": [
-        "Rock",
-        "Pop"
-      ],
+      "genre": ["Rock", "Pop"],
       "price": 29.99,
       "stock": 15,
+      "cover": "https://upload.wikimedia.org/wikipedia/en/4/42/Beatles_-_Abbey_Road.jpg",
       "createdAt": "2024-01-15T10:30:00.000Z"
     },
     {
@@ -18,12 +16,10 @@
       "title": "The Dark Side of the Moon",
       "artist": "Pink Freud",
       "year": 1973,
-      "genre": [
-        "Progressive Rock",
-        "Psychedelic"
-      ],
+      "genre": ["Progressive Rock", "Psychedelic", "funk"],
       "price": 34.99,
       "stock": 8,
+      "cover": "https://upload.wikimedia.org/wikipedia/en/3/3b/Dark_Side_of_the_Moon.png",
       "createdAt": "2024-01-16T14:22:00.000Z"
     },
     {
@@ -31,12 +27,10 @@
       "title": "Thriller",
       "artist": "Michael Jackson",
       "year": 1982,
-      "genre": [
-        "Pop",
-        "R&B"
-      ],
+      "genre": ["Pop", "R&B"],
       "price": 24.99,
       "stock": 12,
+      "cover": "https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png",
       "createdAt": "2024-01-17T09:15:00.000Z"
     },
     {
@@ -44,12 +38,10 @@
       "title": "Back in Black",
       "artist": "AC/DC",
       "year": 1980,
-      "genre": [
-        "Hard Rock",
-        "Heavy Metal"
-      ],
+      "genre": ["Hard Rock", "Heavy Metal"],
       "price": 27.99,
       "stock": 6,
+      "cover": "https://upload.wikimedia.org/wikipedia/commons/9/92/ACDC_Back_in_Black.png",
       "createdAt": "2024-01-18T16:45:00.000Z"
     },
     {
@@ -57,12 +49,10 @@
       "title": "Rumours",
       "artist": "Fleetwood Mac",
       "year": 1977,
-      "genre": [
-        "Rock",
-        "Pop Rock"
-      ],
+      "genre": ["Rock", "Pop Rock"],
       "price": 31.99,
       "stock": 20,
+      "cover": "https://upload.wikimedia.org/wikipedia/en/f/fb/FMacRumours.PNG",
       "createdAt": "2024-01-19T11:00:00.000Z"
     },
     {
@@ -70,12 +60,10 @@
       "title": "Hotel California",
       "artist": "Eagles",
       "year": 1976,
-      "genre": [
-        "Rock",
-        "Country Rock"
-      ],
+      "genre": ["Rock", "Country Rock"],
       "price": 28.99,
       "stock": 9,
+      "cover": "https://upload.wikimedia.org/wikipedia/en/4/49/Hotelcalifornia.jpg",
       "createdAt": "2024-01-20T13:30:00.000Z"
     },
     {
@@ -83,12 +71,10 @@
       "title": "Nevermind",
       "artist": "Nirvana",
       "year": 1991,
-      "genre": [
-        "Grunge",
-        "Alternative Rock"
-      ],
+      "genre": ["Grunge", "Alternative Rock"],
       "price": 26.99,
       "stock": 14,
+      "cover": "https://upload.wikimedia.org/wikipedia/en/b/b7/NirvanaNevermindalbumcover.jpg",
       "createdAt": "2024-01-21T08:20:00.000Z"
     },
     {
@@ -96,12 +82,10 @@
       "title": "Kind of Blue",
       "artist": "Miles Davis",
       "year": 1959,
-      "genre": [
-        "Jazz",
-        "Cool Jazz"
-      ],
+      "genre": ["Jazz", "Cool Jazz"],
       "price": 39.99,
       "stock": 5,
+      "cover": "https://upload.wikimedia.org/wikipedia/en/9/9c/MilesDavisKindofBlue.jpg",
       "createdAt": "2024-01-22T15:10:00.000Z"
     },
     {
@@ -109,12 +93,10 @@
       "title": "Born to Run",
       "artist": "Bruce Springsteen",
       "year": 1975,
-      "genre": [
-        "Rock",
-        "Heartland Rock"
-      ],
+      "genre": ["Rock", "Heartland Rock"],
       "price": 30.99,
       "stock": 11,
+      "cover": "https://upload.wikimedia.org/wikipedia/en/0/0c/Born_to_Run_(Front_Cover).jpg",
       "createdAt": "2024-01-23T12:45:00.000Z"
     },
     {
@@ -122,12 +104,10 @@
       "title": "OK Computer",
       "artist": "Radiohead",
       "year": 1997,
-      "genre": [
-        "Alternative Rock",
-        "Art Rock"
-      ],
+      "genre": ["Alternative Rock", "Art Rock"],
       "price": 33.99,
       "stock": 7,
+      "cover": "https://upload.wikimedia.org/wikipedia/en/a/a1/Radiohead.okcomputer.albumart.jpg",
       "createdAt": "2024-01-24T17:00:00.000Z"
     },
     {
@@ -135,12 +115,10 @@
       "title": "Pet Sounds",
       "artist": "The Beach Boys",
       "year": 1966,
-      "genre": [
-        "Pop",
-        "Psychedelic Pop"
-      ],
+      "genre": ["Pop", "Psychedelic Pop"],
       "price": 35.99,
       "stock": 4,
+      "cover": "https://upload.wikimedia.org/wikipedia/en/3/3c/PetSoundsCover.jpg",
       "createdAt": "2024-01-25T10:15:00.000Z"
     },
     {
@@ -148,12 +126,10 @@
       "title": "The Wall",
       "artist": "Pink Floyd",
       "year": 1979,
-      "genre": [
-        "Progressive Rock",
-        "Concept Album"
-      ],
+      "genre": ["Progressive Rock", "Concept Album"],
       "price": 42.99,
       "stock": 3,
+      "cover": "https://upload.wikimedia.org/wikipedia/en/1/13/PinkFloydWallCoverOriginalNoText.jpg",
       "createdAt": "2024-01-26T14:30:00.000Z"
     },
     {
@@ -161,12 +137,10 @@
       "title": "What's Going On",
       "artist": "Marvin Gaye",
       "year": 1971,
-      "genre": [
-        "Soul",
-        "R&B"
-      ],
+      "genre": ["Soul", "R&B"],
       "price": 29.99,
       "stock": 8,
+      "cover": "https://upload.wikimedia.org/wikipedia/en/8/84/MarvinGayeWhat%27sGoingOnalbumcover.jpg",
       "createdAt": "2024-01-27T11:20:00.000Z"
     },
     {
@@ -174,12 +148,10 @@
       "title": "Led Zeppelin IV",
       "artist": "Led Zeppelin",
       "year": 1971,
-      "genre": [
-        "Hard Rock",
-        "Heavy Metal"
-      ],
+      "genre": ["Hard Rock", "Heavy Metal"],
       "price": 32.99,
       "stock": 10,
+      "cover": "https://upload.wikimedia.org/wikipedia/en/9/9f/Led_Zeppelin_-_Led_Zeppelin_IV.jpg",
       "createdAt": "2024-01-28T09:40:00.000Z"
     },
     {
@@ -233,7 +205,7 @@
     },
     {
       "id": "4",
-      "name": "Ana Costa Cardoso",
+      "name": "Ana Costa bragança",
       "cpf": "55566677788",
       "email": "ana.costa@email.com",
       "telephone": "(41) 96666-5555",
@@ -242,14 +214,13 @@
       "createdAt": "2024-01-15T16:45:00.000Z",
       "lastLogin": "2024-05-24T07:20:00.000Z",
       "shopping_cart": [
-        5,
         9,
         12,
         13
       ],
       "address": "rua 1234, bairro dos bompos",
       "cardNumber": "1234",
-      "cardCvv": "667",
+      "cardCvv": "332",
       "cardDate": "12/25"
     },
     {

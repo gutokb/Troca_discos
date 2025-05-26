@@ -8,6 +8,7 @@ import Register from "./pages/Register/Register.jsx";
 import AdminDashboard from "./pages/Admin/AdminDashboard.jsx";
 import Cart from './pages/Cart/Cart.jsx';
 import Profile from './pages/Profile/Profile.jsx'
+import Details from './pages/Details/Details.jsx';
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -19,6 +20,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/admin/*" element={<AdminDashboard/>}/>
           <Route path="/shopping-cart" element={<Cart/>}/>
           <Route path="/profile" element={<Profile/>}/>
+          <Route path="/details/:productID" element={<Details/>}/>
       </Routes>
   </BrowserRouter>
 )

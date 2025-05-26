@@ -75,7 +75,6 @@ export default function ShoppingCart() {
                         <tbody>
                             {filteredProducts.map(product => (
                                 <tr key={product.id}>
-                                 
                                     <td>{product.title}</td>
                                     <td>{product.artist}</td>
                                     <td>{product.year}</td>
