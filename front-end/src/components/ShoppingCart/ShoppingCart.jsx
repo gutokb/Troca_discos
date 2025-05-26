@@ -62,20 +62,20 @@ export default function ShoppingCart() {
                     <table className="cart-table">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                             
                                 <th>Nome</th>
                                 <th>Artista</th>
                                 <th>Lançamento</th>
                                 <th>Gênero</th>
                                 <th>Preço</th>
                                 <th>Estoque</th>
-                                <th>Ações</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             {filteredProducts.map(product => (
                                 <tr key={product.id}>
-                                    <td>{product.id}</td>
+                                 
                                     <td>{product.title}</td>
                                     <td>{product.artist}</td>
                                     <td>{product.year}</td>

@@ -195,7 +195,7 @@
       "createdAt": "2025-05-24T21:28:46.932Z"
     },
     {
-      "id": "14",
+      "id": "37",
       "title": "metal",
       "artist": "mtofoda",
       "year": "1999",
@@ -233,7 +233,7 @@
     },
     {
       "id": "4",
-      "name": "Ana Costa",
+      "name": "Ana Costa Cardoso",
       "cpf": "55566677788",
       "email": "ana.costa@email.com",
       "telephone": "(41) 96666-5555",
@@ -244,8 +244,13 @@
       "shopping_cart": [
         5,
         9,
-        12,13
-      ]
+        12,
+        13
+      ],
+      "address": "rua 1234, bairro dos bompos",
+      "cardNumber": "1234",
+      "cardCvv": "667",
+      "cardDate": "12/25"
     },
     {
       "id": "5",
