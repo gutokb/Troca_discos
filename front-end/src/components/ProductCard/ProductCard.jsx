@@ -14,14 +14,15 @@ product = {
     artist : str,
     year : str | int, //idk
     price : float,
-    coverImgUrl : str
+    cover : str
 }
  */
 
 export default function ProductCard({product}) {
+    const navigate = useNavigate();
     return (
-        <div className="product-card">
-            <img src={product.coverImgUrl} alt="Record cover"/>
+        <div onClick={()=>(navigate(`/details/${product.id}`))} className="product-card">
+            <img src={product.cover} alt="Record cover"/>
             <p>{product.title}</p>
             <p>{product.artist + " - " + product.year}</p>
             <h4>{"R$ " + product.price}</h4>

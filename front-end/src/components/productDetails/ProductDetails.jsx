@@ -1,53 +1,58 @@
-import React, {useEffect, useState} from 'react';
-import {API_URL} from "../../config/api.js";
+import React, { useEffect, useState } from 'react';
+import { API_URL } from '../../config/api.js';
+import './ProductDetails.css';
 
+export default function ProductDetails({ productID }) {
+    const [productData, setProductData] = useState(null);
 
+    useEffect(() => {
+        async function fetchProduct() {
+            const response = await fetch(`${API_URL}/records/${productID}`);
+            const data = await response.json();
+            setProductData(data);
+        }
+        fetchProduct();
+    }, [productID]);
 
-export default function(props){
+    if (!productData) {
+        return <div className="product-loading">Carregando...</div>;
+    }
 
-    const [curProduct,setProduct] = useState(props.productID);
-    const [productData,setProductData] = useState(null);
-
-    useEffect(()=>{
-         async function fetchProduct() {
-                    const response = await fetch(`${API_URL}/records/${curProduct}`);
-                    const data = await response.json();
-                    setProductData(data);
-                }
-                fetchProduct();
-
-    },[curProduct])
-
-    return(<>
-        { productData!=null &&(
+    return (
         <div className="product-container">
-            <div className="image-container">
-                <img src={productData.cover}/>
+            <div className="product-image">
+                <img src={productData.cover} alt={productData.title} />
             </div>
-            <div className="details-container"> 
-                <div className='details-text'>
-                    <p>{productData.title}</p>
-                    <p>{productData.artist}</p>
-                    <p>{productData.year}</p>
-                    <div className='genres'>
-                    <ul>
-                    {productData.genre.map((genre)=><li key ={genre}>{genre}</li>)}
-                    </ul>
-                    </div>
-                </div>
-                <div className='details-audio'>
 
+            <div className="product-details">
+                <h2 className="product-title">{productData.title}</h2>
+                <p className="product-artist">{productData.artist}</p>
+
+                <div className="product-meta">
+                    <span>{productData.year}</span>
+                    <span className={productData.stock > 0 ? 'in-stock' : 'out-of-stock'}>
+                        {productData.stock > 0 ? `${productData.stock} disponíveis` : 'Indisponível'}
+                    </span>
                 </div>
-                <div className='action-container'>
-                    <button className='cart-btn'> Adicionar ao carrinho</button>
-                    <button className='checkout-btn'> Finalizar Compra</button>
+
+                <div className="product-genres">
+                    {productData.genre.map((genre) => (
+                        <span key={genre} className="genre-badge">
+                            {genre}
+                        </span>
+                    ))}
+                </div>
+
+                <div className="product-price">
+                    R$ {productData.price.toFixed(2)}
+                </div>
+
+                <div className="product-actions">
+                    <button className="cart-btn" disabled={productData.stock <= 0}>
+                        {productData.stock > 0 ? 'Adicionar ao carrinho' : 'Esgotado'}
+                    </button>
                 </div>
             </div>
         </div>
-        )
-        }
-    </>)
-
-
+    );
 }
-
