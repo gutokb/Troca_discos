@@ -8,6 +8,7 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     margin: 20px;
     align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 /* Image */
@@ -119,6 +120,112 @@
     box-shadow: none;
 }
 
+/* Tracklist Container */
+.tracklist-container {
+    flex: 1 1 100%;
+    background: #f9f9f9;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+}
+
+.tracklist-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 20px 0;
+    border-bottom: 2px solid #C0710A;
+    padding-bottom: 8px;
+}
+
+.tracklist {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Track Item */
+.track-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.track-item:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+}
+
+/* Play Button */
+.play-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background-color: #C0710A;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.play-btn:hover:not(:disabled) {
+    background-color: #A05909;
+    transform: scale(1.05);
+}
+
+.play-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.play-btn.playing {
+    background-color: #28a745;
+}
+
+.play-btn.playing:hover {
+    background-color: #218838;
+}
+
+
+
+/* Track Info */
+.track-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+}
+
+.track-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    flex: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.track-duration {
+    font-size: 14px;
+    color: #666;
+    font-weight: 400;
+    flex-shrink: 0;
+    margin-left: 10px;
+}
+
 /* Loading State */
 .product-loading {
     text-align: center;
@@ -132,6 +239,7 @@
     .product-container {
         flex-direction: column;
         align-items: center;
+        gap: 20px;
     }
 
     .product-details {
@@ -140,5 +248,28 @@
 
     .product-image {
         max-width: 100%;
+    }
+
+    .tracklist-container {
+        margin-top: 0;
+    }
+
+    .track-item {
+        padding: 12px;
+        gap: 12px;
+    }
+
+    .play-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+
+    .track-title {
+        font-size: 15px;
+    }
+
+    .track-duration {
+        font-size: 13px;
     }
 }

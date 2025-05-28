@@ -8,8 +8,9 @@ export default function ProductPage() {
     const [showModal, setShowModal] = useState(false);
     const [modalMode, setModalMode] = useState('create'); // 'create', 'edit', 'view'
     const [selectedProduct, setSelectedProduct] = useState(null);
-    // Used for adding/updating genres
     const [products, setProducts] = useState([]);
+
+
 
     // Data fetching
     // Gambiarra
@@ -24,6 +25,7 @@ export default function ProductPage() {
         fetchProducts();
     }, [reload])
 
+    // Used for adding/updating genres
     // Logic for displaying and updating genres as a list
     const [currentGenres, setCurrentGenres] = useState([]);
     useEffect(() => {
@@ -35,7 +37,16 @@ export default function ProductPage() {
         }
     }, [showModal]);
 
-
+    // Used for adding/updating tracks
+    const [currentTracks, setCurrentTracks] = useState([]);
+    useEffect(() => {
+        if (selectedProduct !== null) {
+            setCurrentTracks(selectedProduct.tracks)
+        }
+        else {
+            setCurrentTracks([])
+        }
+    }, [showModal]);
 
 
     const handleSearch = (e) => {
@@ -260,6 +271,8 @@ export default function ProductPage() {
                                 }}><IoAdd/></button>
                             </div>
 
+
+
                             <div className="genre-list">
                                 <ul>
                                     {currentGenres.map((genre, index) => {
@@ -274,6 +287,36 @@ export default function ProductPage() {
                                     })}
                                 </ul>
                             </div>
+
+                            {/*<div className="form-group form-genre">*/}
+                            {/*    <label>Faixas:</label>*/}
+                            {/*    <input id="track-input"*/}
+                            {/*           type="text"*/}
+                            {/*           name="genre"*/}
+                            {/*           defaultValue=""*/}
+                            {/*           disabled={modalMode === 'view'}*/}
+                            {/*    />*/}
+                            {/*    <button type="button" disabled={modalMode === 'view'} onClick={(e) => {*/}
+                            {/*        let inp = document.getElementById("track-input")*/}
+                            {/*        if (inp.value !== "") setCurrentGenres([...currentGenres, inp.value])*/}
+                            {/*        inp.value = ""*/}
+                            {/*    }}><IoAdd/></button>*/}
+                            {/*</div>*/}
+
+                            {/*<div className="genre-list">*/}
+                            {/*    <ul>*/}
+                            {/*        {currentGenres.map((genre, index) => {*/}
+                            {/*            return (*/}
+                            {/*                <li key={index} className="genre-list-item">{genre}*/}
+                            {/*                    <button className="genre-list-button" type="button" onClick={() => {*/}
+                            {/*                        if (modalMode ===  "create") setCurrentGenres(currentGenres.filter(g => g !== genre))*/}
+                            {/*                    }}>*/}
+                            {/*                        {modalMode !== "view" && <IoTrash/>}*/}
+                            {/*                    </button>*/}
+                            {/*                </li>)*/}
+                            {/*        })}*/}
+                            {/*    </ul>*/}
+                            {/*</div>*/}
 
 
                             <div className="form-group">
