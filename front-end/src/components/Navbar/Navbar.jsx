@@ -1,6 +1,8 @@
 import "./Navbar.css"
 import {Link, useNavigate} from "react-router-dom";
+import { API_URL } from "../../config/api.js";
 import { IoSearchOutline } from "react-icons/io5";
+import { useEffect,useState } from "react";
 
 /*
 Component for the header/navbar for all pages
@@ -11,11 +13,39 @@ Component for the header/navbar for all pages
 // handleSearch : function, executed when the search input is submitted, must follow format of action handling in forms
 export default function Navbar({handleSearch}) {
 
-    // Requires auth logic
-    let admin = true;
 
-    // Requires auth logic
-    let loggedIn = false;
+    const [userData,setUserData] = useState(null)
+    const [logged, SetLogged] = useState(false)
+    const [admin, setAdmin] = useState(false)
+
+    async function fetchUser() {
+                alert("aiiii")
+                const userId = ((localStorage.getItem("userId")))
+                if(userId != null){
+                const response = await fetch(`${API_URL}/users/${userId}`);
+                const data = await response.json();
+                setUserData(data);
+                }
+            }
+
+    useEffect(()=>{
+        if(userData!=null){
+            SetLogged(true);
+            if(userData.role == "ADMIN"){
+                setAdmin(true);
+            }
+        }
+
+    },[userData])
+
+    useEffect(()=>{
+        fetchUser()
+    },[])
+
+
+    
+
+    
 
     const navigate = useNavigate();
 
@@ -41,8 +71,8 @@ export default function Navbar({handleSearch}) {
                 </div>
             <div className="nav-container-2">
                 {admin ? <button onClick={(event) => navigate("/admin")} className="header-button">Admin</button> : null}
-                {loggedIn ? null :<button onClick={(event) => navigate("/register")} className="header-button">Cadastro</button>}
-                {loggedIn ? null :<button onClick={(event) => navigate("/login")} className="header-button">Login</button>}
+                {logged ? null :<button onClick={(event) => navigate("/register")} className="header-button">Cadastro</button>}
+                {logged ? null :<button onClick={(event) => navigate("/login")} className="header-button">Login</button>}
                 <img onClick={profileNavigate} className="nav-img" src="/src/assets/user.png" alt=""/>
                 <img onClick={shoppingCartNavigate} className="nav-img" src="/src/assets/shopping-cart.png" alt=""/>
             </div>

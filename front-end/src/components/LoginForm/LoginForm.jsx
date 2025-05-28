@@ -1,4 +1,6 @@
 // LoginForm.jsx
+import { useEffect, useState } from "react";
+import { API_URL } from "../../config/api.js";
 import "./LoginForm.css"
 import {useNavigate} from "react-router-dom";
 
@@ -8,17 +10,50 @@ This is the login form in the center of the login page
 
 export default function LoginForm() {
 
+    const [loginData,setloginData] = useState(null);
+    const [userData,setUserData] = useState(null);
+
     const navigate = useNavigate();
+
+    async function fetchuser(email) {
+         const response = await fetch(`${API_URL}/users?email=${email}`);
+                    const data = await response.json();
+                    setUserData(data);
+    }
+
+    useEffect(()=>{
+        if(loginData != null){
+        fetchuser(loginData.email)
+        }
+    },[loginData]);
+
+     useEffect(()=>{
+        if(userData!=null){
+            if(userData == []){
+                alert("Usuário não encontrado")
+            }
+            else{
+                if(userData[0].password === loginData.password){
+                    localStorage.setItem("userId",(userData[0].id))
+                    navigate("/")
+                }
+                else{
+                    alert("Usuário ou senha incorretos")
+                }
+            }
+        }
+    },[userData]);
 
     function handleSubmit(event) {
         event.preventDefault();
         const formData = new FormData(event.target);
-        const loginData = {
+        const receivedLoginData = {
             email: formData.get('email'),
             password: formData.get('password')
         };
-        // Needs to handle authentication logic
-        navigate("/");
+        setloginData(receivedLoginData);
+
+        //navigate("/");
     }
 
     function navigateRegister() {
