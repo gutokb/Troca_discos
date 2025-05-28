@@ -20,6 +20,17 @@ export default function Navbar() {
     const [userName, setUserName] = useState("");
     const [query, setQuery] = useState(null);
 
+    // Estado que guarda o termo pesquisado na barra de pesquisa
+    const [searchInput, setSearchInput] = useState("");
+
+    // função que lida com a pesquisa
+    const submitSearch = (e) => {
+      e.preventDefault();
+      // Redireciona para a página de busca
+      navigate(`/search?q=${encodeURIComponent(searchInput)}`);
+      if (handleSearch) handleSearch(searchInput); // opcional
+    };
+
     // useEffect é executado ao carregar o componente
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -95,6 +106,8 @@ export default function Navbar() {
             className="header-input"
             type="text"
             placeholder="Pesquisar"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
           />
           <span className="search-icon">
             <IoSearchOutline />

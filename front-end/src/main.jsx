@@ -11,9 +11,38 @@ import Cart from './pages/Cart/Cart.jsx';
 import Profile from './pages/Profile/Profile.jsx';
 import Details from './pages/Details/Details.jsx';
 import Unauthorized from './pages/Unauthorized/Unauthorized.jsx';
+import Search from "./pages/Search/Search.jsx";
 
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute.jsx';
 import SearchProduct from './pages/searchProduct/searchProduct.jsx';
+
+import React from 'react';
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    BarElement,
+    ArcElement,
+    Title,
+    Tooltip,
+    Legend,
+} from 'chart.js';
+import { Line, Bar, Pie, Doughnut } from 'react-chartjs-2';
+
+// Register Chart.js components
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    BarElement,
+    ArcElement,
+    Title,
+    Tooltip,
+    Legend
+);
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
