@@ -13,6 +13,7 @@ import Details from './pages/Details/Details.jsx';
 import Unauthorized from './pages/Unauthorized/Unauthorized.jsx';
 
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute.jsx';
+import SearchProduct from './pages/searchProduct/searchProduct.jsx';
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -20,7 +21,7 @@ createRoot(document.getElementById('root')).render(
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/product" element={<Home />} />
+      <Route path="/product/:query" element={<SearchProduct />} />
       <Route
         path="/admin/*"
         element={

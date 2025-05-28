@@ -30,7 +30,7 @@ export default function ShoppingCart() {
         setProducts(products.filter(product => product.id !== productId));
         const url = `${API_URL}/users/${curUser}`;
         const body = JSON.stringify({
-            shopping_cart: userData.shopping_cart.filter(id => Number(id) !== Number(productId))
+            shopping_cart: userData.shopping_cart.filter(item => Number(item.productId) !== Number(productId))
         });
         fetch(url, {
             method: 'PATCH',

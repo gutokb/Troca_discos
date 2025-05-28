@@ -11,13 +11,14 @@ Component for the header/navbar for all pages
 // @Params
 // loggedIn : boolean, toggles display of login buttons
 // handleSearch : function, executed when the search input is submitted, must follow format of action handling in forms
-export default function Navbar({handleSearch}) {
+export default function Navbar() {
     const navigate = useNavigate();
 
     // Estados para controlar se o usuário está logado e se é admin
     const [loggedIn, setLoggedIn] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false);
     const [userName, setUserName] = useState("");
+    const [query, setQuery] = useState(null);
 
     // useEffect é executado ao carregar o componente
     useEffect(() => {
@@ -35,6 +36,20 @@ export default function Navbar({handleSearch}) {
             setUserName("");
         }
     }, []);
+    
+    useEffect(()=>{
+      if(query!=null){
+        navigate(`/product/${query.search}`)
+      }
+    },[query])
+
+    function handleSearch(e){
+      e.preventDefault()
+        const formData = new FormData(e.target);
+        const newData = Object.fromEntries(formData);
+        setQuery(newData);
+        console.log(query)
+    }
 
     // Lógica do botão de logout
     function handleLogout() {
@@ -74,7 +89,7 @@ export default function Navbar({handleSearch}) {
         />
 
         {/* Formulário de busca */}
-        <form action={handleSearch}>
+        <form onSubmit={handleSearch}>
           <input
             name="search"
             className="header-input"
