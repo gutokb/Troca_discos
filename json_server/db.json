@@ -300,6 +300,18 @@
         2,
         7
       ]
+    },
+    {
+      "id": "1748451885762",
+      "name": "Laura Neri",
+      "cpf": "11111111111",
+      "email": "lauraneri@neri.com",
+      "telephone": "16 999999999",
+      "role": "USER",
+      "password": "12345",
+      "createdAt": "2025-05-28T17:04:45.762Z",
+      "lastLogin": "2025-05-28T17:04:45.762Z",
+      "shopping_cart": []
     }
   ],
   "sales": [

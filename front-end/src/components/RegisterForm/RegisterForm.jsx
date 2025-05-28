@@ -10,12 +10,33 @@ export default function RegisterForm() {
     const navigate = useNavigate();
 
     // Requires registering logic
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
         const formData = new FormData(event.target);
-        const registerData = Object.fromEntries(formData);
-        navigate("/");
-    }
+        const registerData = Object.fromEntries(formData); 
+   
+        try {
+            const response = await fetch("http://localhost:3001/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(registerData)
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                //volta para a pagina inicial
+                alert(data.message || "Sucesso no cadastro");
+                navigate("/");
+
+            } else {
+                alert(data.message || "Erro no cadastro");
+            }
+        } catch (error) {
+            console.error("Erro de rede:", error);
+            alert("Erro ao conectar com o servidor");
+        }
+     }
 
     return (
         <form onSubmit={handleSubmit} className="register-form">

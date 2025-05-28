@@ -37,6 +37,40 @@ server.post('/login', (req, res) => {
   });
 });
 
+server.post('/register', (req, res) => {
+  const { name, email, password, cpf, telephone, role = "USER" } = req.body;
+
+  if (!email || !password || !name) {
+    return res.status(400).json({ message: "Nome, email e senha são obrigatórios." });
+  }
+
+  const dbFilePath = path.join(__dirname, 'db.json');
+  const db = JSON.parse(fs.readFileSync(dbFilePath, 'utf-8'));
+
+  const existingUser = db.users.find(u => u.email === email);
+  if (existingUser) {
+    return res.status(409).json({ message: "Email já está em uso." });
+  }
+
+  const newUser = {
+  id: String(Date.now()), //geração de id unico
+  name,
+  cpf,
+  email,
+  telephone,
+  role: "USER",
+  password,
+  createdAt: new Date().toISOString(),
+  lastLogin: new Date().toISOString(),
+  shopping_cart: []
+};
+
+  db.users.push(newUser);
+  fs.writeFileSync(dbFilePath, JSON.stringify(db, null, 2));
+
+  res.status(201).json({ message: "Usuário registrado com sucesso!", user: newUser });
+});
+
 server.use(router);
 
 const PORT = 3001;

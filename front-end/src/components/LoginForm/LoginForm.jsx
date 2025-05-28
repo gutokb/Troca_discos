@@ -28,7 +28,7 @@ export default function LoginForm() {
                 localStorage.setItem("user", JSON.stringify(data.user));
 
                 // redireciona com base no role
-                if (data.user.role === "admin") {
+                if (data.user.role === "ADMIN") {
                     navigate("/admin");
                 } else {
                     navigate("/user");
