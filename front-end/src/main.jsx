@@ -11,6 +11,7 @@ import Cart from './pages/Cart/Cart.jsx';
 import Profile from './pages/Profile/Profile.jsx';
 import Details from './pages/Details/Details.jsx';
 import Unauthorized from './pages/Unauthorized/Unauthorized.jsx';
+import Search from "./pages/Search/Search.jsx";
 
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute.jsx';
 
@@ -21,6 +22,7 @@ createRoot(document.getElementById('root')).render(
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/product" element={<Home />} />
+      <Route path="/search" element={<Search />} />
       <Route
         path="/admin/*"
         element={
