@@ -11,6 +11,7 @@ export default function ProtectedRoute({ children, allowedRoles }) {
 
     // caso não tenha permissão
     if (!allowedRoles.includes(user.role)) {
+        console.log(user.role)
         return <Navigate to="/unauthorized" />;
     }
 

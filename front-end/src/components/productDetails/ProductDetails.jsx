@@ -4,6 +4,7 @@ import './ProductDetails.css';
 
 export default function ProductDetails({ productID }) {
     const [productData, setProductData] = useState(null);
+    const [userData, setUserData] = useState(null);
 
     useEffect(() => {
         async function fetchProduct() {
@@ -14,9 +15,41 @@ export default function ProductDetails({ productID }) {
         fetchProduct();
     }, [productID]);
 
+
+    useEffect(() =>{
+        if(userData!=null){
+            console.log(userData)
+            const url = `${API_URL}/users/${userData.id}`;
+            let newCart =[...userData.shopping_cart]
+            if(!newCart.includes(parseInt(productID))){
+                newCart.push(parseInt(productID))
+                const body = JSON.stringify({
+                    shopping_cart: newCart
+                });
+                fetch(url, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: body,
+                }).catch((err) => console.log(err));
+            }
+        }
+    },[userData])
+
     if (!productData) {
         return <div className="product-loading">Carregando...</div>;
     }
+
+    const handlecart = () => {
+        async function fetchUser() {
+            const response = await fetch(`${API_URL}/users/${JSON.parse(localStorage.getItem("user")).id}`);
+            const data = await response.json();
+                setUserData(data);
+            }
+            fetchUser();
+            
+        };
 
     return (
         <div className="product-container">
@@ -48,7 +81,7 @@ export default function ProductDetails({ productID }) {
                 </div>
 
                 <div className="product-actions">
-                    <button className="cart-btn" disabled={productData.stock <= 0}>
+                    <button onClick={handlecart} className="cart-btn" disabled={productData.stock <= 0}>
                         {productData.stock > 0 ? 'Adicionar ao carrinho' : 'Esgotado'}
                     </button>
                 </div>

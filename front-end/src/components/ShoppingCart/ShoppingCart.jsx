@@ -4,7 +4,7 @@ import { API_URL } from "../../config/api.js";
 import { IoTrash } from 'react-icons/io5';
 
 export default function ShoppingCart() {
-    const [curUser, setCurUser] = useState(4);
+    const [curUser, setCurUser] = useState(JSON.parse(localStorage.getItem("user")).id);
     const [userData, setUserdata] = useState(null);
     const [products, setProducts] = useState([]);
 
