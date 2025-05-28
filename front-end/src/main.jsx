@@ -24,7 +24,7 @@ createRoot(document.getElementById('root')).render(
       <Route
         path="/admin/*"
         element={
-          <ProtectedRoute allowedRoles={["admin"]}>
+          <ProtectedRoute allowedRoles={["ADMIN"]}>
             <AdminDashboard />
           </ProtectedRoute>
         }
@@ -32,7 +32,7 @@ createRoot(document.getElementById('root')).render(
       <Route
         path="/profile"
         element={
-          <ProtectedRoute allowedRoles={["user", "admin"]}>
+          <ProtectedRoute allowedRoles={["USER", "ADMIN"]}>
             <Profile />
           </ProtectedRoute>
         }

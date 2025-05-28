@@ -43,9 +43,21 @@ export default function ShoppingCart() {
 
     if (!userData) return <div className="cart-loading">Carregando...</div>;
 
-    const filteredProducts = products.filter(product =>
-        userData.shopping_cart.includes(Number(product.id))
+    let filteredProducts = products.filter(product =>
+        userData.shopping_cart.some(item => Number(item.productId) == Number(product.id))
     );
+
+    filteredProducts = userData.shopping_cart.map(cartItem => {
+    const product = filteredProducts.find(record => Number(record.id) === Number(cartItem.productId));
+    if (!product) return null;
+
+    return {
+        ...product,
+        quantity: cartItem.quantity
+    };
+    }).filter(Boolean);
+
+    console.log(userData)
 
     const productPrice = filteredProducts.reduce((sum, product) => sum + product.price, 0);
     const frete = 10.00;
@@ -61,14 +73,13 @@ export default function ShoppingCart() {
                 <div className="table-container">
                     <table className="cart-table">
                         <thead>
-                            <tr>
-                             
+                            <tr>    
                                 <th>Nome</th>
                                 <th>Artista</th>
                                 <th>Lançamento</th>
                                 <th>Gênero</th>
                                 <th>Preço</th>
-                                <th>Estoque</th>
+                                <th>Quantidade</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -80,8 +91,8 @@ export default function ShoppingCart() {
                                     <td>{product.year}</td>
                                     <td>{product.genre.join(", ")}</td>
                                     <td>R$ {product.price.toFixed(2)}</td>
-                                    <td className={product.stock === 0 ? 'out-of-stock' : ''}>
-                                        {product.stock}
+                                    <td /*className={product.stock === 0 ? 'out-of-stock' : ''}*/>
+                                        {product.quantity}
                                     </td>
                                     <td>
                                         <button
