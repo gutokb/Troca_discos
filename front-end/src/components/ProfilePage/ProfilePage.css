@@ -115,7 +115,7 @@
     box-shadow: 0 4px 12px rgba(192, 113, 10, 0.4);
 }
 
-.action-btn.edit {
+.action-btn {
     align-self: flex-start;
     background-color: transparent;
     color: #C0710A;
@@ -126,8 +126,11 @@
     transition: all 0.3s ease;
 }
 
-.action-btn.edit:hover {
+.action-btn:hover {
     background-color: #fff5ea;
     color: #A05909;
     border-color: #A05909;
 }
+
+
+

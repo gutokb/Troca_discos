@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { API_URL } from "../../config/api.js";
+import {useNavigate} from "react-router-dom";
 import './ProfilePage.css'
 
 export default function ProfilePage() {
     const [curUser, setCurUser] = useState(4);
     const [userData, setUserdata] = useState(null);
     const [curMode, setMode] = useState("view");
+    const navigate = useNavigate()
 
     useEffect(() => {
         async function fetchUser() {
@@ -66,6 +68,14 @@ export default function ProfilePage() {
                     </div>
                     <button className='action-btn edit' onClick={() => setMode("edit")}>
                         Gerenciar Informações
+                    </button>
+                    <button className='action-btn exit' onClick={() =>{
+                        localStorage.removeItem("userID")
+                        localStorage.removeItem("userData")
+                        navigate("/")
+
+                    }}>
+                        Sair
                     </button>
                 </div>
             ) : (
