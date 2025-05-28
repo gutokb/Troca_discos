@@ -268,7 +268,7 @@ export default function ProductPage() {
                                             <button className="genre-list-button" type="button" onClick={() => {
                                             if (modalMode ===  "create") setCurrentGenres(currentGenres.filter(g => g !== genre))
                                         }}>
-                                                {modalMode === "create" && <IoTrash/>}
+                                                {modalMode !== "view" && <IoTrash/>}
                                             </button>
                                         </li>)
                                     })}
@@ -276,6 +276,14 @@ export default function ProductPage() {
                             </div>
 
 
+                            <div className="form-group">
+                                <label>URL da imagem de capa:</label>
+                                <input type="text"
+                                       name="cover"
+                                       defaultValue=""
+                                       disabled={modalMode === 'view'}
+                                />
+                            </div>
 
                             <div className="form-row">
                                 <div className="form-group">

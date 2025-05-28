@@ -1,5 +1,6 @@
 import "./Navbar.css"
 import {Link, useNavigate} from "react-router-dom";
+import { API_URL } from "../../config/api.js";
 import { IoSearchOutline } from "react-icons/io5";
 import { useEffect, useState } from "react";
 
