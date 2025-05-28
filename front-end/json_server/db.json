@@ -5,7 +5,10 @@
       "title": "Abbey Road",
       "artist": "The Beatles",
       "year": 1969,
-      "genre": ["Rock", "Pop"],
+      "genre": [
+        "Rock",
+        "Pop"
+      ],
       "price": 29.99,
       "stock": 15,
       "cover": "https://upload.wikimedia.org/wikipedia/en/4/42/Beatles_-_Abbey_Road.jpg",
@@ -17,7 +20,11 @@
       "title": "The Dark Side of the Moon",
       "artist": "Pink Freud",
       "year": 1973,
-      "genre": ["Progressive Rock", "Psychedelic", "funk"],
+      "genre": [
+        "Progressive Rock",
+        "Psychedelic",
+        "funk"
+      ],
       "price": 34.99,
       "stock": 8,
       "cover": "https://upload.wikimedia.org/wikipedia/en/3/3b/Dark_Side_of_the_Moon.png",
@@ -29,7 +36,10 @@
       "title": "Thriller",
       "artist": "Michael Jackson",
       "year": 1982,
-      "genre": ["Pop", "R&B"],
+      "genre": [
+        "Pop",
+        "R&B"
+      ],
       "price": 24.99,
       "stock": 12,
       "cover": "https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png",
@@ -41,7 +51,10 @@
       "title": "Back in Black",
       "artist": "AC/DC",
       "year": 1980,
-      "genre": ["Hard Rock", "Heavy Metal"],
+      "genre": [
+        "Hard Rock",
+        "Heavy Metal"
+      ],
       "price": 27.99,
       "stock": 6,
       "cover": "https://upload.wikimedia.org/wikipedia/commons/9/92/ACDC_Back_in_Black.png",
@@ -53,7 +66,10 @@
       "title": "Rumours",
       "artist": "Fleetwood Mac",
       "year": 1977,
-      "genre": ["Rock", "Pop Rock"],
+      "genre": [
+        "Rock",
+        "Pop Rock"
+      ],
       "price": 31.99,
       "stock": 20,
       "cover": "https://upload.wikimedia.org/wikipedia/en/f/fb/FMacRumours.PNG",
@@ -65,7 +81,10 @@
       "title": "Hotel California",
       "artist": "Eagles",
       "year": 1976,
-      "genre": ["Rock", "Country Rock"],
+      "genre": [
+        "Rock",
+        "Country Rock"
+      ],
       "price": 28.99,
       "stock": 9,
       "cover": "https://upload.wikimedia.org/wikipedia/en/4/49/Hotelcalifornia.jpg",
@@ -77,7 +96,10 @@
       "title": "Nevermind",
       "artist": "Nirvana",
       "year": 1991,
-      "genre": ["Grunge", "Alternative Rock"],
+      "genre": [
+        "Grunge",
+        "Alternative Rock"
+      ],
       "price": 26.99,
       "stock": 14,
       "cover": "https://upload.wikimedia.org/wikipedia/en/b/b7/NirvanaNevermindalbumcover.jpg",
@@ -89,7 +111,10 @@
       "title": "Kind of Blue",
       "artist": "Miles Davis",
       "year": 1959,
-      "genre": ["Jazz", "Cool Jazz"],
+      "genre": [
+        "Jazz",
+        "Cool Jazz"
+      ],
       "price": 39.99,
       "stock": 5,
       "cover": "https://ia904605.us.archive.org/7/items/mbid-375526b3-aa4a-4cf5-9078-e3688a229dd4/mbid-375526b3-aa4a-4cf5-9078-e3688a229dd4-30915976965_thumb250.jpg",
@@ -101,7 +126,10 @@
       "title": "Born to Run",
       "artist": "Bruce Springsteen",
       "year": 1975,
-      "genre": ["Rock", "Heartland Rock"],
+      "genre": [
+        "Rock",
+        "Heartland Rock"
+      ],
       "price": 30.99,
       "stock": 11,
       "cover": "https://upload.wikimedia.org/wikipedia/en/7/7a/Born_to_Run_%28Front_Cover%29.jpg",
@@ -113,7 +141,10 @@
       "title": "OK Computer",
       "artist": "Radiohead",
       "year": 1997,
-      "genre": ["Alternative Rock", "Art Rock"],
+      "genre": [
+        "Alternative Rock",
+        "Art Rock"
+      ],
       "price": 33.99,
       "stock": 7,
       "cover": "https://upload.wikimedia.org/wikipedia/en/b/ba/Radioheadokcomputer.png",
@@ -125,7 +156,10 @@
       "title": "Pet Sounds",
       "artist": "The Beach Boys",
       "year": 1966,
-      "genre": ["Pop", "Psychedelic Pop"],
+      "genre": [
+        "Pop",
+        "Psychedelic Pop"
+      ],
       "price": 35.99,
       "stock": 4,
       "cover": "https://upload.wikimedia.org/wikipedia/pt/1/1c/Pet_Sounds.jpg",
@@ -137,7 +171,10 @@
       "title": "The Wall",
       "artist": "Pink Floyd",
       "year": 1979,
-      "genre": ["Progressive Rock", "Concept Album"],
+      "genre": [
+        "Progressive Rock",
+        "Concept Album"
+      ],
       "price": 42.99,
       "stock": 3,
       "cover": "https://upload.wikimedia.org/wikipedia/en/1/13/PinkFloydWallCoverOriginalNoText.jpg",
@@ -149,7 +186,10 @@
       "title": "What's Going On",
       "artist": "Marvin Gaye",
       "year": 1971,
-      "genre": ["Soul", "R&B"],
+      "genre": [
+        "Soul",
+        "R&B"
+      ],
       "price": 29.99,
       "stock": 8,
       "cover": "https://upload.wikimedia.org/wikipedia/en/8/84/MarvinGayeWhat%27sGoingOnalbumcover.jpg",
@@ -161,7 +201,10 @@
       "title": "Led Zeppelin IV",
       "artist": "Led Zeppelin",
       "year": 1971,
-      "genre": ["Hard Rock", "Heavy Metal"],
+      "genre": [
+        "Hard Rock",
+        "Heavy Metal"
+      ],
       "price": 32.99,
       "stock": 10,
       "cover": "https://upload.wikimedia.org/wikipedia/en/2/26/Led_Zeppelin_-_Led_Zeppelin_IV.jpg",
@@ -193,7 +236,6 @@
       "createdAt": "2024-01-15T16:45:00.000Z",
       "lastLogin": "2024-05-24T07:20:00.000Z",
       "shopping_cart": [
-        9,
         12,
         13
       ],

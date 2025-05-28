@@ -17,8 +17,9 @@ export default function LoginForm() {
 
     async function fetchuser(email) {
          const response = await fetch(`${API_URL}/users?email=${email}`);
-                    const data = await response.json();
-                    setUserData(data);
+        const data = await response.json();
+        setUserData(data);
+
     }
 
     useEffect(()=>{
@@ -29,10 +30,11 @@ export default function LoginForm() {
 
      useEffect(()=>{
         if(userData!=null){
-            if(userData == []){
+            if(userData.length === 0){
                 alert("Usuário não encontrado")
             }
             else{
+
                 if(userData[0].password === loginData.password){
                     localStorage.setItem("userId",(userData[0].id))
                     navigate("/")

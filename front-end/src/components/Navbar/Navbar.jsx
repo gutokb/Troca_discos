@@ -19,7 +19,6 @@ export default function Navbar({handleSearch}) {
     const [admin, setAdmin] = useState(false)
 
     async function fetchUser() {
-                alert("aiiii")
                 const userId = ((localStorage.getItem("userId")))
                 if(userId != null){
                 const response = await fetch(`${API_URL}/users/${userId}`);
