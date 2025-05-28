@@ -1,24 +1,45 @@
 // LoginForm.jsx
-import "./LoginForm.css"
-import {useNavigate} from "react-router-dom";
-
-/*
-This is the login form in the center of the login page
- */
+import "./LoginForm.css";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
-
     const navigate = useNavigate();
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
         const formData = new FormData(event.target);
         const loginData = {
-            email: formData.get('email'),
-            password: formData.get('password')
+            email: formData.get("email"),
+            password: formData.get("password")
         };
-        // Needs to handle authentication logic
-        navigate("/");
+
+        try {
+            const response = await fetch("http://localhost:3001/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(loginData)
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                // salva dados no localStorage
+                localStorage.setItem("token", data.token);
+                localStorage.setItem("user", JSON.stringify(data.user));
+
+                // redireciona com base no role
+                if (data.user.role === "admin") {
+                    navigate("/admin");
+                } else {
+                    navigate("/user");
+                }
+            } else {
+                alert(data.message || "Erro no login");
+            }
+        } catch (error) {
+            console.error("Erro de rede:", error);
+            alert("Erro ao conectar com o servidor");
+        }
     }
 
     function navigateRegister() {
@@ -33,7 +54,7 @@ export default function LoginForm() {
             </div>
             <div className="form-field">
                 <label htmlFor="password">Senha</label>
-                <input id="password" name="password" type="password" placeholder="annieru0k2" required/>
+                <input id="password" name="password" type="password" placeholder="annieru0k2" required />
             </div>
             <p className="register-text">
                 Não possui uma conta?
@@ -41,5 +62,5 @@ export default function LoginForm() {
             </p>
             <button className="login-button" type="submit">Login</button>
         </form>
-    )
+    );
 }
