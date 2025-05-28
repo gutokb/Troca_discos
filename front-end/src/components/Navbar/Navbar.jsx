@@ -19,6 +19,17 @@ export default function Navbar({handleSearch}) {
     const [isAdmin, setIsAdmin] = useState(false);
     const [userName, setUserName] = useState("");
 
+    // Estado que guarda o termo pesquisado na barra de pesquisa
+    const [searchInput, setSearchInput] = useState("");
+
+    // função que lida com a pesquisa
+    const submitSearch = (e) => {
+      e.preventDefault();
+      // Redireciona para a página de busca
+      navigate(`/search?q=${encodeURIComponent(searchInput)}`);
+      if (handleSearch) handleSearch(searchInput); // opcional
+    };
+
     // useEffect é executado ao carregar o componente
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -74,12 +85,14 @@ export default function Navbar({handleSearch}) {
         />
 
         {/* Formulário de busca */}
-        <form action={handleSearch}>
+        <form onSubmit={submitSearch}>
           <input
             name="search"
             className="header-input"
             type="text"
             placeholder="Pesquisar"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
           />
           <span className="search-icon">
             <IoSearchOutline />

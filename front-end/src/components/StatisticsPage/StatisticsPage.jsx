@@ -1,9 +1,12 @@
 import React from 'react';
 import './StatisticsPage.css';
 import { IoTrendingUp, IoPeople, IoStorefront, IoCard } from 'react-icons/io5';
+import MonthlySalesChart from "./charts/MonthlySalesChart.jsx";
+import SalesByGenreChart from './charts/SalesByGenreChart.jsx'
+import TopArtistsChart from "./charts/TopArtistsChart.jsx";
 
 export default function StatisticsPage() {
-    // TODO: Fetch statistics data from API
+    // TODO: Fetch statistics data from API, requires back end
     const stats = {
         totalUsers: 1234,
         totalProducts: 567,
@@ -61,38 +64,24 @@ export default function StatisticsPage() {
                 <div className="chart-container">
                     <h3 className="chart-title">Vendas por Mês</h3>
                     <div className="chart-placeholder">
-                        {/* TODO: Implement chart using Chart.js, D3.js, or Recharts */}
-                        <p>Gráfico de linha mostrando vendas mensais</p>
-                        <p className="chart-library-note">
-                            Recomendação: Use <strong>Chart.js</strong> para gráficos interativos,
-                            <strong> Recharts</strong> para integração React, ou <strong>D3.js</strong> para visualizações customizadas
-                        </p>
+                        <MonthlySalesChart/>
                     </div>
                 </div>
 
                 <div className="chart-container">
-                    <h3 className="chart-title">Produtos Mais Vendidos</h3>
+                    <h3 className="chart-title">Vendas por gênero</h3>
                     <div className="chart-placeholder">
-                        {/* TODO: Implement bar chart */}
-                        <p>Gráfico de barras dos produtos mais vendidos</p>
+                        <SalesByGenreChart/>
                     </div>
                 </div>
 
                 <div className="chart-container">
-                    <h3 className="chart-title">Distribuição de Usuários</h3>
+                    <h3 className="chart-title">Artistas mais procurados</h3>
                     <div className="chart-placeholder">
-                        {/* TODO: Implement pie chart */}
-                        <p>Gráfico pizza da distribuição demográfica</p>
+                       <TopArtistsChart/>
                     </div>
                 </div>
 
-                <div className="chart-container">
-                    <h3 className="chart-title">Crescimento Temporal</h3>
-                    <div className="chart-placeholder">
-                        {/* TODO: Implement area chart */}
-                        <p>Gráfico de área mostrando crescimento ao longo do tempo</p>
-                    </div>
-                </div>
             </div>
         </div>
     );
