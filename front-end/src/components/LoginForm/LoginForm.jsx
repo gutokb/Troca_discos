@@ -31,7 +31,7 @@ export default function LoginForm() {
                 if (data.user.role === "admin") {
                     navigate("/admin");
                 } else {
-                    navigate("/user");
+                    navigate("/profile");
                 }
             } else {
                 alert(data.message || "Erro no login");

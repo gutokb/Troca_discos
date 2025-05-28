@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom";
 import './ProfilePage.css'
 
 export default function ProfilePage() {
-    const [curUser, setCurUser] = useState(4);
+    const [curUser, setCurUser] = useState(JSON.parse(localStorage.getItem("user")).id);
     const [userData, setUserdata] = useState(null);
     const [curMode, setMode] = useState("view");
     const navigate = useNavigate()
