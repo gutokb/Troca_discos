@@ -1,61 +1,45 @@
 // LoginForm.jsx
-import { useEffect, useState } from "react";
-import { API_URL } from "../../config/api.js";
-import "./LoginForm.css"
-import {useNavigate} from "react-router-dom";
-
-/*
-This is the login form in the center of the login page
- */
+import "./LoginForm.css";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
-
-    const [loginData,setloginData] = useState(null);
-    const [userData,setUserData] = useState(null);
-
     const navigate = useNavigate();
 
-    async function fetchuser(email) {
-         const response = await fetch(`${API_URL}/users?email=${email}`);
-        const data = await response.json();
-        setUserData(data);
-
-    }
-
-    useEffect(()=>{
-        if(loginData != null){
-        fetchuser(loginData.email)
-        }
-    },[loginData]);
-
-     useEffect(()=>{
-        if(userData!=null){
-            if(userData.length === 0){
-                alert("Usuário não encontrado")
-            }
-            else{
-
-                if(userData[0].password === loginData.password){
-                    localStorage.setItem("userId",(userData[0].id))
-                    navigate("/")
-                }
-                else{
-                    alert("Usuário ou senha incorretos")
-                }
-            }
-        }
-    },[userData]);
-
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
         const formData = new FormData(event.target);
-        const receivedLoginData = {
-            email: formData.get('email'),
-            password: formData.get('password')
+        const loginData = {
+            email: formData.get("email"),
+            password: formData.get("password")
         };
-        setloginData(receivedLoginData);
 
-        //navigate("/");
+        try {
+            const response = await fetch("http://localhost:3001/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(loginData)
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                // salva dados no localStorage
+                localStorage.setItem("token", data.token);
+                localStorage.setItem("user", JSON.stringify(data.user));
+
+                // redireciona com base no role
+                if (data.user.role === "admin") {
+                    navigate("/admin");
+                } else {
+                    navigate("/user");
+                }
+            } else {
+                alert(data.message || "Erro no login");
+            }
+        } catch (error) {
+            console.error("Erro de rede:", error);
+            alert("Erro ao conectar com o servidor");
+        }
     }
 
     function navigateRegister() {
@@ -70,7 +54,7 @@ export default function LoginForm() {
             </div>
             <div className="form-field">
                 <label htmlFor="password">Senha</label>
-                <input id="password" name="password" type="password" placeholder="annieru0k2" required/>
+                <input id="password" name="password" type="password" placeholder="annieru0k2" required />
             </div>
             <p className="register-text">
                 Não possui uma conta?
@@ -78,5 +62,5 @@ export default function LoginForm() {
             </p>
             <button className="login-button" type="submit">Login</button>
         </form>
-    )
+    );
 }
