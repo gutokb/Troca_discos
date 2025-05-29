@@ -272,10 +272,6 @@
       "lastLogin": "2024-05-24T07:20:00.000Z",
       "shopping_cart": [
         {
-          "productId": 12,
-          "quantity": 1
-        },
-        {
           "productId": 13,
           "quantity": 2
         },
