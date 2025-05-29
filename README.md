@@ -15,48 +15,96 @@ O projeto consiste em implementar uma plataforma Web que atuará como loja virtu
 
 ### Requisitos específicos do projeto
 
-Como se trata de um e-shop relacionado à musica, a loja terá junto à página de produto um player que reproduzirá as faixas do álbum.
+Como se trata de um e-shop relacionado à música, a loja terá junto à página de produto um player que reproduzirá as faixas do álbum. Ademais, todas as funcionalidades padrão de uma loja virtual devem ser implementadas.
 
-### Entregas do Milestone 1
+Usuários devem poder:
+- Cadastrar-se na loja
+- Buscar e acessar todos os produtos disponíveis na loja
+- Efetuar compra de qualquer produto disponível na loja
 
-Todos os arquivos de entrega do Milestone 1 estão na pasta Milestone1.
+Administradores do sistema devem poder:
+- Adicionar, remover e alterar produtos
+- Adicionar, remover e alterar usuários
+- Visualizar estatísticas sobre suas vendas
 
-#### Mockup de Telas
-
-Página de admin
-![Mockup Admin](Milestone1/tela_admin.png)
-
-Página de cadastro
-![Mockup cadastro](Milestone1/tela_cadastro.png)
-
-Página de produto
-![Mockup produto](Milestone1/tela_produto.png)
-
-#### Diagrama de Navegação 
-
-Disponível em formato .png:
-![Diagrama De Navegacao](Milestone1/DiagramaDeNavegacao.png)
-
-
-#### Mockups implementados em HTML e CSS
-
-Foram implementadas as telas: 
-- Tela Principal (main_screen.html/.css)
-- Tela de Login: (login_screen.html/.css)
-- Tela de Carrinho de Compras: (shopping_cart.html/.css)
-
-
-#### Mockups desenhados com Figma
-
-Com o Figma, foram desenhadas as telas:
-- Tela de Produto: (tela_produto.png)
-- Tela de Cadastro: (tela_cadastro.png)
-- Tela de Administração: (tela_admin.png)
 
 #### Comentários sobre o código
 
-Todo o código desenvolvido está na pasta Milestone1. Como é só um mockup, não foi feita uma estrutura de diretórios.
+Para o Milestone 2, o código do Front End está localizado na pasta `front-end`. Adicionalmente, o json server utilizado para testes e seus dados estão na pasta `json_server`. Segue abaixo a estrutura de diretórios comentada.
+
+#### Estrutura de diretórios 
+```
+.
+├── public # Recursos acessados por usuários
+│   └── audio # Faixas de áudio dos produtos
+└── src
+    ├── main.jsx # Ponto de entrada da aplicação
+    ├── assets
+    ├── components # Componentes utilzados para construir as páginas
+    │   ├── LoginForm
+    │   ├── Navbar
+    │   ├── ProductCard
+    │   ├── productDetails
+    │   ├── ProductPage
+    │   ├── ProfilePage
+    │   ├── ProtectedRoute
+    │   ├── RegisterForm
+    │   ├── ShoppingCart
+    │   ├── Sidebar
+    │   ├── StatisticsPage
+    │   │   └── charts # Implementação de gráficos
+    │   └── UserPage
+    ├── config # Arquivos de configuração
+    └── pages # Layouts de página
+        ├── Admin
+        ├── Cart
+        ├── Details
+        ├── Home
+        ├── Login
+        ├── Profile
+        ├── Register
+        ├── Search
+        └── Unauthorized
+
+```
 
 #### Plano de testes
 
-Não são necessários testes nesta etapa, por se tratar apenas de um mockup. Porém, para etapas seguintes, planeja-se realizar testes de API com Postman e testes unitários para cada módulo.
+Para esta etapa, a interface Web foi testada manualmente a partir do uso de um json server, com dados forjados. Não foram implementados testes automatizados nesta etapa, mas planeja-se utilizá-los para o servidor, que será implementado no Milestone 3.
+
+#### Resultados de testes
+
+A aplicação não falhou em nenhuma inspeção manual, foi possível executar todas as operações de CRUD em usuários e produtos, além de executar sem erros navegação, busca e compra.
+
+#### Procedimento para execução
+
+Executar a aplicação requer ter o Node.js instalado. 
+
+Para instalar as dependências:
+```bash
+    cd front-end
+    npm install
+```
+Para executar em modo de teste:
+```bash
+   npm run dev
+```
+Para testar também é necessário executar o json server:
+```bash
+    cd json_server
+    npm install
+    node auth.js
+```
+
+Para compilar para distribuição:
+```bash
+   npm build 
+```
+
+#### Problemas
+
+Não houve problemas significativos no decorrer do projeto.
+
+#### Comentários
+
+Não há comentários extras relevantes sobre o projeto. 
