@@ -90,6 +90,34 @@
     margin-top: 10px;
 }
 
+/* Quantity Input */
+.quantity-input {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.quantity-input label {
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+}
+
+.quantity-input input {
+    width: 70px;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    text-align: center;
+    transition: border-color 0.3s ease;
+}
+
+.quantity-input input:focus {
+    border-color: #C0710A;
+    outline: none;
+}
+
 /* Actions */
 .product-actions {
     margin-top: auto;
@@ -120,7 +148,7 @@
     box-shadow: none;
 }
 
-/* Tracklist Container */
+/* Tracklist */
 .tracklist-container {
     flex: 1 1 100%;
     background: #f9f9f9;
@@ -145,7 +173,6 @@
     gap: 12px;
 }
 
-/* Track Item */
 .track-item {
     display: flex;
     align-items: center;
@@ -196,8 +223,6 @@
 .play-btn.playing:hover {
     background-color: #218838;
 }
-
-
 
 /* Track Info */
 .track-info {
@@ -271,5 +296,11 @@
 
     .track-duration {
         font-size: 13px;
+    }
+
+    .quantity-input input {
+        width: 60px;
+        padding: 6px 8px;
+        font-size: 14px;
     }
 }

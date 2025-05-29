@@ -26,6 +26,37 @@ export default function ShoppingCart() {
         fetchProducts();
     }, [userData]);
 
+    function handleBuy(p){
+        p.map(item => {
+            const url = `${API_URL}/records/${item.id}`
+            const body = JSON.stringify({
+            sold: item.sold + item.quantity,
+            stock: item.stock - item.quantity
+            });
+        fetch(url, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: body,
+        }).catch((err) => console.log(err));
+
+        })
+
+        const uurl = `${API_URL}/users/${curUser}`
+        const ubody = JSON.stringify({
+            shopping_cart: []
+            });
+        fetch(uurl, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: ubody,
+        }).catch((err) => console.log(err));
+        setProducts([])
+    }
+
     const handleDelete = (productId) => {
         setProducts(products.filter(product => product.id !== productId));
         const url = `${API_URL}/users/${curUser}`;
@@ -59,7 +90,7 @@ export default function ShoppingCart() {
 
     console.log(userData)
 
-    const productPrice = filteredProducts.reduce((sum, product) => sum + product.price, 0);
+    const productPrice = filteredProducts.reduce((sum, product) => sum + product.price*product.quantity, 0);
     const frete = 10.00;
     const total = productPrice + frete;
 
@@ -122,7 +153,7 @@ export default function ShoppingCart() {
                         <span>Total:</span>
                         <span>R$ {total.toFixed(2)}</span>
                     </div>
-                    <button className="checkout-btn">Finalizar Compra</button>
+                    <button onClick={()=>handleBuy(filteredProducts)} className="checkout-btn">Finalizar Compra</button>
                 </div>
             </div>
         </div>
