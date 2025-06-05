@@ -67,7 +67,10 @@ createRoot(document.getElementById('root')).render(
           </ProtectedRoute>
         }
       />
-      <Route path="/shopping-cart" element={<Cart />} />
+      <Route path="/shopping-cart" element={
+        <ProtectedRoute allowedRoles={["USER", "ADMIN"]}>
+          <Cart />
+        </ProtectedRoute>} />
       <Route path="/details/:productID" element={<Details />} />
       <Route path="/unauthorized" element={<Unauthorized />} />
       <Route path="*" element={<p>❌ Página não encontrada</p>} />
