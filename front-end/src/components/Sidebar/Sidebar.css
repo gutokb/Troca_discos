@@ -1,8 +1,7 @@
 .sidebar {
     position: fixed;
     left: 0;
-    /*bottom: 0;*/
-    top: 0; /* After navbar height */
+    top: 0;
     z-index: 0;
     width: 250px;
     height: calc(100vh - 80px);
@@ -10,6 +9,7 @@
     padding: 100px 0;
     overflow-y: auto;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
 .sidebar-header {
@@ -71,8 +71,135 @@
     font-size: 20px;
     display: flex;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .sidebar-label {
     font-size: 16px;
+    white-space: nowrap;
+}
+
+/* Tablet styles */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .sidebar-title {
+        font-size: 16px;
+    }
+
+    .sidebar-link {
+        padding: 12px 15px;
+    }
+
+    .sidebar-icon {
+        margin-right: 12px;
+        font-size: 18px;
+    }
+
+    .sidebar-label {
+        font-size: 14px;
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        width: 280px;
+        height: 100vh;
+        padding-top: 80px;
+        z-index: 1001;
+    }
+
+    .sidebar.sidebar-open {
+        transform: translateX(0);
+    }
+
+    .sidebar-mobile {
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .sidebar-header {
+        padding: 20px 20px 30px 20px;
+    }
+
+    .sidebar-logo {
+        height: 35px;
+    }
+
+    .sidebar-title {
+        font-size: 16px;
+    }
+
+    .sidebar-link {
+        padding: 15px 20px;
+        margin: 0 10px;
+    }
+
+    .sidebar-link:hover {
+        transform: none;
+    }
+
+    .sidebar-icon {
+        margin-right: 15px;
+        font-size: 20px;
+    }
+
+    .sidebar-label {
+        font-size: 16px;
+    }
+}
+
+/* Small mobile styles */
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100vw;
+        max-width: 300px;
+    }
+
+    .sidebar-header {
+        padding: 15px 20px 25px 20px;
+    }
+
+    .sidebar-logo {
+        height: 30px;
+    }
+
+    .sidebar-title {
+        font-size: 14px;
+    }
+
+    .sidebar-link {
+        padding: 12px 15px;
+        margin: 0 5px;
+    }
+
+    .sidebar-icon {
+        margin-right: 12px;
+        font-size: 18px;
+    }
+
+    .sidebar-label {
+        font-size: 14px;
+    }
+}
+
+/* Smooth scrolling for sidebar */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
 }

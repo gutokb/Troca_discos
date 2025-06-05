@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import './Sidebar.css';
 import { IoStatsChart, IoStorefront, IoPeople } from 'react-icons/io5';
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen, onClose, isMobile }) {
     const location = useLocation();
 
     const menuItems = [
@@ -27,8 +27,14 @@ export default function Sidebar() {
         }
     ];
 
+    const handleLinkClick = () => {
+        if (isMobile && onClose) {
+            onClose();
+        }
+    };
+
     return (
-        <div className="sidebar">
+        <div className={`sidebar ${isOpen ? 'sidebar-open' : ''} ${isMobile ? 'sidebar-mobile' : ''}`}>
             <div className="sidebar-header">
                 <img className="sidebar-logo" src="/src/assets/vynil.png" alt="Logo" />
                 <h2 className="sidebar-title">Admin Panel</h2>
@@ -40,6 +46,7 @@ export default function Sidebar() {
                         key={index}
                         to={item.path}
                         className={`sidebar-link ${item.active ? 'active' : ''}`}
+                        onClick={handleLinkClick}
                     >
                         <span className="sidebar-icon">{item.icon}</span>
                         <span className="sidebar-label">{item.label}</span>

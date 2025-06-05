@@ -1,5 +1,8 @@
 .cart-page {
     padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
 .page-header {
@@ -29,11 +32,13 @@
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow-x: auto; /* Enable horizontal scrolling on small screens */
 }
 
 .cart-table {
     width: 100%;
     border-collapse: collapse;
+    min-width: 600px; /* Minimum width to maintain readability */
 }
 
 .cart-table th {
@@ -45,12 +50,24 @@
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    white-space: nowrap;
 }
 
 .cart-table td {
     padding: 15px 12px;
     border-bottom: 1px solid #f0f0f0;
     color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
+
+/* Allow text wrapping for product names and genres */
+.cart-table td:first-child,
+.cart-table td:nth-child(4) {
+    white-space: normal;
+    word-wrap: break-word;
 }
 
 .cart-table tr:hover {
@@ -70,6 +87,9 @@
     cursor: pointer;
     font-size: 16px;
     transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .action-btn.delete {
@@ -90,6 +110,8 @@
     flex-direction: column;
     gap: 15px;
     height: fit-content;
+    position: sticky;
+    top: 20px;
 }
 
 .summary-item {
@@ -134,4 +156,287 @@
     font-size: 18px;
     padding: 50px;
     color: #555;
+}
+
+/* Tablet styles */
+@media (max-width: 1024px) {
+    .cart-page {
+        padding: 15px;
+    }
+
+    .cart-content {
+        gap: 20px;
+    }
+
+    .page-title {
+        font-size: 24px;
+    }
+
+    .cart-table th,
+    .cart-table td {
+        padding: 12px 10px;
+        font-size: 13px;
+    }
+
+    .cart-table th {
+        font-size: 12px;
+    }
+
+    .cart-summary {
+        padding: 18px 20px;
+    }
+
+    .summary-item {
+        font-size: 15px;
+    }
+
+    .summary-item.total {
+        font-size: 17px;
+    }
+
+    .checkout-btn {
+        font-size: 15px;
+        padding: 10px 18px;
+    }
+}
+
+/* Mobile landscape */
+@media (max-width: 768px) {
+    .cart-page {
+        padding: 10px;
+    }
+
+    .cart-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .page-header {
+        margin-bottom: 20px;
+    }
+
+    .page-title {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .table-container {
+        border-radius: 8px;
+    }
+
+    .cart-table {
+        min-width: 500px;
+    }
+
+    .cart-table th,
+    .cart-table td {
+        padding: 10px 8px;
+        font-size: 12px;
+    }
+
+    .cart-table th {
+        font-size: 11px;
+    }
+
+    .cart-table td {
+        max-width: 120px;
+    }
+
+    .cart-summary {
+        position: static;
+        padding: 15px 18px;
+        order: -1; /* Show summary before table on mobile */
+    }
+
+    .summary-item {
+        font-size: 14px;
+    }
+
+    .summary-item.total {
+        font-size: 16px;
+    }
+
+    .checkout-btn {
+        font-size: 14px;
+        padding: 10px 16px;
+    }
+
+    .action-btn {
+        padding: 6px;
+        font-size: 14px;
+    }
+}
+
+/* Mobile portrait */
+@media (max-width: 480px) {
+    .cart-page {
+        padding: 8px;
+    }
+
+    .page-header {
+        margin-bottom: 15px;
+    }
+
+    .page-title {
+        font-size: 20px;
+        padding-bottom: 8px;
+    }
+
+    .cart-content {
+        gap: 15px;
+    }
+
+    .table-container {
+        border-radius: 6px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .cart-table {
+        min-width: 450px;
+    }
+
+    .cart-table th,
+    .cart-table td {
+        padding: 8px 6px;
+        font-size: 11px;
+    }
+
+    .cart-table th {
+        font-size: 10px;
+        letter-spacing: 0.3px;
+    }
+
+    .cart-table td {
+        max-width: 100px;
+    }
+
+    /* Show only essential columns on very small screens */
+    .cart-table th:nth-child(3),
+    .cart-table td:nth-child(3),
+    .cart-table th:nth-child(4),
+    .cart-table td:nth-child(4) {
+        display: none;
+    }
+
+    .cart-summary {
+        padding: 12px 15px;
+        gap: 12px;
+        border-radius: 8px;
+    }
+
+    .summary-item {
+        font-size: 13px;
+    }
+
+    .summary-item.total {
+        font-size: 15px;
+    }
+
+    .checkout-btn {
+        font-size: 13px;
+        padding: 10px 14px;
+        border-radius: 6px;
+    }
+
+    .action-btn {
+        padding: 5px;
+        font-size: 12px;
+    }
+
+    .cart-loading {
+        font-size: 16px;
+        padding: 30px 15px;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+    .cart-page {
+        padding: 5px;
+    }
+
+    .page-title {
+        font-size: 18px;
+        padding-bottom: 6px;
+    }
+
+    .cart-table {
+        min-width: 320px;
+    }
+
+    .cart-table th,
+    .cart-table td {
+        padding: 6px 4px;
+        font-size: 10px;
+    }
+
+    .cart-table th {
+        font-size: 9px;
+    }
+
+    .cart-table td {
+        max-width: 80px;
+    }
+
+    /* Hide artist column on very small screens */
+    .cart-table th:nth-child(2),
+    .cart-table td:nth-child(2) {
+        display: none;
+    }
+
+    .cart-summary {
+        padding: 10px 12px;
+        gap: 10px;
+    }
+
+    .summary-item {
+        font-size: 12px;
+    }
+
+    .summary-item.total {
+        font-size: 14px;
+    }
+
+    .checkout-btn {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+}
+
+/* Horizontal scroll indicator for mobile */
+@media (max-width: 768px) {
+    .table-container::after {
+        content: "← Deslize para ver mais →";
+        display: block;
+        text-align: center;
+        padding: 8px;
+        background-color: #f8f9fa;
+        font-size: 11px;
+        color: #666;
+        border-top: 1px solid #e0e0e0;
+    }
+}
+
+@media (max-width: 480px) {
+    .table-container::after {
+        font-size: 10px;
+        padding: 6px;
+    }
+}
+
+/* Touch-friendly interactions */
+@media (hover: none) and (pointer: coarse) {
+    .action-btn {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .checkout-btn {
+        min-height: 44px;
+        padding: 12px 20px;
+    }
+
+    .cart-table tr:hover {
+        background-color: transparent;
+    }
 }
