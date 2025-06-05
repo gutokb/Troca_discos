@@ -11,7 +11,6 @@ export default function ProductPage() {
     const [products, setProducts] = useState([]);
 
 
-
     // Data fetching
     // Gambiarra
     const [reload, setReload] = useState(false);
@@ -287,37 +286,6 @@ export default function ProductPage() {
                                     })}
                                 </ul>
                             </div>
-
-                            {/*<div className="form-group form-genre">*/}
-                            {/*    <label>Faixas:</label>*/}
-                            {/*    <input id="track-input"*/}
-                            {/*           type="text"*/}
-                            {/*           name="genre"*/}
-                            {/*           defaultValue=""*/}
-                            {/*           disabled={modalMode === 'view'}*/}
-                            {/*    />*/}
-                            {/*    <button type="button" disabled={modalMode === 'view'} onClick={(e) => {*/}
-                            {/*        let inp = document.getElementById("track-input")*/}
-                            {/*        if (inp.value !== "") setCurrentGenres([...currentGenres, inp.value])*/}
-                            {/*        inp.value = ""*/}
-                            {/*    }}><IoAdd/></button>*/}
-                            {/*</div>*/}
-
-                            {/*<div className="genre-list">*/}
-                            {/*    <ul>*/}
-                            {/*        {currentGenres.map((genre, index) => {*/}
-                            {/*            return (*/}
-                            {/*                <li key={index} className="genre-list-item">{genre}*/}
-                            {/*                    <button className="genre-list-button" type="button" onClick={() => {*/}
-                            {/*                        if (modalMode ===  "create") setCurrentGenres(currentGenres.filter(g => g !== genre))*/}
-                            {/*                    }}>*/}
-                            {/*                        {modalMode !== "view" && <IoTrash/>}*/}
-                            {/*                    </button>*/}
-                            {/*                </li>)*/}
-                            {/*        })}*/}
-                            {/*    </ul>*/}
-                            {/*</div>*/}
-
 
                             <div className="form-group">
                                 <label>URL da imagem de capa:</label>

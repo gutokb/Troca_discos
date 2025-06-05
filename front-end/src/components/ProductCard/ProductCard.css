@@ -2,12 +2,13 @@
     background-color: #C0710A;
     display: flex;
     flex-direction: column;
-    width: 300px; /* Fixed width instead of max-width */
-    height: 450px; /* Keep fixed height */
+    width: 100%;
+    max-width: 300px;
+    height: 450px;
     align-items: center;
-    padding: 20px; /* Reduced padding to give more space for content */
+    padding: 20px;
     border-radius: 10px;
-    box-sizing: border-box; /* Include padding in width/height calculations */
+    box-sizing: border-box;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -20,11 +21,11 @@
 }
 
 .product-card > img {
-    width: 100%; /* Use full available width */
-    height: 200px; /* Fixed height for consistency */
-    object-fit: cover; /* Ensure image covers the area properly */
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
     border-radius: 10px;
-    flex-shrink: 0; /* Prevent image from shrinking */
+    flex-shrink: 0;
     transition: transform 0.3s ease;
 }
 
@@ -33,14 +34,13 @@
 }
 
 .product-card > p {
-    width: 100%; /* Use full width */
+    width: 100%;
     text-align: center;
     font-size: 18px;
-    margin: 8px 0; /* Add consistent margins */
-    /* Text overflow handling */
+    margin: 8px 0;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap; /* Single line with ellipsis */
+    white-space: nowrap;
     transition: color 0.3s ease;
 }
 
@@ -49,21 +49,146 @@
 }
 
 .product-card > p:nth-child(2) {
-    font-size: 22px; /* Slightly smaller to fit better */
+    font-size: 22px;
     font-weight: bold;
-    margin-top: 15px; /* More space after image */
+    margin-top: 15px;
 }
 
 .product-card > h4 {
     font-weight: bold;
     font-size: 25px;
-    margin: 10px 0 0 0; /* Remove bottom margin, add top margin */
-    margin-top: auto; /* Push price to bottom of card */
-    flex-shrink: 0; /* Prevent price from shrinking */
+    margin: 10px 0 0 0;
+    margin-top: auto;
+    flex-shrink: 0;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .product-card:hover > h4 {
     color: #FFFFFF;
     transform: scale(1.05);
+}
+
+/* Tablet styles */
+@media (max-width: 1024px) {
+    .product-card {
+        max-width: 280px;
+        height: 420px;
+        padding: 18px;
+    }
+
+    .product-card > img {
+        height: 180px;
+    }
+
+    .product-card > p {
+        font-size: 17px;
+    }
+
+    .product-card > p:nth-child(2) {
+        font-size: 20px;
+    }
+
+    .product-card > h4 {
+        font-size: 23px;
+    }
+}
+
+/* Mobile landscape */
+@media (max-width: 768px) {
+    .product-card {
+        max-width: 250px;
+        height: 380px;
+        padding: 15px;
+    }
+
+    .product-card > img {
+        height: 160px;
+    }
+
+    .product-card > p {
+        font-size: 16px;
+        margin: 6px 0;
+    }
+
+    .product-card > p:nth-child(2) {
+        font-size: 18px;
+        margin-top: 12px;
+    }
+
+    .product-card > h4 {
+        font-size: 21px;
+    }
+}
+
+/* Mobile portrait */
+@media (max-width: 480px) {
+    .product-card {
+        max-width: 280px;
+        height: 350px;
+        padding: 15px;
+        margin: 0 auto;
+    }
+
+    .product-card > img {
+        height: 140px;
+    }
+
+    .product-card > p {
+        font-size: 15px;
+        margin: 5px 0;
+    }
+
+    .product-card > p:nth-child(2) {
+        font-size: 17px;
+        margin-top: 10px;
+    }
+
+    .product-card > h4 {
+        font-size: 19px;
+    }
+
+    /* Reduce hover effects on touch devices */
+    .product-card:hover {
+        transform: translateY(-4px) scale(1.01);
+    }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+    .product-card {
+        max-width: 260px;
+        height: 320px;
+        padding: 12px;
+    }
+
+    .product-card > img {
+        height: 120px;
+    }
+
+    .product-card > p {
+        font-size: 14px;
+        margin: 4px 0;
+    }
+
+    .product-card > p:nth-child(2) {
+        font-size: 16px;
+        margin-top: 8px;
+    }
+
+    .product-card > h4 {
+        font-size: 18px;
+    }
+
+    /* Minimal hover effects on very small screens */
+    .product-card:hover {
+        transform: translateY(-2px);
+    }
+}
+
+/* High DPI screens optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .product-card > img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
 }

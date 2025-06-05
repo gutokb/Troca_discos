@@ -1,26 +1,49 @@
 .product-display {
     margin-top: 40px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center; /* Changed from space-evenly for better control */
-    align-items: flex-start; /* Align cards to top instead of center */
-    gap: 30px; /* Reduced gap for better spacing on smaller screens */
-    padding: 0 20px; /* Reduced horizontal padding */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    justify-items: center;
+    gap: 30px;
+    padding: 0 20px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* Add responsive behavior */
-@media (max-width: 768px) {
+/* Tablet styles */
+@media (max-width: 1024px) {
     .product-display {
-        gap: 20px;
-        padding: 0 10px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        padding: 0 15px;
     }
 }
 
+/* Mobile landscape */
+@media (max-width: 768px) {
+    .product-display {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 0 10px;
+        margin-top: 30px;
+    }
+}
+
+/* Mobile portrait */
 @media (max-width: 480px) {
     .product-display {
+        grid-template-columns: 1fr;
         gap: 15px;
+        padding: 0 10px;
+        margin-top: 25px;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+    .product-display {
         padding: 0 5px;
+        gap: 12px;
     }
 }
 
@@ -30,22 +53,47 @@
     align-items: normal;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
 }
 
 .home-main-content > h1 {
     align-self: center;
     font-size: 50px;
+    margin: 40px 0 20px 0;
+    text-align: center;
+    padding: 0 20px;
 }
 
-/* Make h1 responsive */
-@media (max-width: 768px) {
+/* Tablet h1 styles */
+@media (max-width: 1024px) {
     .home-main-content > h1 {
-        font-size: 36px;
+        font-size: 42px;
+        margin: 35px 0 15px 0;
     }
 }
 
+/* Mobile landscape h1 */
+@media (max-width: 768px) {
+    .home-main-content > h1 {
+        font-size: 36px;
+        margin: 30px 0 10px 0;
+        padding: 0 15px;
+    }
+}
+
+/* Mobile portrait h1 */
 @media (max-width: 480px) {
     .home-main-content > h1 {
         font-size: 28px;
+        margin: 25px 0 10px 0;
+        padding: 0 10px;
+    }
+}
+
+/* Very small screens h1 */
+@media (max-width: 360px) {
+    .home-main-content > h1 {
+        font-size: 24px;
+        margin: 20px 0 8px 0;
     }
 }

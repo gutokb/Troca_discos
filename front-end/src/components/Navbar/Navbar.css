@@ -7,41 +7,55 @@
     z-index: 1000;
     display: flex;
     height: 80px;
-    padding: 0 20px 0 20px;
+    padding: 0 20px;
     background-color: #C0710A;
     align-items: center;
     justify-content: space-between;
+    box-sizing: border-box;
 }
 
 .nav-container-1 {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 40px;
     align-items: center;
+    flex: 1;
+    max-width: 50%;
 }
 
 .nav-container-1 > form {
     position: relative;
+    flex: 1;
+    max-width: 400px;
 }
+
 .header-input {
-    padding-left: 30px;
-    height: 30px;
+    padding-left: 40px;
+    padding-right: 15px;
+    height: 40px;
     border-radius: 6px;
     border-style: none;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
 }
 
 .search-icon {
     position: absolute;
-    left: 10px;
-    top: 10px;
-
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #666;
 }
+
 .nav-container-2 {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-    gap: 40px;
+    gap: 20px;
+    flex-shrink: 0;
 }
 
 .header-button {
@@ -54,6 +68,8 @@
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    white-space: nowrap;
 }
 
 .header-button:hover {
@@ -73,6 +89,7 @@
     cursor: pointer;
     transition: all 0.3s ease;
     border-radius: 5px;
+    flex-shrink: 0;
 }
 
 .nav-img:hover {
@@ -80,11 +97,163 @@
     filter: brightness(1.2) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
 }
 
+.img-logo {
+    flex-shrink: 0;
+}
+
 .user-name {
     color: white;
     font-weight: bold;
-    margin-right: 10px;
     font-size: 1rem;
+    white-space: nowrap;
 }
 
+/* Tablet styles */
+@media (max-width: 1024px) {
+    .app-header {
+        padding: 0 15px;
+    }
 
+    .nav-container-1 {
+        gap: 20px;
+    }
+
+    .nav-container-2 {
+        gap: 15px;
+    }
+
+    .header-button {
+        width: 80px;
+        font-size: 13px;
+    }
+
+    .nav-img {
+        height: 45px;
+    }
+
+    .user-name {
+        font-size: 0.9rem;
+    }
+}
+
+/* Mobile landscape */
+@media (max-width: 768px) {
+    .app-header {
+        height: 70px;
+        padding: 0 10px;
+    }
+
+    .nav-container-1 {
+        gap: 15px;
+        max-width: 60%;
+    }
+
+    .nav-container-2 {
+        gap: 10px;
+    }
+
+    .header-input {
+        height: 35px;
+        padding-left: 35px;
+        font-size: 14px;
+    }
+
+    .search-icon {
+        left: 10px;
+        font-size: 16px;
+    }
+
+    .header-button {
+        width: 70px;
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .nav-img {
+        height: 40px;
+    }
+
+    .user-name {
+        font-size: 0.8rem;
+    }
+}
+
+/* Mobile portrait */
+@media (max-width: 480px) {
+    .app-header {
+        height: 60px;
+        padding: 0 8px;
+        gap: 10px;
+    }
+
+    .nav-container-1 {
+        gap: 8px;
+        max-width: 65%;
+    }
+
+    .nav-container-2 {
+        gap: 8px;
+    }
+
+    .header-input {
+        height: 32px;
+        padding-left: 30px;
+        font-size: 13px;
+    }
+
+    .search-icon {
+        left: 8px;
+        font-size: 14px;
+    }
+
+    .header-button {
+        width: 60px;
+        height: 28px;
+        font-size: 11px;
+        padding: 0;
+    }
+
+    .nav-img {
+        height: 35px;
+    }
+
+    .user-name {
+        display: none; /* Hide greeting text on very small screens */
+    }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+    .app-header {
+        height: 55px;
+        padding: 0 5px;
+    }
+
+    .nav-container-1 {
+        gap: 5px;
+    }
+
+    .nav-container-2 {
+        gap: 5px;
+    }
+
+    .header-input {
+        height: 28px;
+        font-size: 12px;
+    }
+
+    .header-button {
+        width: 50px;
+        height: 25px;
+        font-size: 10px;
+    }
+
+    .nav-img {
+        height: 30px;
+    }
+
+    /* Stack some elements vertically on very small screens if needed */
+    .nav-container-2 .header-button:not(:first-child) {
+        display: none;
+    }
+}

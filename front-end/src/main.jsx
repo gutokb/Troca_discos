@@ -14,7 +14,7 @@ import Unauthorized from './pages/Unauthorized/Unauthorized.jsx';
 import Search from "./pages/Search/Search.jsx";
 
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute.jsx';
-import SearchProduct from './pages/searchProduct/searchProduct.jsx';
+import SearchProduct from './pages/SearchProduct/SearchProduct.jsx';
 
 import React from 'react';
 import {

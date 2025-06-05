@@ -321,6 +321,33 @@
     color: white;
 }
 
+.form-track {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: 1fr 1fr;
+    gap: 3px;
+}
+
+.form-track label {
+    grid-column: 1/-1;
+}
+.form-track input {
+    grid-column: 1/-2;
+}
+.form-track button {
+    background-color: #C0710A;
+    border-style: none;
+    border-radius: 6px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.form-track button:hover {
+    background-color: #A05909;
+    transform: translateY(-1px);
+}
 
 
 .form-group input,
