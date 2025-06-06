@@ -32,34 +32,42 @@ export default function ShoppingCart() {
     }, [userData]);
 
     function handleBuy(p){
-        p.map(item => {
-            const url = `${API_URL}/records/${item.id}`
-            const body = JSON.stringify({
-            sold: item.sold + item.quantity,
-            stock: item.stock - item.quantity
-            });
-        fetch(url, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: body,
-        }).catch((err) => console.log(err));
+        let card = userData?.cardNumber
+        let address = userData?.address
+        if(card != null && address != null){
+            p.map(item => {
+                const url = `${API_URL}/records/${item.id}`
+                const body = JSON.stringify({
+                sold: item.sold + item.quantity,
+                stock: item.stock - item.quantity
+                });
+            fetch(url, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: body,
+            }).catch((err) => console.log(err));
 
-        })
+            })
 
-        const uurl = `${API_URL}/users/${curUser}`
-        const ubody = JSON.stringify({
-            shopping_cart: []
-            });
-        fetch(uurl, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: ubody,
-        }).catch((err) => console.log(err));
-        setProducts([])
+            const uurl = `${API_URL}/users/${curUser}`
+            const ubody = JSON.stringify({
+                shopping_cart: []
+                });
+            fetch(uurl, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: ubody,
+            }).catch((err) => console.log(err));
+            setProducts([])
+            alert("compra realizada com sucesso")
+        }
+        else{
+            alert("cartão ou endereço ausentes")
+        }
     }
 
     const handleDelete = (productId) => {
