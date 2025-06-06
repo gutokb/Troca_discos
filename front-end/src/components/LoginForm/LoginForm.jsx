@@ -43,7 +43,7 @@ export default function LoginForm() {
     }
 
     function navigateRegister() {
-        navigate("/");
+        navigate("/register");
     }
 
     return (

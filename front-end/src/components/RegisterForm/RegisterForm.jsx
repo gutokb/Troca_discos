@@ -1,6 +1,7 @@
 // RegisterForm.jsx
 import "./RegisterForm.css"
 import {useNavigate} from "react-router-dom";
+import { API_URL } from "../../config/api.js";
 
 
 // TODO : error detecting and displaying

@@ -16,11 +16,8 @@ server.use(jsonServer.bodyParser);
 server.post('/login', (req, res) => {
   const { email, password } = req.body;
 
-  const dbFilePath = path.join(__dirname, 'db.json');
-  const db = JSON.parse(fs.readFileSync(dbFilePath, 'utf-8'));
-  const user = db.users.find(
-    u => u.email === email && u.password === password
-  );
+  const db = router.db;
+  const user = db.get('users').find({ email, password }).value();
 
   if (!user) {
     return res.status(401).json({ message: 'Credenciais inválidas' });
@@ -44,29 +41,27 @@ server.post('/register', (req, res) => {
     return res.status(400).json({ message: "Nome, email e senha são obrigatórios." });
   }
 
-  const dbFilePath = path.join(__dirname, 'db.json');
-  const db = JSON.parse(fs.readFileSync(dbFilePath, 'utf-8'));
+  const db = router.db;
+  const existingUser = db.get('users').find({ email }).value();
 
-  const existingUser = db.users.find(u => u.email === email);
   if (existingUser) {
     return res.status(409).json({ message: "Email já está em uso." });
   }
 
   const newUser = {
-  id: String(Date.now()), //geração de id unico
-  name,
-  cpf,
-  email,
-  telephone,
-  role: "USER",
-  password,
-  createdAt: new Date().toISOString(),
-  lastLogin: new Date().toISOString(),
-  shopping_cart: []
-};
+    id: String(Date.now()),
+    name,
+    cpf,
+    email,
+    telephone,
+    role,
+    password,
+    createdAt: new Date().toISOString(),
+    lastLogin: new Date().toISOString(),
+    shopping_cart: []
+  };
 
-  db.users.push(newUser);
-  fs.writeFileSync(dbFilePath, JSON.stringify(db, null, 2));
+  db.get('users').push(newUser).write();
 
   res.status(201).json({ message: "Usuário registrado com sucesso!", user: newUser });
 });

@@ -11,6 +11,7 @@ export default function ProfilePage() {
 
     useEffect(() => {
         async function fetchUser() {
+            console.log(curUser)
             const response = await fetch(`${API_URL}/users/${curUser}`);
             const data = await response.json();
             setUserdata(data);
@@ -32,6 +33,18 @@ export default function ProfilePage() {
             },
             body: JSON.stringify(newData),
         }).catch(console.error);
+    }
+
+    function handleDelete(){
+        fetch(`${API_URL}/users/${curUser}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).catch(console.error);
+        localStorage.removeItem("token")
+        localStorage.removeItem("user")
+        navigate("/")
     }
 
     return (
@@ -70,12 +83,15 @@ export default function ProfilePage() {
                         Gerenciar Informações
                     </button>
                     <button className='action-btn exit' onClick={() =>{
-                        localStorage.removeItem("userID")
-                        localStorage.removeItem("userData")
+                        localStorage.removeItem("token")
+                        localStorage.removeItem("user")
                         navigate("/")
 
                     }}>
                         Sair
+                    </button>
+                    <button className='action-btn delete' onClick={handleDelete}>
+                        Excluir conta
                     </button>
                 </div>
             ) : (

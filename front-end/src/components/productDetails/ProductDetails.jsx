@@ -59,9 +59,15 @@ export default function ProductDetails({ productID }) {
     const handlecart = () => {
         setCartQuantity(parseInt(quantityRef.current?.value || "1"))
         async function fetchUser() {
-            const response = await fetch(`${API_URL}/users/${JSON.parse(localStorage.getItem("user")).id}`);
+            let userId = JSON.parse(localStorage.getItem("user"))?.id
+            if(userId!=null){
+            const response = await fetch(`${API_URL}/users/${userId}`);
             const data = await response.json();
             setUserData(data);
+            }
+            else{
+                navigate('/login')
+            }
         }
         fetchUser();
     };
