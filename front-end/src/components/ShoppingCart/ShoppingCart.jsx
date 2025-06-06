@@ -7,6 +7,7 @@ export default function ShoppingCart() {
     const [curUser, setCurUser] = useState(JSON.parse(localStorage.getItem("user")).id);
     const [userData, setUserdata] = useState(null);
     const [products, setProducts] = useState([]);
+    const [cart, setCart] = useState([]);
 
     useEffect(() => {
         async function fetchUser() {
@@ -22,6 +23,10 @@ export default function ShoppingCart() {
             const response = await fetch(`${API_URL}/records`);
             const data = await response.json();
             setProducts(data);
+            if(userData!=null){
+                setCart(userData.shopping_cart)
+            }
+            
         }
         fetchProducts();
     }, [userData]);
@@ -59,9 +64,10 @@ export default function ShoppingCart() {
 
     const handleDelete = (productId) => {
         setProducts(products.filter(product => product.id !== productId));
+        setCart(cart.filter(cartItem => Number(cartItem.productId) !== Number(productId)))
         const url = `${API_URL}/users/${curUser}`;
         const body = JSON.stringify({
-            shopping_cart: userData.shopping_cart.filter(item => Number(item.productId) !== Number(productId))
+            shopping_cart: cart.filter(cartItem => Number(cartItem.productId) !== Number(productId))
         });
         fetch(url, {
             method: 'PATCH',
@@ -87,8 +93,6 @@ export default function ShoppingCart() {
         quantity: cartItem.quantity
     };
     }).filter(Boolean);
-
-    console.log(userData)
 
     const productPrice = filteredProducts.reduce((sum, product) => sum + product.price*product.quantity, 0);
     const frete = 10.00;
