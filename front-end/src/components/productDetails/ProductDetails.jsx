@@ -10,7 +10,7 @@ export default function ProductDetails({ productID }) {
     const [cartQuantity, setCartQuantity] = useState(1);
     const audioRefs = useRef({});
     const navigate = useNavigate();
-    const quantityRef = useRef(null); // Added ref for quantity input
+    const quantityRef = useRef(null); 
 
     useEffect(() => {
         async function fetchProduct() {

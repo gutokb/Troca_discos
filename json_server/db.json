@@ -36,10 +36,10 @@
         "funk"
       ],
       "price": 34.99,
-      "stock": 8,
+      "stock": 7,
       "cover": "https://upload.wikimedia.org/wikipedia/en/3/3b/Dark_Side_of_the_Moon.png",
       "createdAt": "2024-01-16T14:22:00.000Z",
-      "sold": 1,
+      "sold": 2,
       "tracks": [
         {
           "id": 3,
@@ -131,10 +131,10 @@
         "Alternative Rock"
       ],
       "price": 26.99,
-      "stock": 13,
+      "stock": 12,
       "cover": "https://upload.wikimedia.org/wikipedia/en/b/b7/NirvanaNevermindalbumcover.jpg",
       "createdAt": "2024-01-21T08:20:00.000Z",
-      "sold": 2
+      "sold": 3
     },
     {
       "id": "8",
@@ -333,16 +333,11 @@
       "password": "admin123",
       "createdAt": "2024-01-01T08:00:00.000Z",
       "lastLogin": "2024-05-24T09:30:00.000Z",
-      "shopping_cart": [
-        {
-          "productId": 2,
-          "quantity": 1
-        },
-        {
-          "productId": 7,
-          "quantity": 1
-        }
-      ]
+      "shopping_cart": [],
+      "address": "rua 4321, bairro dos guiasas",
+      "cardNumber": "12345678",
+      "cardCvv": "798",
+      "cardDate": "12/25"
     },
     {
       "id": "1748451885762",
