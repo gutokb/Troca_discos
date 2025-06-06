@@ -1,0 +1,442 @@
+.app-footer {
+    background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+    color: #ffffff;
+    margin-top: auto;
+    width: 100%;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 20px 40px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 40px;
+}
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.company-info {
+    max-width: 350px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.footer-logo-img {
+    height: 50px;
+    width: 50px;
+    border-radius: 8px;
+}
+
+.footer-logo h3 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #C0710A;
+}
+
+.company-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #cccccc;
+    margin-bottom: 25px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #3c3c3c;
+    border-radius: 50%;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background-color: #C0710A;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(192, 113, 10, 0.4);
+}
+
+.footer-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #C0710A;
+    border-bottom: 2px solid #C0710A;
+    padding-bottom: 8px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: #cccccc;
+    text-decoration: none;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: #C0710A;
+    transform: translateX(5px);
+}
+
+.contact-info {
+    max-width: 280px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.contact-icon {
+    color: #C0710A;
+    font-size: 16px;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.contact-item span {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #cccccc;
+}
+
+.business-hours {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #3c3c3c;
+}
+
+.business-hours h5 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    color: #C0710A;
+    font-weight: 600;
+}
+
+.business-hours p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #cccccc;
+}
+
+.footer-bottom {
+    background-color: #1a1a1a;
+    border-top: 1px solid #3c3c3c;
+    padding: 20px 0;
+}
+
+.footer-bottom-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 14px;
+    color: #999999;
+}
+
+.footer-bottom strong {
+    color: #C0710A;
+}
+
+.payment-methods {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #999999;
+}
+
+.payment-icons {
+    display: flex;
+    gap: 8px;
+}
+
+.payment-icon {
+    font-size: 20px;
+    padding: 4px;
+    background-color: #2c2c2c;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.payment-icon:hover {
+    background-color: #C0710A;
+    transform: scale(1.1);
+}
+
+/* Tablet styles */
+@media (max-width: 1024px) {
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        padding: 50px 15px 30px;
+    }
+
+    .company-info {
+        max-width: none;
+    }
+
+    .contact-info {
+        max-width: none;
+    }
+
+    .footer-logo h3 {
+        font-size: 22px;
+    }
+
+    .company-description {
+        font-size: 15px;
+    }
+
+    .footer-title {
+        font-size: 18px;
+    }
+}
+
+/* Mobile landscape */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 40px 10px 25px;
+    }
+
+    .footer-logo {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .footer-logo h3 {
+        font-size: 20px;
+    }
+
+    .company-description {
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .footer-section {
+        text-align: center;
+    }
+
+    .footer-title {
+        font-size: 17px;
+        text-align: center;
+    }
+
+    .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px 25px;
+    }
+
+    .footer-links li {
+        margin-bottom: 0;
+    }
+
+    .contact-item {
+        justify-content: center;
+        text-align: left;
+    }
+
+    .business-hours {
+        text-align: center;
+    }
+
+    .footer-bottom-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .payment-methods {
+        justify-content: center;
+    }
+}
+
+/* Mobile portrait */
+@media (max-width: 480px) {
+    .footer-content {
+        padding: 30px 8px 20px;
+        gap: 20px;
+    }
+
+    .footer-logo {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-logo-img {
+        height: 40px;
+        width: 40px;
+    }
+
+    .footer-logo h3 {
+        font-size: 18px;
+    }
+
+    .company-description {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .social-links {
+        gap: 10px;
+    }
+
+    .social-link {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+
+    .footer-title {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    .footer-links {
+        gap: 10px 20px;
+    }
+
+    .footer-links a {
+        font-size: 14px;
+    }
+
+    .contact-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 8px;
+    }
+
+    .contact-item span {
+        font-size: 14px;
+    }
+
+    .business-hours h5 {
+        font-size: 15px;
+    }
+
+    .business-hours p {
+        font-size: 13px;
+    }
+
+    .footer-bottom {
+        padding: 15px 0;
+    }
+
+    .footer-bottom p {
+        font-size: 13px;
+    }
+
+    .payment-methods {
+        font-size: 13px;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .payment-icon {
+        font-size: 18px;
+    }
+}
+
+
+@media (max-width: 360px) {
+    .footer-content {
+        padding: 25px 5px 15px;
+    }
+
+    .footer-logo h3 {
+        font-size: 16px;
+    }
+
+    .company-description {
+        font-size: 12px;
+    }
+
+    .social-link {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+
+    .footer-title {
+        font-size: 15px;
+    }
+
+    .footer-links a {
+        font-size: 13px;
+    }
+
+    .contact-item span {
+        font-size: 13px;
+    }
+
+    .footer-bottom p {
+        font-size: 12px;
+    }
+
+    .payment-methods {
+        font-size: 12px;
+    }
+}
+
+/* Ensure footer sticks to bottom */
+html, body {
+    height: 100%;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.app-footer {
+    margin-top: auto;
+}

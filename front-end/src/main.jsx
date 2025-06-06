@@ -30,6 +30,7 @@ import {
     Legend,
 } from 'chart.js';
 import { Line, Bar, Pie, Doughnut } from 'react-chartjs-2';
+import Footer from "./components/Footer/Footer.jsx";
 
 // Register Chart.js components
 ChartJS.register(
@@ -75,5 +76,6 @@ createRoot(document.getElementById('root')).render(
       <Route path="/unauthorized" element={<Unauthorized />} />
       <Route path="*" element={<p>❌ Página não encontrada</p>} />
     </Routes>
+      <Footer/>
   </BrowserRouter>
 );
