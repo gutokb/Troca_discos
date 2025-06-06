@@ -355,6 +355,18 @@
       "createdAt": "2025-05-28T17:04:45.762Z",
       "lastLogin": "2025-05-28T17:04:45.762Z",
       "shopping_cart": []
+    },
+    {
+      "name": "admin",
+      "cpf": "066.689.751-43",
+      "email": "email@email.com",
+      "telephone": "(31) 97777-6666",
+      "role": "ADMIN",
+      "password": "admin123",
+      "id": "96",
+      "shopping_cart": [],
+      "createdAt": "2025-06-06T11:37:44.637Z",
+      "lastLogin": "2025-06-06T11:37:44.637Z"
     }
   ],
   "sales": [

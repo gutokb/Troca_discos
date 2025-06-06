@@ -15,6 +15,7 @@
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
     transition: margin-left 0.3s ease;
     min-height: calc(100vh - 80px);
+    max-width: 100%;
 }
 
 .mobile-menu-btn {

@@ -82,7 +82,7 @@
 /* Tablet styles */
 @media (max-width: 1024px) {
     .sidebar {
-        width: 200px;
+        max-width: 20%;
     }
 
     .sidebar-title {
