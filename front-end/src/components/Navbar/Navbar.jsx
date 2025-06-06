@@ -39,7 +39,7 @@ export default function Navbar() {
         // Se houver token e usuário, considera que está logado
         if (token && user) {
             setLoggedIn(true);
-            setIsAdmin(user.role === "admin"); // Define se é admin
+            setIsAdmin(user.role === "ADMIN"); // Define se é admin
             setUserName(user.name);
         } else {
             setLoggedIn(false);
@@ -116,12 +116,8 @@ export default function Navbar() {
       </div>
 
       <div className="nav-container-2">
-        {/* Botão Admin aparece só se for admin */}
-        {isAdmin && (
-          <button onClick={() => navigate("/admin")} className="header-button">
-            Admin
-          </button>
-        )}
+
+        
 
         {/* Botões "Cadastro" e "Login" só aparecem se NÃO estiver logado */}
         {!loggedIn && (
@@ -143,6 +139,13 @@ export default function Navbar() {
                 Logout
             </button>
             </>
+        )}
+
+        {/* Botão Admin aparece só se for admin */}
+        {isAdmin && (
+          <button onClick={() => navigate("/admin")} className="header-button">
+            Admin
+          </button>
         )}
 
         {/* Ícones de perfil e carrinho, clicáveis */}
