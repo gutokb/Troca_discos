@@ -31,6 +31,7 @@ const userSchema = new Schema({
     },
     email: {
         type:String,
+        unique:true,
         required:true,
         match:/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, //todo email valido
         minLength:1,
@@ -54,8 +55,14 @@ const userSchema = new Schema({
     },
     shoppingCart : [{
         quantity : Number,
-        recordId : {type: Schema.Types.ObjectId, ref: 'Records'}
+        recordId : {type: Schema.Types.ObjectId, ref: 'Record'},
     }],
+    address : String,
+    card_info : {
+        number: {type:String, match:/[0-9]{16}/}, // 16 digitos corridos
+        cvv : {type:String, match:/[0-9]{3}/}, // NNN
+        expiration : {type:String, match:/[0-9]{2}\/[0-9]{2}/} // MM/AA
+    },
     createdAt: {type:Date, required:true, default: Date.now},
     lastLoginAt: {type:Date, required:true, default: Date.now}
 })
@@ -63,13 +70,19 @@ const userSchema = new Schema({
 
 
 const salesSchema = new Schema({
-    recordId: {type: Schema.Types.ObjectId, ref: 'Records'},
-    buyerId: {type: Schema.Types.ObjectId, ref: 'Users'},
+    recordId: {type: Schema.Types.ObjectId, ref: 'Record'},
+    buyerId: {type: Schema.Types.ObjectId, ref: 'User'},
     price: {type:Number, required:true, min:0},
     timestamp: {type:Date, required:true, default: Date.now}
 })
 
+const Record = mongoose.model("Record", salesSchema);
 
+const User = mongoose.model("User", userSchema);
+
+const Sale = mongoose.model("Sale", salesSchema);
+
+export { Record, User, Sale };
 
 
 
