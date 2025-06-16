@@ -1,5 +1,6 @@
-import {createUser, getAllUsers, getUsersByName, getUserById, getUserByEmail} from 'app/service/userService.js';
-import {test, expect, describe, beforeAll, afterAll} from "@jest/globals";
+import {createUser, getAllUsers, getUsersByName, getUserById, getUserByEmail, updateUser, deleteUser} from 'app/service/userService.js';
+import {test, expect, describe, beforeAll, afterAll, it} from "@jest/globals";
+import {User, Sale, Record} from "app/model/models.js"
 import mongoose from "mongoose";
 import "dotenv/config"
 import {MongoMemoryServer} from "mongodb-memory-server";
@@ -107,3 +108,114 @@ test("get user by email", async () => {
     const user = await getUserByEmail("teste1@example.com");
     expect(user.email).toBe("teste1@example.com");
 })
+
+describe('deleteUser', () => {
+    it('should successfully delete an existing user', async () => {
+        // Create a test user
+        const testUser = new User({
+            name: 'Test User',
+            cpf: '123.456.789-10',
+            email: 'test@example.com',
+            telephone: '11987654321',
+            password: 'password123'
+        });
+        await testUser.save();
+
+        // Delete the user
+        const result = await deleteUser(testUser._id);
+
+        // Verify the user was deleted
+        expect(result).toBeTruthy();
+        expect(result._id.toString()).toBe(testUser._id.toString());
+        expect(result.name).toBe('Test User');
+
+        // Verify user no longer exists in database
+        const deletedUser = await User.findById(testUser._id);
+        expect(deletedUser).toBeNull();
+    });
+
+    it('should return null when trying to delete non-existent user', async () => {
+        const nonExistentId = new mongoose.Types.ObjectId();
+
+        const result = await deleteUser(nonExistentId);
+
+        expect(result).toBeNull();
+    });
+
+    it('should throw error when provided invalid userId', async () => {
+        const invalidId = 'invalid-id';
+
+        await expect(deleteUser(invalidId)).rejects.toThrow();
+    });
+});
+
+describe('updateUser', () => {
+    it('should successfully update user data', async () => {
+        // Create a test user
+        const testUser = new User({
+            name: 'Original Name',
+            cpf: '123.456.789-10',
+            email: 'original@example.com',
+            telephone: '11987654321',
+            password: 'password123'
+        });
+        await testUser.save();
+
+        const updateData = {
+            name: 'Updated Name',
+            address: 'New Address',
+            role: 'ADMIN'
+        };
+
+        // Update the user
+        const result = await updateUser(testUser._id, updateData);
+
+        // Verify update result
+        expect(result.acknowledged).toBe(true);
+        expect(result.modifiedCount).toBe(1);
+        expect(result.matchedCount).toBe(1);
+
+        // Verify the user was actually updated
+        const updatedUser = await User.findById(testUser._id);
+        expect(updatedUser.name).toBe('Updated Name');
+        expect(updatedUser.address).toBe('New Address');
+        expect(updatedUser.role).toBe('ADMIN');
+        expect(updatedUser.email).toBe('original@example.com'); // Unchanged
+    });
+
+    it('should return matchedCount 0 when trying to update non-existent user', async () => {
+        const nonExistentId = new mongoose.Types.ObjectId();
+        const updateData = { name: 'New Name' };
+
+        const result = await updateUser(nonExistentId, updateData);
+
+        expect(result.acknowledged).toBe(true);
+        expect(result.matchedCount).toBe(0);
+        expect(result.modifiedCount).toBe(0);
+    });
+
+    it('should throw error when update data violates schema validation', async () => {
+        const testUser = new User({
+            name: 'Test User',
+            cpf: '123.456.789-10',
+            email: 'test@example.com',
+            telephone: '11987654321',
+            password: 'password123'
+        });
+        await testUser.save();
+
+        const invalidUpdateData = {
+            email: 'invalid-email', // Invalid email format
+            telephone: '123' // Invalid telephone format
+        };
+
+        await expect(updateUser(testUser._id, invalidUpdateData)).rejects.toThrow();
+    });
+
+    it('should throw error when provided invalid userId', async () => {
+        const invalidId = 'invalid-id';
+        const updateData = { name: 'New Name' };
+
+        await expect(updateUser(invalidId, updateData)).rejects.toThrow();
+    });
+});

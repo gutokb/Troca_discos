@@ -3,7 +3,7 @@ import {User} from "app/model/models.js"
 
 // Criacao de usuario no banco de dados, recebe os dados do formulario como json e converte em
 // modelo mongoose, requer que os campos estejam devidademente nomeados
-async function createUser(userData) {
+export async function createUser(userData) {
     try{
         const newUser = new User(userData);
         await newUser.save();
@@ -15,9 +15,9 @@ async function createUser(userData) {
     }
 }
 
-async function getAllUsers() {
+export async function getAllUsers() {
     try {
-        return await User.find();
+        return await User.find().populate("shoppingCart.recordId");
     }
     catch (err) {
         console.log(err.message);
@@ -26,7 +26,7 @@ async function getAllUsers() {
 }
 
 
-async function getUsersByName(name) {
+export async function getUsersByName(name) {
     const accentMap = {
         'a': '[aáàâãäåāăą]',
         'e': '[eéèêëēĕėęě]',
@@ -43,7 +43,7 @@ async function getUsersByName(name) {
     try {
         return await User.find({
             name : {$regex: searchTerm, $options: 'i'},
-        });
+        }).populate("shoppingCart.recordId");
     }
     catch (err) {
         console.log(err.message);
@@ -51,9 +51,9 @@ async function getUsersByName(name) {
     }
 }
 
-async function getUserById(id) {
+export async function getUserById(id) {
     try {
-        return await User.findById(id);
+        return await User.findById(id).populate("shoppingCart.recordId");
     }
     catch (err) {
         console.log(err.message);
@@ -61,11 +61,11 @@ async function getUserById(id) {
     }
 }
 
-async function getUserByEmail(email) {
+export async function getUserByEmail(email) {
     try {
         return await User.findOne({
             email : email
-        })
+        }).populate("shoppingCart.recordId")
     }
     catch (err) {
         console.log(err.message);
@@ -74,9 +74,23 @@ async function getUserByEmail(email) {
 }
 
 
-async function deleteUser(useriD) {
+export async function deleteUser(userId) {
     try {
-        return await User.findByIdAndDelete(useriD);
+        return await User.findByIdAndDelete(userId);
+    }
+    catch (err) {
+        console.log(err.message);
+        throw err;
+    }
+}
+
+export async function updateUser(userId, userData) {
+    try {
+        return await User.updateOne(
+            {_id: userId},
+            {...userData},
+            {runValidators: true},
+        );
     }
     catch (err) {
         console.log(err.message);
@@ -86,4 +100,3 @@ async function deleteUser(useriD) {
 
 
 
-export {createUser, getAllUsers, getUsersByName, getUserById, getUserByEmail};
