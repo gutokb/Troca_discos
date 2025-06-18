@@ -61,10 +61,10 @@
         "R&B"
       ],
       "price": 24.99,
-      "stock": 12,
+      "stock": 0,
       "cover": "https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png",
       "createdAt": "2024-01-17T09:15:00.000Z",
-      "sold": 4,
+      "sold": 16,
       "tracks": [
         {
           "id": 5,
@@ -77,21 +77,6 @@
       ]
     },
     {
-      "id": "4",
-      "title": "Back in Black",
-      "artist": "AC/DC",
-      "year": 1980,
-      "genre": [
-        "Hard Rock",
-        "Heavy Metal"
-      ],
-      "price": 27.99,
-      "stock": 6,
-      "cover": "https://upload.wikimedia.org/wikipedia/commons/9/92/ACDC_Back_in_Black.png",
-      "createdAt": "2024-01-18T16:45:00.000Z",
-      "sold": 1
-    },
-    {
       "id": "5",
       "title": "Rumours",
       "artist": "Fleetwood Mac",
@@ -101,10 +86,10 @@
         "Pop Rock"
       ],
       "price": 31.99,
-      "stock": 12,
+      "stock": 9,
       "cover": "https://upload.wikimedia.org/wikipedia/en/f/fb/FMacRumours.PNG",
       "createdAt": "2024-01-19T11:00:00.000Z",
-      "sold": 9
+      "sold": 12
     },
     {
       "id": "6",
@@ -249,7 +234,7 @@
       "cpf": "11122233344",
       "email": "carlos.oliveira@email.com",
       "telephone": "(31) 97777-6666",
-      "role": "USER",
+      "role": "ADMIN",
       "password": "carlos789",
       "createdAt": "2024-01-10T10:15:00.000Z",
       "lastLogin": "2024-05-22T20:10:00.000Z",
@@ -362,6 +347,34 @@
       "shopping_cart": [],
       "createdAt": "2025-06-06T11:37:44.637Z",
       "lastLogin": "2025-06-06T11:37:44.637Z"
+    },
+    {
+      "id": "1749648426079",
+      "name": "felipe",
+      "cpf": "11111111111",
+      "email": "felipe@email.com",
+      "telephone": "234123413241",
+      "role": "USER",
+      "password": "senha123",
+      "createdAt": "2025-06-11T13:27:06.079Z",
+      "lastLogin": "2025-06-11T13:27:06.079Z",
+      "shopping_cart": []
+    },
+    {
+      "id": "1749649811817",
+      "name": "felipe",
+      "cpf": "11111111",
+      "email": "felipe1@email.com",
+      "telephone": "412341234",
+      "role": "USER",
+      "password": "senha123",
+      "createdAt": "2025-06-11T13:50:11.817Z",
+      "lastLogin": "2025-06-11T13:50:11.817Z",
+      "shopping_cart": [],
+      "address": "rua 123",
+      "cardNumber": "312341234",
+      "cardCvv": "111",
+      "cardDate": "312312"
     }
   ],
   "sales": [

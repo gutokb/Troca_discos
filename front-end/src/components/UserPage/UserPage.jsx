@@ -2,14 +2,16 @@ import React, {useEffect, useState} from 'react';
 import './UserPage.css';
 import { IoSearchOutline, IoAdd, IoCreate, IoTrash, IoEye, IoMail, IoCall } from 'react-icons/io5';
 import {API_URL} from "../../config/api.js";
+import * as userService from "../../services/userService.js"
 
 export default function UserPage() {
     const [searchTerm, setSearchTerm] = useState('');
     const [showModal, setShowModal] = useState(false);
     const [modalMode, setModalMode] = useState('create'); // 'create', 'edit', 'view'
     const [selectedUser, setSelectedUser] = useState(null);
-
-
+    // Controls state of error in operations
+    const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(null);
     const [users, setUsers] = useState([]);
 
     const [reload, setReload] = useState(false);
@@ -17,8 +19,7 @@ export default function UserPage() {
     const forceReload = () => {setReload(!reload);};
     useEffect(() => {
         async function fetchUsers() {
-            const response = await fetch(API_URL + "/users");
-            const data = await response.json();
+            const data = await userService.getAllUsers();
             setUsers(data);
         }
         fetchUsers();
@@ -60,30 +61,18 @@ export default function UserPage() {
         }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const userData = Object.fromEntries(formData);
 
         if (modalMode === 'create') {
-            const newUser = {
-                ...userData,
-                id : Math.floor(Math.random() * 100).toString(),
-                shopping_cart : [],
-                createdAt: new Date(),
-                lastLogin: new Date(),
-            };
-
-            const url = `${API_URL}/users`;
-            const body = JSON.stringify(newUser);
-            setUsers([...users, newUser]);
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: body,
-            }).catch((err) => console.log(err));
+            const created = await userService.createUser(userData)
+            if (!created) {
+                setError(true);
+                setErrorMessage(created ? created : "Não encontrado");
+                return;
+            }
 
         } else if (modalMode === 'edit') {
             const url = `${API_URL}/users/${selectedUser.id}`;
@@ -97,7 +86,8 @@ export default function UserPage() {
             }).catch((err) => console.log(err));
             forceReload()
         }
-
+        setError(false);
+        setErrorMessage("");
         setShowModal(false);
     };
 
@@ -149,7 +139,7 @@ export default function UserPage() {
                     </thead>
                     <tbody>
                     {filteredUsers.map(user => (
-                        <tr key={user.id}>
+                        <tr key={user._id}>
                             <td>{user.id}</td>
                             <td>
                                 <div className="user-name">
@@ -174,7 +164,7 @@ export default function UserPage() {
                                     </span>
                             </td>
                             <td>{new Date(user.createdAt).toLocaleDateString('pt-BR')}</td>
-                            <td>{new Date(user.lastLogin).toLocaleDateString('pt-BR')}</td>
+                            <td>{new Date(user.lastLoginAt).toLocaleDateString('pt-BR')}</td>
                             <td>
                                 <div className="action-buttons">
                                     <button onClick={() => handleView(user)} className="action-btn view">
@@ -278,7 +268,12 @@ export default function UserPage() {
                                     />
                                 </div>
                             )}
+                            {error &&
+                                <div className="form-group">
+                                    <p style={{color : "red"}}>{errorMessage}</p>
 
+                                </div>
+                            }
                             {modalMode !== 'view' && (
                                 <div className="modal-actions">
                                     <button type="button" onClick={() => setShowModal(false)} className="cancel-btn">

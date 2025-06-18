@@ -7,10 +7,10 @@ const config  = {
     },
     // When the back end is built, set the url here
     "prod" : {
-        "API_URL": null
+        "API_URL": "http://localhost:8000/api"
     }
 }
 
 // Just need to alter here
-const curConfig = config["dev"]
+const curConfig = config["prod"]
 export const API_URL = curConfig["API_URL"];

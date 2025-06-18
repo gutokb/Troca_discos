@@ -1,4 +1,4 @@
-import {User} from "app/model/models.js"
+import {User} from "../model/models.js"
 
 
 // Criacao de usuario no banco de dados, recebe os dados do formulario como json e converte em
