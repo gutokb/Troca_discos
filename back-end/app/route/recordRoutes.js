@@ -9,7 +9,7 @@ router.get('/', recordController.get)
 
 router.get('/:id', recordController.getById)
 
-router.post("/", recordrController.create)
+router.post("/", recordController.create)
 
 router.put("/:id", recordController.update)
 

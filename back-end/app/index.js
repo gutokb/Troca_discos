@@ -2,8 +2,8 @@ import "dotenv/config";
 import mongoose from "mongoose";
 import express from "express";
 import userRouter from "./route/userRoutes.js";
-import recordRouter from "./route/userRoutes.js";
 import cartRouter from "./route/cartRoutes.js";
+import recordRouter from "./route/recordRoutes.js";
 import cors from "cors"
 
 
