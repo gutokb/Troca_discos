@@ -9,7 +9,7 @@ export async function getAllUsers() {
     }
     catch (error) {
         console.log(error);
-        return []
+        return {error : "Não encontrado"}
     }
 }
 export async function getUserById(id) {
@@ -19,7 +19,7 @@ export async function getUserById(id) {
     }
     catch (error) {
         console.log(error);
-        return null
+        return {error : "Não encontrado"}
     }
 }
 export async function getUsersByName(name) {
@@ -29,7 +29,7 @@ export async function getUsersByName(name) {
     }
     catch (error) {
         console.log(error);
-        return []
+        return {error : "Não encontrado"}
     }
 }
 export async function getUserByEmail(email) {
@@ -38,7 +38,7 @@ export async function getUserByEmail(email) {
     }
     catch (error) {
         console.log(error);
-        return null
+        return {error : "Não encontrado"}
     }
 }
 export async function createUser(userData) {
@@ -48,7 +48,7 @@ export async function createUser(userData) {
     }
     catch (error) {
         console.log(error.response.data.error);
-        return error.response.data.error;
+        return {error : error.response.data.error};
     }
 }
 export async function updateUser(userId, userData) {
@@ -59,9 +59,9 @@ export async function updateUser(userId, userData) {
     catch (error) {
         if (error.response) {
             console.log(error.response.data.error);
-            return error.response.data.error;
+            return {error : error.response.data.error};
         }
-        return null;
+        return {error : "Não encontrado"};
     }
 }
 export async function deleteUser(id) {
@@ -71,6 +71,6 @@ export async function deleteUser(id) {
     }
     catch (error) {
         console.log(error.message);
-        return null
+        return {error : "Não encontrado"}
     }
 }

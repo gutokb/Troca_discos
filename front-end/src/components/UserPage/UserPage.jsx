@@ -3,6 +3,7 @@ import './UserPage.css';
 import { IoSearchOutline, IoAdd, IoCreate, IoTrash, IoEye, IoMail, IoCall } from 'react-icons/io5';
 import {API_URL} from "../../config/api.js";
 import * as userService from "../../services/userService.js"
+import {useParams} from "react-router-dom";
 
 export default function UserPage() {
     const [searchTerm, setSearchTerm] = useState('');
@@ -12,6 +13,13 @@ export default function UserPage() {
     // Controls state of error in operations
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState(null);
+    useEffect(() => {
+        setError(false);
+        setErrorMessage(null);
+    }, [showModal]);
+
+
+
     const [users, setUsers] = useState([]);
 
     const [reload, setReload] = useState(false);
@@ -51,13 +59,12 @@ export default function UserPage() {
 
     const handleDelete = (userId) => {
         if (window.confirm('Tem certeza que deseja excluir este usuário?')) {
+            const deleted = userService.deleteUser(userId);
+            if (deleted?.error) {
+                window.alert(deleted.error);
+                return;
+            }
             setUsers(users.filter(user => user.id !== userId));
-            const url = `${API_URL}/users/${userId}`;
-            console.log(url);
-            fetch(url, {
-                method: 'DELETE',
-
-            }).catch((err) => console.log(err));
         }
     };
 
@@ -68,26 +75,21 @@ export default function UserPage() {
 
         if (modalMode === 'create') {
             const created = await userService.createUser(userData)
-            if (!created) {
+            if (created?.error) {
                 setError(true);
-                setErrorMessage(created ? created : "Não encontrado");
+                setErrorMessage(created.error);
                 return;
             }
 
         } else if (modalMode === 'edit') {
-            const url = `${API_URL}/users/${selectedUser.id}`;
-            const body = JSON.stringify(userData);
-            fetch(url, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: body,
-            }).catch((err) => console.log(err));
-            forceReload()
+            const updated = await userService.updateUser(selectedUser._id, userData)
+            if (updated?.error) {
+                setError(true);
+                setErrorMessage(updated.error);
+                return;
+            }
         }
-        setError(false);
-        setErrorMessage("");
+        forceReload()
         setShowModal(false);
     };
 
