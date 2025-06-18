@@ -64,7 +64,7 @@ export default function UserPage() {
                 window.alert(deleted.error);
                 return;
             }
-            setUsers(users.filter(user => user.id !== userId));
+            setUsers(users.filter(user => user._id !== userId));
         }
     };
 
@@ -142,7 +142,7 @@ export default function UserPage() {
                     <tbody>
                     {filteredUsers.map(user => (
                         <tr key={user._id}>
-                            <td>{user.id}</td>
+                            <td>{user._id}</td>
                             <td>
                                 <div className="user-name">
                                     <strong>{user.name}</strong>
@@ -175,7 +175,7 @@ export default function UserPage() {
                                     <button onClick={() => handleEdit(user)} className="action-btn edit">
                                         <IoCreate />
                                     </button>
-                                    <button onClick={() => handleDelete(user.id)} className="action-btn delete">
+                                    <button onClick={() => handleDelete(user._id)} className="action-btn delete">
                                         <IoTrash />
                                     </button>
                                 </div>
