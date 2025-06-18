@@ -76,7 +76,7 @@ const salesSchema = new Schema({
     timestamp: {type:Date, required:true, default: Date.now}
 })
 
-const Record = mongoose.model("Record", salesSchema);
+const Record = mongoose.model("Record", recordSchema);
 
 const User = mongoose.model("User", userSchema);
 

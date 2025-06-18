@@ -4,6 +4,10 @@
 node_modules/
 dist/
 
+.idea/
+.git/
+.vscode/
+
 # Cache do Vite
 .vite/
 

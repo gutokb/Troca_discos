@@ -61,7 +61,7 @@ test('createUser should return a user', async () => {
         role : "ADMIN",
     }
     const result = await createUser(newUser);
-    console.log(result);
+
     expect(result).not.toBeNull();
 })
 
@@ -85,7 +85,7 @@ test("get all users", async () => {
 test("get users by name", async () => {
 
     const result = await getUsersByName("teste");
-    console.log("Search results:", result); // Debug log
+
     expect(result.length).toBe(3);
 })
 

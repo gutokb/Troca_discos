@@ -2,6 +2,7 @@ import "dotenv/config";
 import mongoose from "mongoose";
 import express from "express";
 import userRouter from "./route/userRoutes.js";
+import cartRouter from "./route/cartRoutes.js";
 import cors from "cors"
 
 
@@ -44,6 +45,7 @@ async function main() {
     app.use(requestLogger);
     app.use(express.json())
     app.use("/api/users", userRouter);
+    app.use("api/cart", cartRouter);
     app.listen(process.env.PORT, (err) => {console.log(err)})
 }
 
