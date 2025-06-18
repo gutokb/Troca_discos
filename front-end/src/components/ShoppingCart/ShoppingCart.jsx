@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import "./ShoppingCart.css";
 import { API_URL } from "../../config/api.js";
 import { IoTrash } from 'react-icons/io5';
+import "../../services/userService.js"
+import { getUserById } from '../../services/userService.js';
 
 export default function ShoppingCart() {
     const [curUser, setCurUser] = useState(JSON.parse(localStorage.getItem("user")).id);
@@ -11,8 +13,7 @@ export default function ShoppingCart() {
 
     useEffect(() => {
         async function fetchUser() {
-            const response = await fetch(`${API_URL}/users/${curUser}`);
-            const data = await response.json();
+            const data = getUserById(curUser)
             setUserdata(data);
         }
         fetchUser();
