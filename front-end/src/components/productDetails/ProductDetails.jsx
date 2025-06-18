@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { API_URL } from '../../config/api.js';
 import './ProductDetails.css';
 import { useNavigate } from 'react-router-dom';
+import { getRecordById } from '../../services/recordService.js';
 
 export default function ProductDetails({ productID }) {
     const [productData, setProductData] = useState(null);
@@ -14,9 +15,8 @@ export default function ProductDetails({ productID }) {
 
     useEffect(() => {
         async function fetchProduct() {
-            const response = await fetch(`${API_URL}/records/${productID}`);
-            const data = await response.json();
-            setProductData(data);
+            const response = await getRecordById(productID);
+            setProductData(response);
             
         }
         fetchProduct();
@@ -106,7 +106,7 @@ export default function ProductDetails({ productID }) {
     return (
         <div className="product-container">
             <div className="product-image">
-                <img src={productData.cover} alt={productData.title} />
+                <img src={productData.coverImgPath} alt={productData.title} />
             </div>
 
             <div className="product-details">

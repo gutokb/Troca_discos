@@ -3,6 +3,7 @@ import Navbar from "/src/components/Navbar/Navbar.jsx";
 import {useEffect, useState} from "react";
 import { API_URL } from "../../config/api.js";
 import ProductCard from "/src/components/ProductCard/ProductCard.jsx"
+import { getAllRecords } from "../../services/recordService.js";
 
 export default function Home() {
 
@@ -14,9 +15,8 @@ export default function Home() {
     // Requires useEffect because will be a fetch to the server
     useEffect(() => {
          async function fetchProducts() {
-                            const response = await fetch(`${API_URL}/records/`);
-                            const data = await response.json();
-                            setProducts(data);
+                            const response = await getAllRecords();
+                            setProducts(response);
                         }
                         fetchProducts();
     }, [])

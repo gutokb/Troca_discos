@@ -21,8 +21,8 @@ product = {
 export default function ProductCard({product}) {
     const navigate = useNavigate();
     return (
-        <div onClick={()=>(navigate(`/details/${product.id}`))} className="product-card">
-            <img src={product.cover} alt="Record cover"/>
+        <div onClick={()=>(navigate(`/details/${product._id}`))} className="product-card">
+            <img src={product.coverImgPath} alt="Record cover"/>
             <p>{product.title}</p>
             <p>{product.artist + " - " + product.year}</p>
             <h4>{"R$ " + product.price}</h4>
