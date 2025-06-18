@@ -421,3 +421,100 @@
     background-color: #A05909;
     transform: translateY(-1px);
 }
+/* Add these styles to your existing ProductPage.css */
+
+.tracks-list {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+}
+
+.tracks-list h4 {
+    margin: 0 0 15px 0;
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+    border-bottom: 2px solid #C0710A;
+    padding-bottom: 5px;
+}
+
+.tracks-list > ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.track-list-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    margin-bottom: 8px;
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.track-list-item:hover {
+    border-color: #C0710A;
+    box-shadow: 0 2px 4px rgba(192, 113, 10, 0.1);
+}
+
+.track-number {
+    min-width: 25px;
+    font-weight: 600;
+    color: #C0710A;
+    text-align: center;
+}
+
+.track-title {
+    flex: 1;
+    font-weight: 500;
+    color: #333;
+}
+
+.track-file-name {
+    font-size: 12px;
+    color: #666;
+    font-style: italic;
+}
+
+.track-list-button {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.track-list-button:hover {
+    background-color: #c82333;
+    transform: translateY(-1px);
+}
+
+/* Style for file input */
+.form-group input[type="file"] {
+    padding: 8px 12px;
+    border: 2px dashed #e0e0e0;
+    background-color: #f8f9fa;
+    cursor: pointer;
+}
+
+.form-group input[type="file"]:hover {
+    border-color: #C0710A;
+    background-color: rgba(192, 113, 10, 0.05);
+}
+
+.form-group input[type="file"]:focus {
+    border-color: #C0710A;
+    box-shadow: 0 0 0 3px rgba(192, 113, 10, 0.1);
+}

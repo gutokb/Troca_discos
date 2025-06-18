@@ -9,6 +9,7 @@ export default function ProductPage() {
     const [modalMode, setModalMode] = useState('create'); // 'create', 'edit', 'view'
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [products, setProducts] = useState([]);
+    const [currentTracks, setCurrentTracks] = useState([]);
 
 
     // Data fetching
@@ -16,12 +17,13 @@ export default function ProductPage() {
     const [reload, setReload] = useState(false);
     const forceReload = () => {setReload(!reload);};
     useEffect(() => {
-        async function fetchProducts() {
-            const response =  await fetch(`${API_URL}/records`);
-            const data = await response.json();
-            setProducts(data);
-        }
-        fetchProducts();
+        // async function fetchProducts() {
+        //     const response =  await fetch(`${API_URL}/records`);
+        //     const data = await response.json();
+        //     setProducts(data);
+        // }
+        // fetchProducts();
+
     }, [reload])
 
     // Used for adding/updating genres
@@ -36,17 +38,42 @@ export default function ProductPage() {
         }
     }, [showModal]);
 
-    // Used for adding/updating tracks
-    const [currentTracks, setCurrentTracks] = useState([]);
     useEffect(() => {
-        if (selectedProduct !== null) {
-            setCurrentTracks(selectedProduct.tracks)
-        }
-        else {
-            setCurrentTracks([])
+        if (selectedProduct !== null && selectedProduct.tracks) {
+            setCurrentTracks(selectedProduct.tracks);
+        } else {
+            setCurrentTracks([]);
         }
     }, [showModal]);
 
+
+    const addTrack = () => {
+        const titleInput = document.getElementById("track-title-input");
+        const fileInput = document.getElementById("track-file-input");
+
+        if (titleInput.value.trim() !== "" && fileInput.files.length > 0) {
+            const newTrack = {
+                id: Date.now(), // Simple ID for React key
+                title: titleInput.value.trim(),
+                file: fileInput.files[0],
+                trackNumber: currentTracks.length + 1
+            };
+
+            setCurrentTracks([...currentTracks, newTrack]);
+            titleInput.value = "";
+            fileInput.value = "";
+        }
+    };
+
+    const removeTrack = (trackId) => {
+        const updatedTracks = currentTracks
+            .filter(track => track.id !== trackId)
+            .map((track, index) => ({
+                ...track,
+                trackNumber: index + 1
+            }));
+        setCurrentTracks(updatedTracks);
+    };
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -85,52 +112,86 @@ export default function ProductPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const formData = new FormData(e.target);
-        const productData = Object.fromEntries(formData);
 
-        if (modalMode === 'create') {
-            const newProduct = {
-                ...productData,
-                id : Math.floor(Math.random() * 100).toString(),
-                createdAt: new Date(),
+        if (modalMode === 'create' || modalMode === 'edit') {
+            // Create FormData instead of regular object for file uploads
+            const formData = new FormData(e.target);
+
+            // Add basic product fields
+            const productData = {
+                title: formData.get('title'),
+                artist: formData.get('artist'),
+                year: parseInt(formData.get('year')),
+                price: parseFloat(formData.get('price')),
+                stock: parseInt(formData.get('stock')),
+                cover: formData.get('cover'),
+                genre: currentGenres
             };
-            newProduct.genre = currentGenres;
-            newProduct.price = parseFloat(newProduct.price)
-            newProduct.stock = parseInt(newProduct.stock)
-            newProduct.year = parseInt(newProduct.year)
-            const url = `${API_URL}/records`;
 
-            const body = JSON.stringify(newProduct);
-            setProducts([...products, newProduct]);
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: body,
-            }).catch((err) => console.log(err));
+            // Add tracks metadata
+            const tracksMetadata = currentTracks.map(track => ({
+                trackNumber: track.trackNumber,
+                title: track.title
+            }));
 
-        } else if (modalMode === 'edit') {
-            const url = `${API_URL}/records/${selectedProduct.id}`;
-            productData.genre = currentGenres;
-            productData.price = parseFloat(productData.price)
-            productData.stock = parseInt(productData.stock)
-            productData.year = parseInt(productData.year)
-            const body = JSON.stringify(productData);
-            fetch(url, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: body,
-            }).catch((err) => console.log(err));
-            forceReload()
+            // Create new FormData for the actual submission
+            const submissionFormData = new FormData();
+
+            // Add all product data
+            Object.keys(productData).forEach(key => {
+                if (key === 'genre') {
+                    submissionFormData.append(key, JSON.stringify(productData[key]));
+                } else {
+                    submissionFormData.append(key, productData[key]);
+                }
+            });
+
+            // Add tracks metadata
+            submissionFormData.append('tracksMetadata', JSON.stringify(tracksMetadata));
+
+            // Add track files
+            currentTracks.forEach((track, index) => {
+                if (track.file) {
+                    submissionFormData.append(`trackFile_${index}`, track.file);
+                }
+            });
+
+            if (modalMode === 'create') {
+                const newProduct = {
+                    ...productData,
+                    id: Math.floor(Math.random() * 100).toString(),
+                    createdAt: new Date(),
+                    tracks: tracksMetadata // For local state display
+                };
+
+                setProducts([...products, newProduct]);
+
+                // Send FormData to backend
+                const url = `${API_URL}/records`;
+                fetch(url, {
+                    method: 'POST',
+                    body: submissionFormData, // Send FormData, not JSON
+                }).catch((err) => console.log(err));
+
+            } else if (modalMode === 'edit') {
+                const url = `${API_URL}/records/${selectedProduct.id}`;
+
+                // For edit, you might want to handle file updates differently
+                // This is a simplified version - you may need more complex logic
+                fetch(url, {
+                    method: 'PATCH',
+                    body: submissionFormData,
+                }).catch((err) => console.log(err));
+
+                forceReload();
+            }
         }
 
         setShowModal(false);
     };
 
     const filteredProducts = products.filter(product =>
+
         product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         product.genre.some(s => s.toLowerCase().includes(searchTerm.toLowerCase())) ||
         product.artist.toLowerCase().includes(searchTerm.toLowerCase())
@@ -295,6 +356,60 @@ export default function ProductPage() {
                                        disabled={modalMode === 'view'}
                                 />
                             </div>
+
+                            {/* Tracklist Section */}
+                            <div className="form-group form-track">
+                                <label>Adicionar Faixa:</label>
+                                <input
+                                    id="track-title-input"
+                                    type="text"
+                                    placeholder="Título da faixa"
+                                    disabled={modalMode === 'view'}
+                                />
+                                <button
+                                    type="button"
+                                    disabled={modalMode === 'view'}
+                                    onClick={addTrack}
+                                >
+                                    <IoAdd/>
+                                </button>
+                            </div>
+
+                            <div className="form-group">
+                                <input
+                                    id="track-file-input"
+                                    type="file"
+                                    accept="audio/*"
+                                    disabled={modalMode === 'view'}
+                                />
+                            </div>
+
+                            {/* Display Current Tracks */}
+                            {currentTracks.length > 0 && (
+                                <div className="tracks-list">
+                                    <h4>Faixas do Álbum:</h4>
+                                    <ul>
+                                        {currentTracks.map((track) => (
+                                            <li key={track.id} className="track-list-item">
+                                                <span className="track-number">{track.trackNumber}.</span>
+                                                <span className="track-title">{track.title}</span>
+                                                {track.file && (
+                                                    <span className="track-file-name">({track.file.name})</span>
+                                                )}
+                                                {modalMode !== "view" && (
+                                                    <button
+                                                        className="track-list-button"
+                                                        type="button"
+                                                        onClick={() => removeTrack(track.id)}
+                                                    >
+                                                        <IoTrash/>
+                                                    </button>
+                                                )}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
 
                             <div className="form-row">
                                 <div className="form-group">
