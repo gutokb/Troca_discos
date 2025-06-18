@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { API_URL } from "../../config/api.js";
 import {useNavigate} from "react-router-dom";
 import './ProfilePage.css'
+import * as userService from "../../services/userService.js";
+
 
 export default function ProfilePage() {
     const [curUser, setCurUser] = useState(JSON.parse(localStorage.getItem("user")).id);
@@ -11,37 +13,23 @@ export default function ProfilePage() {
 
     useEffect(() => {
         async function fetchUser() {
-            console.log(curUser)
-            const response = await fetch(`${API_URL}/users/${curUser}`);
-            const data = await response.json();
+            const data = await userService.getUserById(curUser);
             setUserdata(data);
         }
         fetchUser();
     }, [curUser]);
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
         const formData = new FormData(e.target);
         const newData = Object.fromEntries(formData);
         setUserdata(newData);
         setMode("view");
-
-        fetch(`${API_URL}/users/${curUser}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(newData),
-        }).catch(console.error);
+        await userService.updateUser(curUser, newData);
     }
 
-    function handleDelete(){
-        fetch(`${API_URL}/users/${curUser}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        }).catch(console.error);
+    async function handleDelete(){
+        await userService.deleteUser(curUser);
         localStorage.removeItem("token")
         localStorage.removeItem("user")
         navigate("/")
@@ -69,11 +57,11 @@ export default function ProfilePage() {
                     </div>
                     <div className='section-card'>
                         <h2>Cartão</h2>
-                        {userData?.cardNumber ? (
+                        {userData?.cardInfo ? (
                             <>
-                                <p><strong>Número:</strong> {userData.cardNumber}</p>
-                                <p><strong>CVV:</strong> {userData.cardCvv}</p>
-                                <p><strong>Validade:</strong> {userData.cardDate}</p>
+                                <p><strong>Número:</strong> {userData?.cardInfo.number}</p>
+                                <p><strong>CVV:</strong> {userData?.cardInfo.cvv}</p>
+                                <p><strong>Validade:</strong> {userData?.cardInfo.expiration}</p>
                             </>
                         ) : (
                             <p>Cartão não registrado</p>
