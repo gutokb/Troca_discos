@@ -48,6 +48,10 @@ async function main() {
     app.use("/api/users", userRouter);
     app.use("api/cart", cartRouter);
     app.use("/api/records", recordRouter);
+    app.post("/api/echo", (req, res) => {
+        console.log(req.body);
+        res.status(200).json(req.body);
+    })
     app.listen(process.env.PORT, (err) => {console.log(err)})
 }
 

@@ -2,6 +2,9 @@ import React, {useEffect, useState} from 'react';
 import './ProductPage.css';
 import { IoSearchOutline, IoAdd, IoCreate, IoTrash, IoEye } from 'react-icons/io5';
 import {API_URL} from "../../config/api.js";
+import * as recordService from '../../services/recordService.js';
+import * as userService from "../../services/userService.js";
+import axios from "axios";
 
 export default function ProductPage() {
     const [searchTerm, setSearchTerm] = useState('');
@@ -10,20 +13,24 @@ export default function ProductPage() {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [products, setProducts] = useState([]);
     const [currentTracks, setCurrentTracks] = useState([]);
-
+    // Controls state of error in operations
+    const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(null);
+    useEffect(() => {
+        setError(false);
+        setErrorMessage(null);
+    }, [showModal]);
 
     // Data fetching
     // Gambiarra
     const [reload, setReload] = useState(false);
     const forceReload = () => {setReload(!reload);};
     useEffect(() => {
-        // async function fetchProducts() {
-        //     const response =  await fetch(`${API_URL}/records`);
-        //     const data = await response.json();
-        //     setProducts(data);
-        // }
-        // fetchProducts();
-
+        async function fetchProducts() {
+            const data = await recordService.getAllRecords()
+            setProducts(data);
+        }
+        fetchProducts();
     }, [reload])
 
     // Used for adding/updating genres
@@ -67,7 +74,7 @@ export default function ProductPage() {
 
     const removeTrack = (trackId) => {
         const updatedTracks = currentTracks
-            .filter(track => track.id !== trackId)
+            .filter(track => track._id !== trackId)
             .map((track, index) => ({
                 ...track,
                 trackNumber: index + 1
@@ -101,16 +108,16 @@ export default function ProductPage() {
 
     const handleDelete = (productId) => {
         if (window.confirm('Tem certeza que deseja excluir este produto?')) {
-            setProducts(products.filter(product => product.id !== productId));
-            const url = `${API_URL}/records/${productId}`;
-            fetch(url, {
-                method: 'DELETE',
-
-            }).catch((err) => console.log(err));
+            const deleted = recordService.deleteRecord(productId);
+            if (deleted?.error) {
+                window.alert(deleted.error);
+                return;
+            }
+            setProducts(products.filter(product => product._id !== productId));
         }
-    };
+    }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (modalMode === 'create' || modalMode === 'edit') {
@@ -124,7 +131,7 @@ export default function ProductPage() {
                 year: parseInt(formData.get('year')),
                 price: parseFloat(formData.get('price')),
                 stock: parseInt(formData.get('stock')),
-                cover: formData.get('cover'),
+                coverImgPath: formData.get('cover'),
                 genre: currentGenres
             };
 
@@ -159,22 +166,22 @@ export default function ProductPage() {
             if (modalMode === 'create') {
                 const newProduct = {
                     ...productData,
-                    id: Math.floor(Math.random() * 100).toString(),
-                    createdAt: new Date(),
                     tracks: tracksMetadata // For local state display
                 };
 
                 setProducts([...products, newProduct]);
 
                 // Send FormData to backend
-                const url = `${API_URL}/records`;
+                const url = `${API_URL}/echo`;
+                console.log(submissionFormData)
                 fetch(url, {
                     method: 'POST',
                     body: submissionFormData, // Send FormData, not JSON
                 }).catch((err) => console.log(err));
+                return
 
             } else if (modalMode === 'edit') {
-                const url = `${API_URL}/records/${selectedProduct.id}`;
+                const url = `${API_URL}/records/${selectedProduct._id}`;
 
                 // For edit, you might want to handle file updates differently
                 // This is a simplified version - you may need more complex logic
@@ -240,8 +247,8 @@ export default function ProductPage() {
                     </thead>
                     <tbody>
                     {filteredProducts.map(product => (
-                        <tr key={product.id}>
-                            <td>{product.id}</td>
+                        <tr key={product._id}>
+                            <td>{product._id}</td>
                             <td>{product.title}</td>
                             <td>{product.artist}</td>
                             <td>{product.year}</td>
@@ -259,7 +266,7 @@ export default function ProductPage() {
                                     <button onClick={() => handleEdit(product)} className="action-btn edit">
                                         <IoCreate />
                                     </button>
-                                    <button onClick={() => handleDelete(product.id)} className="action-btn delete">
+                                    <button onClick={() => handleDelete(product._id)} className="action-btn delete">
                                         <IoTrash />
                                     </button>
                                 </div>
@@ -390,7 +397,7 @@ export default function ProductPage() {
                                     <h4>Faixas do Álbum:</h4>
                                     <ul>
                                         {currentTracks.map((track) => (
-                                            <li key={track.id} className="track-list-item">
+                                            <li key={track._id} className="track-list-item">
                                                 <span className="track-number">{track.trackNumber}.</span>
                                                 <span className="track-title">{track.title}</span>
                                                 {track.file && (
@@ -400,7 +407,7 @@ export default function ProductPage() {
                                                     <button
                                                         className="track-list-button"
                                                         type="button"
-                                                        onClick={() => removeTrack(track.id)}
+                                                        onClick={() => removeTrack(track._id)}
                                                     >
                                                         <IoTrash/>
                                                     </button>
@@ -436,6 +443,12 @@ export default function ProductPage() {
                                 </div>
                             </div>
 
+                            {error &&
+                                <div className="form-group">
+                                    <p style={{color : "red"}}>{errorMessage}</p>
+
+                                </div>
+                            }
 
                             {modalMode !== 'view' && (
                                 <div className="modal-actions">
