@@ -13,10 +13,13 @@ const recordSchema = new Schema({
     coverImgPath: String,
     sold: {type:Number, required:true, min:0, default:0},
     createdAt: {type:Date, required:true, default: Date.now},
-    tracks: [{
+    tracks: {
+        type: [{
         title: {type:String, maxLength:255},
         audioPath: String,
-    }]
+    }],
+    default: []
+    }
 })
 
 

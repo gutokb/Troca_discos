@@ -4,7 +4,8 @@ import {User, Record, Sale} from "../model/models.js"
 
 export async function createRecord(recordData) {
     try{
-        const newRecord = new Record(recordData);
+        const newRecord = new Record(recordData)
+        console.log(newRecord);
         await newRecord.save();
         return newRecord;
     }
@@ -65,7 +66,7 @@ export async function getRecordById(id) {
 
 export async function updateRecord(recordId, recordData) {
     try {
-        return await User.updateOne(
+        return await Record.updateOne(
             {_id: recordId},
             {...recordData},
             {runValidators: true},
@@ -79,7 +80,7 @@ export async function updateRecord(recordId, recordData) {
 
 export async function deleteRecord(recordId) {
     try {
-        return await User.findByIdAndDelete(userId);
+        return await Record.findByIdAndDelete(recordId);
     }
     catch (err) {
         console.log(err.message);
