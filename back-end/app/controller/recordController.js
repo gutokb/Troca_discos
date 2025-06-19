@@ -51,7 +51,7 @@ const upload = multer({
 
 
 export async function get(req, res) {
-    if (!!req.query?.name) {
+    if (!!req.query?.search) {
         const result = await recordService.getRecordsBySearch(req.query.search);
         if (result) {
            return res.status(200).json(result);

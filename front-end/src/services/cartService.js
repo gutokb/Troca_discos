@@ -41,7 +41,6 @@ export async function cartRemoveRecord(userId, recordId) {
         const result = await axios.delete(`${API_URL}/cart/remove/${userId}`, {
             data: body 
         });
-
         return result.data;
     } catch (error) {
         console.log(error);
@@ -52,6 +51,7 @@ export async function cartRemoveRecord(userId, recordId) {
 export async function cartClearRecords(userId) {
     try {
         const result = await axios.delete(API_URL + "/cart/clear/" + userId);
+        console.log(result.data)
         return result.data;
     }
     catch (error) {

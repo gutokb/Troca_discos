@@ -10,12 +10,13 @@ import { updateRecord } from '../../services/recordService.js';
 export default function ShoppingCart() {
     const [curUser, setCurUser] = useState(JSON.parse(localStorage.getItem("user")).id);
     const [userData, setUserdata] = useState(null);
-
+    const [cart, setCart] =useState([])
 
     useEffect(() => {
         async function fetchUser() {
             const data = await getUserById(curUser)
             setUserdata(data);
+            setCart(data.shoppingCart);
         }
         fetchUser();
     }, [curUser]);
@@ -23,9 +24,8 @@ export default function ShoppingCart() {
  
 
     function handleBuy(p){
-        let card = userData?.cardNumber
-        let address = userData?.address
-        if(card != null && address != null){
+  
+        if(true){
             p.map(item => {
                 const body = {
                     "sold": item.recordId.sold + item.quantity,
@@ -35,6 +35,7 @@ export default function ShoppingCart() {
             })
 
             cartClearRecords(curUser);
+            setCart([]);
             alert("compra realizada com sucesso")
         }
         else{
@@ -44,14 +45,15 @@ export default function ShoppingCart() {
 
     const handleDelete = (productId) => {
         cartRemoveRecord(curUser,productId);
+        setCart(cart.filter(item => item.recordId._id != productId))
     };
 
     if (!userData) return <div className="cart-loading">Carregando...</div>
 
-
-        const productPrice = userData.shoppingCart.reduce((sum, product) => sum + product.recordId.price*product.quantity, 0);
-        const frete = 10.00;
-        const total = productPrice + frete;
+        console.log(cart)
+        let productPrice = cart.reduce((sum, product) => sum + product.recordId.price*product.quantity, 0);
+        let frete = 10.00;
+        let total = productPrice + frete;
 
     
     return (
@@ -75,7 +77,7 @@ export default function ShoppingCart() {
                             </tr>
                         </thead>
                         <tbody>
-                            {userData.shoppingCart.map(product => (
+                            {cart.map(product => (
                                 <tr key={product._id}>
                                     <td>{product.recordId.title}</td>
                                     <td>{product.recordId.artist}</td>
@@ -113,7 +115,7 @@ export default function ShoppingCart() {
                         <span>Total:</span>
                         <span>R$ {total.toFixed(2)}</span>
                     </div>
-                    <button onClick={()=>handleBuy(userData.shoppingCart)} className="checkout-btn">Finalizar Compra</button>
+                    <button onClick={()=>handleBuy(cart)} className="checkout-btn">Finalizar Compra</button>
                 </div>
             </div>
         </div>
