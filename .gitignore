@@ -3,7 +3,7 @@
 # Diretórios do Node.js
 node_modules/
 dist/
-
+**/uploads/
 .idea/
 .git/
 .vscode/
