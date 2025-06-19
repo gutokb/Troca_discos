@@ -38,13 +38,13 @@ export default function Home() {
                 <h1 className="mais-vendidos">Mais vendidos</h1>
                 <div className="product-display">
                     {mostSold === null ? null : mostSold.map(product => {
-                        return (<ProductCard key={product.id} product={product} />)
+                        return (<ProductCard key={product._id} product={product} />)
                     })}
                 </div>
                 <h1 className="mais-vendidos">Novas adições</h1>
                 <div className="product-display">
                     {recent === null ? null : recent.map(product => {
-                        return (<ProductCard key={product.id} product={product} />)
+                        return (<ProductCard key={product._id} product={product} />)
                     })}
                 </div>
             </main>

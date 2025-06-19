@@ -1,9 +1,11 @@
 import {User, Record, Sale} from "../model/models.js";
+import mongoose from 'mongoose';
+const { ObjectId } = mongoose.Types;
 
 
 export async function addRecordToCart(userId, recordId, quantity) {
     try {
-        const result = await User.findOneAndUpdate(userId, {
+        const result = await User.findByIdAndUpdate(userId, {
             $push: {
                 shoppingCart: {
                     quantity: quantity,
@@ -25,7 +27,7 @@ export async function addRecordToCart(userId, recordId, quantity) {
 
 export async function removeRecordFromCart(userId, recordId) {
     try {
-        const result = await User.findOneAndUpdate(userId, {
+        const result = await User.findByIdAndUpdate(userId, {
             $pull: {
                 shoppingCart: {recordId : recordId},
             }
@@ -46,7 +48,7 @@ export async function updateRecordQuantity(userId, recordId, newQuantity) {
     try {
         const result = await User.findOneAndUpdate(
             {
-                _id: userId,
+                _id: new ObjectId(userId),
                 "shoppingCart.recordId": recordId
             },
             {
@@ -66,7 +68,7 @@ export async function updateRecordQuantity(userId, recordId, newQuantity) {
 
 export async function clearCart(userId) {
     try {
-        const result = await User.findOneAndUpdate(userId, {
+        const result = await User.findByIdAndUpdate(userId, {
             $set: {shoppingCart : []}
         })
         if (result === null) {

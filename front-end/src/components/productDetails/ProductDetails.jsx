@@ -3,6 +3,8 @@ import { API_URL } from '../../config/api.js';
 import './ProductDetails.css';
 import { useNavigate } from 'react-router-dom';
 import { getRecordById } from '../../services/recordService.js';
+import { getUserById } from '../../services/userService.js';
+import { CartAddRecord, cartSetQuantityRecord } from '../../services/cartService.js';
 
 export default function ProductDetails({ productID }) {
     const [productData, setProductData] = useState(null);
@@ -24,34 +26,17 @@ export default function ProductDetails({ productID }) {
 
     useEffect(() => {
         if (userData != null) {
-            const url = `${API_URL}/users/${userData.id}`;
-            let newCart = [...userData.shopping_cart];
+            let newCart = [...userData.shoppingCart];
             let body = "";
-            if (!newCart.some(item=>Number(item.productId) === (Number(productID)))) {
-                newCart.push(
-                    {"productId": parseInt(productID),
-                    "quantity": cartQuantity
-                });    
-                
+            if (!(newCart.some(item=>{
+                return item.recordId._id == String(productID)}))) {
+                CartAddRecord(userData._id,productID,cartQuantity);
             }
             else{
-                const index = newCart.findIndex(item=>Number(item.productId) === (Number(productID)));
-                console.log(index)
-                newCart[index].quantity = newCart[index].quantity + cartQuantity < productData.stock ?
-                newCart[index].quantity + cartQuantity : productData.stock ;
-        
+                console.log("atualizei")
+                cartSetQuantityRecord(userData._id,productID,cartQuantity);
             }
-            console.log(newCart)
-            body = JSON.stringify({
-                    shopping_cart: newCart,
-                });
-            fetch(url, {
-                    method: 'PATCH',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: body,
-                }).catch((err) => console.log(err));
+           
             navigate("/shopping-cart")
         }
     }, [userData]);
@@ -61,9 +46,8 @@ export default function ProductDetails({ productID }) {
         async function fetchUser() {
             let userId = JSON.parse(localStorage.getItem("user"))?.id
             if(userId!=null){
-            const response = await fetch(`${API_URL}/users/${userId}`);
-            const data = await response.json();
-            setUserData(data);
+            const response = await getUserById(userId);
+            setUserData(response);
             }
             else{
                 navigate('/login')
