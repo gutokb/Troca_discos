@@ -34,15 +34,18 @@ export async function cartSetQuantityRecord(userId, recordId, quantity) {
 
 export async function cartRemoveRecord(userId, recordId) {
     try {
-        let body ={
+        const body = {
             recordId: recordId
-        }
-        const result = await axios.delete(API_URL + "/cart/remove"+ userId, body);
+        };
+
+        const result = await axios.delete(`${API_URL}/cart/remove/${userId}`, {
+            data: body 
+        });
+
         return result.data;
-    }
-    catch (error) {
+    } catch (error) {
         console.log(error);
-        return {error : "Não encontrado"}
+        return { error: "Não encontrado" };
     }
 }
 

@@ -48,7 +48,7 @@ export async function updateRecordQuantity(userId, recordId, newQuantity) {
     try {
         const result = await User.findOneAndUpdate(
             {
-                _id: new ObjectId(userId),
+                _id: userId,
                 "shoppingCart.recordId": recordId
             },
             {
