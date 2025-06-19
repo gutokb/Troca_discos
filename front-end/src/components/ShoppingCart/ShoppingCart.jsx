@@ -2,25 +2,39 @@ import React, { useEffect, useState } from 'react';
 import "./ShoppingCart.css";
 import { API_URL } from "../../config/api.js";
 import { IoTrash } from 'react-icons/io5';
-import "../../services/userService.js"
 import { getUserById } from '../../services/userService.js';
 import { cartClearRecords, cartRemoveRecord } from '../../services/cartService.js';
 import { updateRecord } from '../../services/recordService.js';
 
 export default function ShoppingCart() {
-    const [curUser, setCurUser] = useState(JSON.parse(localStorage.getItem("user")).id);
+    const storedUser = JSON.parse(localStorage.getItem("user"));
     const [userData, setUserdata] = useState(null);
     const [cart, setCart] =useState([])
 
     useEffect(() => {
         async function fetchUser() {
+            if (storedUser?.id) {
+                const data = await getUserById(storedUser.id);
+                setUserdata(data);
+            }
             const data = await getUserById(curUser)
             setUserdata(data);
             setCart(data.shoppingCart);
         }
         fetchUser();
-    }, [curUser]);
+    }, [storedUser]);
 
+    useEffect(() => {
+        async function fetchProducts() {
+            const response = await fetch(`${API_URL}/records`);
+            const data = await response.json();
+            setProducts(data);
+            if(userData && userData.shopping_cart){
+                setCart(userData.shopping_cart);
+            }
+        }
+        fetchProducts();
+    }, [userData]);
  
 
     function handleBuy(p){
@@ -66,7 +80,7 @@ export default function ShoppingCart() {
                  <div className="table-container">
                     <table className="cart-table">
                         <thead>
-                            <tr>    
+                            <tr>
                                 <th>Nome</th>
                                 <th>Artista</th>
                                 <th>Lançamento</th>

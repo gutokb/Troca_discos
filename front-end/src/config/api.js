@@ -3,7 +3,7 @@
 const config  = {
     // Access JSON server for front end testing
     "dev" : {
-        "API_URL": "http://localhost:3001"
+        "API_URL": "http://localhost:3001/api"
     },
     // When the back end is built, set the url here
     "prod" : {
@@ -11,6 +11,8 @@ const config  = {
     }
 }
 
-// Just need to alter here
-const curConfig = config["prod"]
-export const API_URL = curConfig["API_URL"];
+// Detecta automaticamente com base na URL
+const isLocalhost = window.location.hostname === "localhost";
+const curConfig = isLocalhost ? config.dev : config.prod;
+
+export const API_URL = curConfig.API_URL;

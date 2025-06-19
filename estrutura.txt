@@ -1,0 +1,56 @@
+.
+├── back-end
+│   ├── app
+│   │   ├── controller
+│   │   ├── index.js
+│   │   ├── model
+│   │   ├── route
+│   │   ├── service
+│   │   └── tests
+│   ├── example.env
+│   ├── package.json
+│   └── package-lock.json
+├── estrutura.txt
+├── front-end
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── public
+│   │   ├── audio
+│   │   └── vite.svg
+│   ├── README.md
+│   ├── src
+│   │   ├── assets
+│   │   ├── components
+│   │   ├── config
+│   │   ├── index.css
+│   │   ├── main.jsx
+│   │   ├── pages
+│   │   └── services
+│   └── vite.config.js
+├── json_server
+│   ├── auth.js
+│   ├── db.json
+│   ├── package.json
+│   └── package-lock.json
+├── Milestone1
+│   ├── DiagramaDeNavegacao.png
+│   ├── login_screen.css
+│   ├── login_screen.html
+│   ├── main_screen.css
+│   ├── main_screen.html
+│   ├── media
+│   │   ├── delete.png
+│   │   ├── download.jpg
+│   │   ├── shopping-cart.png
+│   │   ├── user.png
+│   │   └── vynil.png
+│   ├── shopping_cart.css
+│   ├── shopping_cart.html
+│   ├── tela_admin.png
+│   ├── tela_cadastro.png
+│   └── tela_produto.png
+└── README.md
+
+19 directories, 34 files

@@ -1,110 +1,154 @@
-# Troca Discos: Uma loja virtual para Discos de Vinil
+# Troca Discos: Loja Virtual de Discos de Vinil
 
-## Projeto final da disciplina de Introdução ao Desenvolvimento Web
+Projeto final da disciplina **Introdução ao Desenvolvimento Web**.
 
+## Autores
 
-### Realizado pelos alunos
-- Felipe Carneiro Machado -  14569373
-- Laura Neri Thomaz da Silva - 13673221
-- Augusto Cavalcante Barbosa Pereira - 14651531
+* Felipe Carneiro Machado - 14569373
+* Laura Neri Thomaz da Silva - 13673221
+* Augusto Cavalcante Barbosa Pereira - 14651531
 
+---
 
-### Descrição
+## Descrição
 
-O projeto consiste em implementar uma plataforma Web que atuará como loja virtual para venda de discos de vinil.
+O Troca Discos é uma plataforma web completa para comercialização de discos de vinil, oferecendo funcionalidades tanto para clientes quanto para administradores. O sistema permite reprodução de faixas, gerenciamento de usuários e produtos, além de relatórios estatísticos.
 
-### Requisitos específicos do projeto
+---
 
-Como se trata de um e-shop relacionado à música, a loja terá junto à página de produto um player que reproduzirá as faixas do álbum. Ademais, todas as funcionalidades padrão de uma loja virtual devem ser implementadas.
+## Funcionalidades
 
-Usuários devem poder:
-- Cadastrar-se na loja
-- Buscar e acessar todos os produtos disponíveis na loja
-- Efetuar compra de qualquer produto disponível na loja
+### Para Usuários
 
-Administradores do sistema devem poder:
-- Adicionar, remover e alterar produtos
-- Adicionar, remover e alterar usuários
-- Visualizar estatísticas sobre suas vendas
+* Cadastro e login com autenticação.
+* Busca e visualização de produtos.
+* Adição de produtos ao carrinho.
+* Finalização de compra.
+* Reprodução de trechos de faixas de áudio.
 
+### Para Administradores
 
-#### Comentários sobre o código
+* CRUD de usuários e produtos.
+* Visualização de estatísticas de vendas.
 
-Para o Milestone 2, o código do Front End está localizado na pasta `front-end`. Adicionalmente, o json server utilizado para testes e seus dados estão na pasta `json_server`. Segue abaixo a estrutura de diretórios comentada.
+---
 
-#### Estrutura de diretórios 
+## Estrutura de Diretórios
+
 ```
 .
-├── public # Recursos acessados por usuários
-│   └── audio # Faixas de áudio dos produtos
-└── src
-    ├── main.jsx # Ponto de entrada da aplicação
-    ├── assets
-    ├── components # Componentes utilzados para construir as páginas
-    │   ├── LoginForm
-    │   ├── Navbar
-    │   ├── ProductCard
-    │   ├── productDetails
-    │   ├── ProductPage
-    │   ├── ProfilePage
-    │   ├── ProtectedRoute
-    │   ├── RegisterForm
-    │   ├── ShoppingCart
-    │   ├── Sidebar
-    │   ├── StatisticsPage
-    │   │   └── charts # Implementação de gráficos
-    │   └── UserPage
-    ├── config # Arquivos de configuração
-    └── pages # Layouts de página
-        ├── Admin
-        ├── Cart
-        ├── Details
-        ├── Home
-        ├── Login
-        ├── Profile
-        ├── Register
-        ├── Search
-        └── Unauthorized
-
+├── back-end
+│   ├── app
+│   │   ├── controller         # Controladores das rotas
+│   │   ├── index.js           # Ponto de entrada do backend
+│   │   ├── model              # Modelos Mongoose (User, Record, Sale)
+│   │   ├── route              # Definição das rotas da API
+│   │   ├── service            # Lógica de negócio e comunicação com os modelos
+│   │   └── tests              # Planejado para testes (em desenvolvimento)
+│   ├── example.env           # Exemplo de configuração do ambiente
+│   └── package.json
+├── front-end
+│   ├── public/audio          # Faixas de áudio para preview
+│   ├── src
+│   │   ├── components         # Componentes reutilizáveis (Navbar, Formulários, etc.)
+│   │   ├── config             # Configurações globais (API_URL)
+│   │   ├── pages              # Páginas principais (Home, Login, Admin, etc.)
+│   │   ├── services           # Integração com a API
+│   │   └── main.jsx          # Ponto de entrada da aplicação React
+│   ├── index.html
+│   └── package.json
+├── json_server               # Ambiente de mock para testes locais (opcional)
+└── Milestone1                # Protótipos de telas iniciais (HTML/CSS estático)
 ```
 
-#### Plano de testes
+---
 
-Para esta etapa, a interface Web foi testada manualmente a partir do uso de um json server, com dados forjados. Não foram implementados testes automatizados nesta etapa, mas planeja-se utilizá-los para o servidor, que será implementado no Milestone 3.
+## Tecnologias Utilizadas
 
-#### Resultados de testes
+### Frontend
 
-A aplicação não falhou em nenhuma inspeção manual, foi possível executar todas as operações de CRUD em usuários e produtos, além de executar sem erros navegação, busca e compra.
+* React 19 com Vite
+* React Router DOM
+* Chart.js para estatísticas
+* React Icons
+* CSS Módulos
 
-#### Procedimento para execução
+### Backend
 
-Executar a aplicação requer ter o Node.js instalado. 
+* Node.js + Express
+* MongoDB + Mongoose
+* Multer (upload de arquivos)
+* dotenv
+* Nodemon (dev)
+* Jest (testes - em progresso)
 
-Para instalar as dependências:
+---
+
+## Como Executar o Projeto
+
+### Requisitos
+
+* Node.js (v18+)
+* MongoDB local
+
+### 1. Configurar o ambiente
+
+Crie um arquivo `.env` na pasta `back-end/` com o seguinte conteúdo:
+
+```env
+MONGO_URI=mongodb://127.0.0.1:27017/troca_discos
+PORT=3001
+```
+
+### 2. Instalar dependências
+
 ```bash
-    cd front-end
-    npm install
+# Frontend
+cd front-end
+npm install
+
+# Backend
+cd ../back-end
+npm install
 ```
-Para executar em modo de teste:
+
+### 3. Rodar o projeto
+
 ```bash
-   npm run dev
-```
-Para testar também é necessário executar o json server:
-```bash
-    cd json_server
-    npm install
-    node auth.js
-```
+# Iniciar backend
+cd back-end
+npm run start
 
-Para compilar para distribuição:
-```bash
-   npm build 
+# Em outro terminal: iniciar frontend
+cd front-end
+npm run dev
 ```
 
-#### Problemas
+Acesse o frontend em `http://localhost:5173`
 
-Não houve problemas significativos no decorrer do projeto.
+---
 
-#### Comentários
+## Observações
 
-Não há comentários extras relevantes sobre o projeto. 
+* O projeto está em fase final de implementação.
+* Algumas funcionalidades ainda estão sendo refinadas (como upload de faixas e testes automatizados).
+
+---
+
+## Planejamento de Testes
+
+* Testes manuais realizados com base no fluxo de usuário e administrador.
+* Testes automatizados com Jest estão planejados para o backend.
+
+---
+
+## Problemas Conhecidos
+
+* Validações de frontend ainda estão sendo aperfeiçoadas.
+* Algumas mensagens de erro ainda não são exibidas de forma amigável.
+
+---
+
+## Licença
+
+Este projeto é de uso educacional e não possui licença comercial.
