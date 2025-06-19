@@ -46,7 +46,7 @@ async function main() {
     app.use(requestLogger);
     app.use(express.json())
     app.use("/api/users", userRouter);
-    app.use("api/cart", cartRouter);
+    app.use("/api/cart", cartRouter);
     app.use("/api/records", recordRouter);
     app.listen(process.env.PORT, (err) => {console.log(err)})
 }
