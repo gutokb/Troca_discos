@@ -22,7 +22,23 @@ export default function ProfilePage() {
     async function handleSubmit(e) {
         e.preventDefault();
         const formData = new FormData(e.target);
-        const newData = Object.fromEntries(formData);
+        const rawData = Object.fromEntries(formData);
+
+        const newData = {
+            ...rawData,
+            card_info: {
+                number: rawData.cardNumber,
+                cvv: rawData.cardCvv,
+                expiration: rawData.cardDate,
+            }
+        };
+
+
+        delete newData.cardNumber;
+        delete newData.cardCvv;
+        delete newData.cardDate;
+
+        console.log(newData)
         setUserdata(newData);
         setMode("view");
         await userService.updateUser(curUser, newData);
@@ -57,11 +73,11 @@ export default function ProfilePage() {
                     </div>
                     <div className='section-card'>
                         <h2>Cartão</h2>
-                        {userData?.cardInfo ? (
+                        {userData?.card_info ? (
                             <>
-                                <p><strong>Número:</strong> {userData?.cardInfo.number}</p>
-                                <p><strong>CVV:</strong> {userData?.cardInfo.cvv}</p>
-                                <p><strong>Validade:</strong> {userData?.cardInfo.expiration}</p>
+                                <p><strong>Número:</strong> {userData?.card_info.number}</p>
+                                <p><strong>CVV:</strong> {userData?.card_info.cvv}</p>
+                                <p><strong>Validade:</strong> {userData?.card_info.expiration}</p>
                             </>
                         ) : (
                             <p>Cartão não registrado</p>

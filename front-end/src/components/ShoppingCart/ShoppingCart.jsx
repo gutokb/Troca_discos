@@ -26,7 +26,7 @@ export default function ShoppingCart() {
 
     function handleBuy(p){
   
-        if(true){
+        if(userData?.card_info && userData?.adress){
             p.map(item => {
                 const body = {
                     "sold": item.recordId.sold + item.quantity,
