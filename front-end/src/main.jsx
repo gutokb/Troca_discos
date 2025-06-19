@@ -52,6 +52,7 @@ createRoot(document.getElementById('root')).render(
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/product/:query" element={<SearchProduct />} />
+      <Route path="/product/" element={<SearchProduct />} />
       <Route
         path="/admin/*"
         element={

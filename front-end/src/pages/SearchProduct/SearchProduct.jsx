@@ -16,9 +16,14 @@ export default function SearchProduct() {
 
     useEffect(() => {
         async function fetchProducts() {
-            const result = await recordService.getRecordsBySearch(params.query)
-            setProducts(result);
-            
+            if(params.query != undefined){
+                const result = await recordService.getRecordsBySearch(params.query)
+                setProducts(result);
+            }
+            else{
+                const result = await recordService.getAllRecords()
+                setProducts(result);
+            }
         }
         fetchProducts();
     }, [params.query]);
@@ -27,7 +32,7 @@ export default function SearchProduct() {
         <>
             <Navbar />
             <main className="search-main">
-                <h1>Resultados para "{params.query}"</h1>
+                {params?.query != null ? <h1>Resultados para "{params.query}"</h1> : null}
                 <div className="search-container">
                     {products === null ? (
                         <p>Carregando...</p>
