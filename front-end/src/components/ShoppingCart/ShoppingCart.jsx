@@ -3,12 +3,13 @@ import "./ShoppingCart.css";
 import { API_URL } from "../../config/api.js";
 import { IoTrash } from 'react-icons/io5';
 import { getUserById } from '../../services/userService.js';
+import { cartClearRecords, cartRemoveRecord } from '../../services/cartService.js';
+import { updateRecord } from '../../services/recordService.js';
 
 export default function ShoppingCart() {
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const [userData, setUserdata] = useState(null);
-    const [products, setProducts] = useState([]);
-    const [cart, setCart] = useState([]);
+
 
     useEffect(() => {
         async function fetchUser() {
@@ -16,6 +17,8 @@ export default function ShoppingCart() {
                 const data = await getUserById(storedUser.id);
                 setUserdata(data);
             }
+            const data = await getUserById(curUser)
+            setUserdata(data);
         }
         fetchUser();
     }, [storedUser]);
@@ -31,64 +34,40 @@ export default function ShoppingCart() {
         }
         fetchProducts();
     }, [userData]);
+ 
 
-    function handleBuy(items) {
-        let card = userData?.card_info?.number;
-        let address = userData?.address;
-        if (card && address) {
-            items.forEach(item => {
-                const url = `${API_URL}/records/${item.id}`;
-                const body = JSON.stringify({
-                    sold: item.sold + item.quantity,
-                    stock: item.stock - item.quantity
-                });
-                fetch(url, {
-                    method: 'PATCH',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: body,
-                }).catch(err => console.log(err));
-            });
+    function handleBuy(p){
+        let card = userData?.cardNumber
+        let address = userData?.address
+        if(card != null && address != null){
+            p.map(item => {
+                const body = {
+                    "sold": item.recordId.sold + item.quantity,
+                    "stock": item.recordId.stock - 1
+                }
+                updateRecord(item.recordId._id,body)
+            })
 
-            const uurl = `${API_URL}/users/${storedUser.id}`;
-            const ubody = JSON.stringify({ shopping_cart: [] });
-            fetch(uurl, {
-                method: 'PATCH',
-                headers: { 'Content-Type': 'application/json' },
-                body: ubody,
-            }).catch(err => console.log(err));
-
-            setCart([]);
-            alert("Compra realizada com sucesso!");
-        } else {
-            alert("Cartão ou endereço ausentes");
+            cartClearRecords(curUser);
+            alert("compra realizada com sucesso")
+        }
+        else{
+            alert("cartão ou endereço ausentes")
         }
     }
 
     const handleDelete = (productId) => {
-        const updatedCart = cart.filter(item => Number(item.productId) !== Number(productId));
-        setCart(updatedCart);
-
-        const url = `${API_URL}/users/${storedUser.id}`;
-        const body = JSON.stringify({ shopping_cart: updatedCart });
-        fetch(url, {
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
-            body: body,
-        }).catch(err => console.log(err));
+        cartRemoveRecord(curUser,productId);
     };
 
-    if (!userData || !Array.isArray(cart)) return <div className="cart-loading">Carregando...</div>;
+    if (!userData) return <div className="cart-loading">Carregando...</div>
 
-    const filteredProducts = cart.map(cartItem => {
-        const product = products.find(record => Number(record.id) === Number(cartItem.productId));
-        if (!product) return null;
-        return { ...product, quantity: cartItem.quantity };
-    }).filter(Boolean);
 
-    const productPrice = filteredProducts.reduce((sum, product) => sum + product.price * product.quantity, 0);
-    const frete = 10.00;
-    const total = productPrice + frete;
+        const productPrice = userData.shoppingCart.reduce((sum, product) => sum + product.recordId.price*product.quantity, 0);
+        const frete = 10.00;
+        const total = productPrice + frete;
 
+    
     return (
         <div className="cart-page">
             <div className="page-header">
@@ -96,7 +75,7 @@ export default function ShoppingCart() {
             </div>
 
             <div className="cart-content">
-                <div className="table-container">
+                 <div className="table-container">
                     <table className="cart-table">
                         <thead>
                             <tr>
@@ -110,17 +89,19 @@ export default function ShoppingCart() {
                             </tr>
                         </thead>
                         <tbody>
-                            {filteredProducts.map(product => (
-                                <tr key={product.id}>
-                                    <td>{product.title}</td>
-                                    <td>{product.artist}</td>
-                                    <td>{product.year}</td>
-                                    <td>{product.genre.join(", ")}</td>
-                                    <td>R$ {product.price.toFixed(2)}</td>
-                                    <td>{product.quantity}</td>
+                            {userData.shoppingCart.map(product => (
+                                <tr key={product._id}>
+                                    <td>{product.recordId.title}</td>
+                                    <td>{product.recordId.artist}</td>
+                                    <td>{product.recordId.year}</td>
+                                    <td>{product.recordId.genre.join(", ")}</td>
+                                    <td>R$ {product.recordId.price.toFixed(2)}</td>
+                                    <td className={product.recordId.stock === 0 ? 'out-of-stock' : ''}>
+                                        {product.quantity}
+                                    </td>
                                     <td>
                                         <button
-                                            onClick={() => handleDelete(product.id)}
+                                            onClick={() => handleDelete(product.recordId._id)}
                                             className="action-btn delete"
                                         >
                                             <IoTrash />
@@ -130,7 +111,7 @@ export default function ShoppingCart() {
                             ))}
                         </tbody>
                     </table>
-                </div>
+                </div> 
 
                 <div className="cart-summary">
                     <div className="summary-item">
@@ -146,9 +127,7 @@ export default function ShoppingCart() {
                         <span>Total:</span>
                         <span>R$ {total.toFixed(2)}</span>
                     </div>
-                    <button onClick={() => handleBuy(filteredProducts)} className="checkout-btn">
-                        Finalizar Compra
-                    </button>
+                    <button onClick={()=>handleBuy(userData.shoppingCart)} className="checkout-btn">Finalizar Compra</button>
                 </div>
             </div>
         </div>
