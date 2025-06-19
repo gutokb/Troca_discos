@@ -186,7 +186,7 @@ export async function create(req, res) {
 
                 // Clean up uploaded files if product creation fails
                 if (req.files) {
-                    // await cleanupFiles(req.files);
+                    await cleanupFiles(req.files);
                 }
 
                 res.status(500).json({

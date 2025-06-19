@@ -1,5 +1,5 @@
 import {User, Record, Sale} from "../model/models.js"
-
+import * as fs from 'fs/promises';
 
 
 export async function createRecord(recordData) {
@@ -79,6 +79,10 @@ export async function updateRecord(recordId, recordData) {
 
 export async function deleteRecord(recordId) {
     try {
+        const record = await getRecordById(recordId);
+        for (const track of record.tracklist) {
+            await fs.unlink(track.filePath);
+        }
         return await Record.findByIdAndDelete(recordId);
     }
     catch (err) {

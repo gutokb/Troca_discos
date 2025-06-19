@@ -187,10 +187,9 @@ export default function ProductPage() {
                     setError(true)
                     setErrorMessage(result.error)
                 }
-                forceReload();
             }
         }
-
+        forceReload()
         setShowModal(false);
     };
 
