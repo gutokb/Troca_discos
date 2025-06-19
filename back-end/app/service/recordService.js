@@ -5,9 +5,8 @@ import {User, Record, Sale} from "../model/models.js"
 export async function createRecord(recordData) {
     try{
         const newRecord = new Record(recordData)
-        console.log(newRecord);
-        await newRecord.save();
-        return newRecord;
+        const saved = await newRecord.save();
+        return saved;
     }
     catch (err) {
         console.log(err.message);

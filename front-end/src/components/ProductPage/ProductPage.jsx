@@ -172,24 +172,21 @@ export default function ProductPage() {
                 setProducts([...products, newProduct]);
 
                 // Send FormData to backend
-                const url = `${API_URL}/echo`;
-                console.log(submissionFormData)
+                const url = `${API_URL}/records`;
                 fetch(url, {
                     method: 'POST',
                     body: submissionFormData, // Send FormData, not JSON
-                }).catch((err) => console.log(err));
-                return
+                }).catch((err) => {
+                    setError(true)
+                    setErrorMessage(err.message)
+                });
 
             } else if (modalMode === 'edit') {
-                const url = `${API_URL}/records/${selectedProduct._id}`;
-
-                // For edit, you might want to handle file updates differently
-                // This is a simplified version - you may need more complex logic
-                fetch(url, {
-                    method: 'PATCH',
-                    body: submissionFormData,
-                }).catch((err) => console.log(err));
-
+                const result = await recordService.updateRecord(selectedProduct._id, productData);
+                if (result?.error) {
+                    setError(true)
+                    setErrorMessage(result.error)
+                }
                 forceReload();
             }
         }
@@ -364,59 +361,62 @@ export default function ProductPage() {
                                 />
                             </div>
 
-                            {/* Tracklist Section */}
-                            <div className="form-group form-track">
-                                <label>Adicionar Faixa:</label>
-                                <input
-                                    id="track-title-input"
-                                    type="text"
-                                    placeholder="Título da faixa"
-                                    disabled={modalMode === 'view'}
-                                />
-                                <button
-                                    type="button"
-                                    disabled={modalMode === 'view'}
-                                    onClick={addTrack}
-                                >
-                                    <IoAdd/>
-                                </button>
-                            </div>
+                            {modalMode === "create" && <div>
 
-                            <div className="form-group">
-                                <input
-                                    id="track-file-input"
-                                    type="file"
-                                    accept="audio/*"
-                                    disabled={modalMode === 'view'}
-                                />
-                            </div>
-
-                            {/* Display Current Tracks */}
-                            {currentTracks.length > 0 && (
-                                <div className="tracks-list">
-                                    <h4>Faixas do Álbum:</h4>
-                                    <ul>
-                                        {currentTracks.map((track) => (
-                                            <li key={track._id} className="track-list-item">
-                                                <span className="track-number">{track.trackNumber}.</span>
-                                                <span className="track-title">{track.title}</span>
-                                                {track.file && (
-                                                    <span className="track-file-name">({track.file.name})</span>
-                                                )}
-                                                {modalMode !== "view" && (
-                                                    <button
-                                                        className="track-list-button"
-                                                        type="button"
-                                                        onClick={() => removeTrack(track._id)}
-                                                    >
-                                                        <IoTrash/>
-                                                    </button>
-                                                )}
-                                            </li>
-                                        ))}
-                                    </ul>
+                                {/* Tracklist Section */}
+                                <div className="form-group form-track">
+                                    <label>Adicionar Faixa:</label>
+                                    <input
+                                        id="track-title-input"
+                                        type="text"
+                                        placeholder="Título da faixa"
+                                        disabled={modalMode === 'view'}
+                                    />
+                                    <button
+                                        type="button"
+                                        disabled={modalMode === 'view'}
+                                        onClick={addTrack}
+                                    >
+                                        <IoAdd/>
+                                    </button>
                                 </div>
-                            )}
+
+                                <div className="form-group">
+                                    <input
+                                        id="track-file-input"
+                                        type="file"
+                                        accept="audio/*"
+                                        disabled={modalMode === 'view'}
+                                    />
+                                </div>
+
+                                {/* Display Current Tracks */}
+                                {currentTracks.length > 0 && (
+                                    <div className="tracks-list">
+                                        <h4>Faixas do Álbum:</h4>
+                                        <ul>
+                                            {currentTracks.map((track) => (
+                                                <li key={track._id} className="track-list-item">
+                                                    <span className="track-number">{track.trackNumber}.</span>
+                                                    <span className="track-title">{track.title}</span>
+                                                    {track.file && (
+                                                        <span className="track-file-name">({track.file.name})</span>
+                                                    )}
+                                                    {modalMode !== "view" && (
+                                                        <button
+                                                            className="track-list-button"
+                                                            type="button"
+                                                            onClick={() => removeTrack(track._id)}
+                                                        >
+                                                            <IoTrash/>
+                                                        </button>
+                                                    )}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
+                            </div>}
 
                             <div className="form-row">
                                 <div className="form-group">

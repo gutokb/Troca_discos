@@ -4,6 +4,10 @@ import res from "express/lib/response.js";
 import multer from "multer";
 import path from "path";
 import * as fs from "fs/promises";
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url); // get the resolved path to the file
+const __dirname = path.dirname(__filename); // get the name of the directory
 
 
 const storage = multer.diskStorage({
@@ -72,99 +76,51 @@ export async function getById(req, res) {
         res.status(500).json(err.message);
     }
 }
-// static async createProduct(req, res) {
-//     try {
-//         // Use multer middleware to handle multiple files
-//         const uploadMiddleware = upload.any(); // Accept any field name for files
-//
-//         uploadMiddleware(req, res, async (uploadError) => {
-//             if (uploadError) {
-//                 console.error('Upload error:', uploadError);
-//                 return res.status(400).json({
-//                     success: false,
-//                     message: `File upload error: ${uploadError.message}`
-//                 });
-//             }
-//
-//             try {
-//                 const { albumName, tracksMetadata } = req.body;
-//
-//                 // Validate required fields
-//                 if (!albumName) {
-//                     return res.status(400).json({
-//                         success: false,
-//                         message: 'Album name is required'
-//                     });
-//                 }
-//
-//                 if (!tracksMetadata) {
-//                     return res.status(400).json({
-//                         success: false,
-//                         message: 'Tracks metadata is required'
-//                     });
-//                 }
-//
-//                 // Parse tracks metadata
-//                 let tracks;
-//                 try {
-//                     tracks = JSON.parse(tracksMetadata);
-//                 } catch (parseError) {
-//                     return res.status(400).json({
-//                         success: false,
-//                         message: 'Invalid tracks metadata format'
-//                     });
-//                 }
-//
-//                 // Validate that we have uploaded files
-//                 if (!req.files || req.files.length === 0) {
-//                     return res.status(400).json({
-//                         success: false,
-//                         message: 'No audio files uploaded'
-//                     });
-//                 }
-//
-//                 // Process uploaded files and match with track metadata
-//                 const processedTracks = await ProductController.processTrackFiles(req.files, tracks);
-//
-//                 // Prepare product data
-//                 const productData = {
-//                     albumName,
-//                     tracklist: processedTracks,
-//                     // ... other product fields from req.body
-//                 };
-//
-//                 // Save product using service
-//                 const savedProduct = await ProductService.createProductWithTracklist(productData);
-//
-//                 res.status(201).json({
-//                     success: true,
-//                     message: 'Product and tracklist created successfully',
-//                     data: savedProduct
-//                 });
-//
-//             } catch (error) {
-//                 console.error('Product creation error:', error);
-//
-//                 // Clean up uploaded files if product creation fails
-//                 if (req.files) {
-//                     await ProductController.cleanupFiles(req.files);
-//                 }
-//
-//                 res.status(500).json({
-//                     success: false,
-//                     message: 'Internal server error during product creation'
-//                 });
-//             }
-//         });
-//
-//     } catch (error) {
-//         console.error('Controller error:', error);
-//         res.status(500).json({
-//             success: false,
-//             message: 'Internal server error'
-//         });
-//     }
-// }
+
+async function cleanupFiles(files) {
+    for (const file of files) {
+        try {
+            await fs.unlink(file.path);
+        } catch (error) {
+            console.error(`Error deleting file ${file.path}:`, error);
+        }
+    }
+}
+
+async function processTrackFiles(uploadedFiles, tracksMetadata) {
+    const processedTracks = [];
+
+    // Sort files by their field name to maintain order
+    const sortedFiles = uploadedFiles.sort((a, b) => {
+        const aIndex = parseInt(a.fieldname.split('_')[1]);
+        const bIndex = parseInt(b.fieldname.split('_')[1]);
+        return aIndex - bIndex;
+    });
+
+    for (let i = 0; i < sortedFiles.length; i++) {
+        const file = sortedFiles[i];
+        const trackMetadata = tracksMetadata[i];
+
+        if (!trackMetadata) {
+            throw new Error(`Missing metadata for track ${i + 1}`);
+        }
+
+        processedTracks.push({
+            trackNumber: trackMetadata.trackNumber,
+            title: trackMetadata.title,
+            filePath: file.path,
+            fileName: file.filename,
+            originalName: file.originalname,
+            mimeType: file.mimetype,
+            fileSize: file.size,
+            duration: null // Can be populated later with audio analysis
+        });
+    }
+
+    return processedTracks;
+}
+
+
 export async function create(req, res) {
 
     try {
@@ -181,7 +137,7 @@ export async function create(req, res) {
             }
 
             try {
-                const { albumName, tracksMetadata } = req.body;
+                const { title, tracksMetadata } = req.body;
 
                 // Parse tracks metadata
                 let tracks;
@@ -195,25 +151,29 @@ export async function create(req, res) {
                 }
 
                 // Validate that we have uploaded files
-                if (!req.files || req.files.length === 0) {
-                    return res.status(400).json({
-                        success: false,
-                        message: 'No audio files uploaded'
-                    });
-                }
+                // if (!req.files || req.files.length === 0) {
+                //     return res.status(400).json({
+                //         success: false,
+                //         message: 'No audio files uploaded'
+                //     });
+                // }
 
                 // Process uploaded files and match with track metadata
-                const processedTracks = await ProductController.processTrackFiles(req.files, tracks);
+                const processedTracks = await processTrackFiles(req.files, tracks);
 
                 // Prepare product data
                 const productData = {
-                    albumName,
+                    title : title,
                     tracklist: processedTracks,
-                    // ... other product fields from req.body
-                };
+                    artist : req.body.artist,
+                    year : Number(req.body.year),
+                    genre : JSON.parse(req.body.genre),
+                    price : Number(req.body.price),
+                    stock : Number(req.body.stock),
+                    coverImgPath: req.body.coverImgPath,
 
-                // Save product using service
-                const savedProduct = await ProductService.createProductWithTracklist(productData);
+                };
+                const savedProduct = await recordService.createRecord(productData);
 
                 res.status(201).json({
                     success: true,
@@ -226,7 +186,7 @@ export async function create(req, res) {
 
                 // Clean up uploaded files if product creation fails
                 if (req.files) {
-                    await ProductController.cleanupFiles(req.files);
+                    // await cleanupFiles(req.files);
                 }
 
                 res.status(500).json({
@@ -244,16 +204,6 @@ export async function create(req, res) {
         });
     }
 
-
-
-    const recordData = req.body;
-    try {
-        const createdRecord = await recordService.createRecord(recordData);
-        res.status(201).json(createdRecord);
-    }
-    catch (err) {
-        res.status(400).json({ error: err.message });
-    }
 }
 
 export async function update(req, res) {
