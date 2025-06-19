@@ -25,8 +25,6 @@ const recordSchema = new Schema({
     }
 })
 
-
-
 const userSchema = new Schema({
     name: {type:String, required:true, maxLength:255},
     cpf: {

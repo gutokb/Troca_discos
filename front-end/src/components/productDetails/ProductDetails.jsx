@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { getRecordById } from '../../services/recordService.js';
 import { getUserById } from '../../services/userService.js';
 import { CartAddRecord, cartSetQuantityRecord } from '../../services/cartService.js';
+import AudioPlayer from "./AudioPlayer.jsx";
 
 export default function ProductDetails({ productID }) {
     const [productData, setProductData] = useState(null);
@@ -139,31 +140,33 @@ export default function ProductDetails({ productID }) {
             <div className="tracklist-container">
                 <h3 className="tracklist-title">Faixas</h3>
                 <div className="tracklist">
-                    {productData.tracks && productData.tracks.map((track) => (
+                    {productData.tracklist && productData.tracklist.map((track) => (
                         <div key={track.id} className="track-item">
-                            <audio
-                                ref={el => audioRefs.current[track.id] = el}
-                                src={`/audio/track-${track.id}.mp3`}
-                                onEnded={() => setCurrentTrack(null)}
-                                onError={(e) => console.error(`Error loading track ${track.id}:`, e)}
-                            />
-                            <button
-                                className={`play-btn ${currentTrack?.id === track.id ? 'playing' : ''}`}
-                                onClick={() =>
-                                    currentTrack?.id === track.id
-                                        ? pauseTrack()
-                                        : playTrack(track)
-                                }
-                            >
-                                {currentTrack?.id === track.id ? '⏸️' : '▶️'}
-                            </button>
+                            <p>{`${track.trackNumber}. ${track.title}`}</p>
+                            <AudioPlayer fileName={track.filePath.split("/").at(-1)} />
+                        {/*    <audio*/}
+                        {/*        ref={el => audioRefs.current[track.id] = el}*/}
+                        {/*        src={`/audio/track-${track.id}.mp3`}*/}
+                        {/*        onEnded={() => setCurrentTrack(null)}*/}
+                        {/*        onError={(e) => console.error(`Error loading track ${track.id}:`, e)}*/}
+                        {/*    />*/}
+                        {/*    <button*/}
+                        {/*        className={`play-btn ${currentTrack?.id === track.id ? 'playing' : ''}`}*/}
+                        {/*        onClick={() =>*/}
+                        {/*            currentTrack?.id === track.id*/}
+                        {/*                ? pauseTrack()*/}
+                        {/*                : playTrack(track)*/}
+                        {/*        }*/}
+                        {/*    >*/}
+                        {/*        {currentTrack?.id === track.id ? '⏸️' : '▶️'}*/}
+                        {/*    </button>*/}
 
-                            <div className="track-info">
-                                <span className="track-title">{track.title}</span>
-                                <span className="track-duration">{track.duration}</span>
-                            </div>
-                        </div>
-                    ))}
+                        {/*    <div className="track-info">*/}
+                        {/*        <span className="track-title">{track.title}</span>*/}
+                        {/*        <span className="track-duration">{track.duration}</span>*/}
+                        {/*    </div>*/}
+                        </div>))
+                    }
                 </div>
             </div>
         </div>

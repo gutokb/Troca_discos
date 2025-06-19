@@ -8,6 +8,6 @@ const router = express.Router();
 * body = {"filePath" : <path>} <path> is the one inside the tracklist
 * */
 
-router.get("/", audioController.getTrack)
+router.get("/:fileName", audioController.getTrack)
 
 export default router;
