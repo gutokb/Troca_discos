@@ -13,6 +13,6 @@ const config  = {
 
 // Detecta automaticamente com base na URL
 const isLocalhost = window.location.hostname === "localhost";
-const curConfig = isLocalhost ? config.dev : config.prod;
+const curConfig = isLocalhost ? config.prod : config.prod;
 
 export const API_URL = curConfig.API_URL;
