@@ -3,7 +3,7 @@ import * as cartService from '../service/cartService.js';
 
 export async function addToCart(req, res) {
     try {
-        if (!req.params.user || req.body.quantity ||  req.body.recordId) {
+        if (!req.params.user || !req.body.quantity ||  !req.body.recordId) {
             res.status(400).end()
             return
         }
@@ -18,7 +18,7 @@ export async function addToCart(req, res) {
 
 export async function removeFromCart(req, res) {
     try {
-        if (!req.params.user || req.body.quantity ||  req.body.recordId) {
+        if (!req.params.user || !req.body.quantity ||  !req.body.recordId) {
             res.status(400).end()
             return
         }
@@ -33,7 +33,7 @@ export async function removeFromCart(req, res) {
 
 export async function updateQuantity(req, res) {
     try {
-        if (!req.params.user || req.body.quantity ||  req.body.recordId) {
+        if (!req.params.user || !req.body.quantity ||  !req.body.recordId) {
             res.status(400).end()
             return
         }
@@ -47,7 +47,7 @@ export async function updateQuantity(req, res) {
 }
 export async function clearCart(req, res) {
     try {
-        if (!req.params.user || req.body.quantity ||  req.body.recordId) {
+        if (!req.params.user || !req.body.quantity ||  !req.body.recordId) {
             res.status(400).end()
             return
         }

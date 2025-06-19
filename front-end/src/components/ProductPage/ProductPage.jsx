@@ -176,7 +176,8 @@ export default function ProductPage() {
                 fetch(url, {
                     method: 'POST',
                     body: submissionFormData, // Send FormData, not JSON
-                }).catch((err) => {
+                }).then(() => forceReload())
+                    .catch((err) => {
                     setError(true)
                     setErrorMessage(err.message)
                 });

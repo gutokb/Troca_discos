@@ -32,7 +32,7 @@ export async function getRecordsBySearch(search) {
         return {error : "Não encontrado"}
     }
 }
-
+// Olha eu n usei pq virou putaria o POST com os arquivos de audio, so deus sabe como aquela porra ta funcionando
 export async function createRecord(recordData) {
     try {
         const result = await axios.post(API_URL + "/records", recordData);

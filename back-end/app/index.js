@@ -4,6 +4,7 @@ import express from "express";
 import userRouter from "./route/userRoutes.js";
 import cartRouter from "./route/cartRoutes.js";
 import recordRouter from "./route/recordRoutes.js";
+import audioRouter from "./route/audioRoutes.js";
 import cors from "cors"
 
 
@@ -48,10 +49,7 @@ async function main() {
     app.use("/api/users", userRouter);
     app.use("api/cart", cartRouter);
     app.use("/api/records", recordRouter);
-    app.post("/api/echo", (req, res) => {
-        console.log(req.body);
-        res.status(200).json(req.body);
-    })
+    app.use("/api/audio", audioRouter)
     app.listen(process.env.PORT, (err) => {console.log(err)})
 }
 
