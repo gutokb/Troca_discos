@@ -10,9 +10,7 @@ import AudioPlayer from "./AudioPlayer.jsx";
 export default function ProductDetails({ productID }) {
     const [productData, setProductData] = useState(null);
     const [userData, setUserData] = useState(null);
-    const [currentTrack, setCurrentTrack] = useState(null);
     const [cartQuantity, setCartQuantity] = useState(1);
-    const audioRefs = useRef({});
     const navigate = useNavigate();
     const quantityRef = useRef(null); 
 
@@ -57,32 +55,7 @@ export default function ProductDetails({ productID }) {
         fetchUser();
     };
 
-    const playTrack = async (track) => {
-        try {
-            if (currentTrack) {
-                const currentAudio = audioRefs.current[currentTrack.id];
-                if (currentAudio && !currentAudio.paused) {
-                    currentAudio.pause();
-                }
-            }
 
-            const audio = audioRefs.current[track.id];
-            await audio.play();
-            setCurrentTrack(track);
-        } catch (error) {
-            console.error('Playback failed:', error);
-        }
-    };
-
-    const pauseTrack = () => {
-        if (currentTrack) {
-            const audio = audioRefs.current[currentTrack.id];
-            if (audio) {
-                audio.pause();
-                setCurrentTrack(null);
-            }
-        }
-    };
 
     if (!productData) {
         return <div className="product-loading">Carregando...</div>;
@@ -144,27 +117,6 @@ export default function ProductDetails({ productID }) {
                         <div key={track.id} className="track-item">
                             <p>{`${track.trackNumber}. ${track.title}`}</p>
                             <AudioPlayer fileName={track.filePath.split("/").at(-1)} />
-                        {/*    <audio*/}
-                        {/*        ref={el => audioRefs.current[track.id] = el}*/}
-                        {/*        src={`/audio/track-${track.id}.mp3`}*/}
-                        {/*        onEnded={() => setCurrentTrack(null)}*/}
-                        {/*        onError={(e) => console.error(`Error loading track ${track.id}:`, e)}*/}
-                        {/*    />*/}
-                        {/*    <button*/}
-                        {/*        className={`play-btn ${currentTrack?.id === track.id ? 'playing' : ''}`}*/}
-                        {/*        onClick={() =>*/}
-                        {/*            currentTrack?.id === track.id*/}
-                        {/*                ? pauseTrack()*/}
-                        {/*                : playTrack(track)*/}
-                        {/*        }*/}
-                        {/*    >*/}
-                        {/*        {currentTrack?.id === track.id ? '⏸️' : '▶️'}*/}
-                        {/*    </button>*/}
-
-                        {/*    <div className="track-info">*/}
-                        {/*        <span className="track-title">{track.title}</span>*/}
-                        {/*        <span className="track-duration">{track.duration}</span>*/}
-                        {/*    </div>*/}
                         </div>))
                     }
                 </div>

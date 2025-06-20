@@ -7,6 +7,7 @@ import "../../services/userService.js"
 import { getUserById } from '../../services/userService.js';
 import { cartClearRecords, cartRemoveRecord } from '../../services/cartService.js';
 import { updateRecord } from '../../services/recordService.js';
+import { sellCart } from "../../services/salesService.js"
 
 export default function ShoppingCart() {
     const [curUser, setCurUser] = useState(JSON.parse(localStorage.getItem("user")).id);
@@ -24,28 +25,26 @@ export default function ShoppingCart() {
 
  
 
-    function handleBuy(p){
+    async function handleBuy(p){
   
-        if(userData?.card_info && userData?.adress){
-            p.map(item => {
-                const body = {
-                    "sold": item.recordId.sold + item.quantity,
-                    "stock": item.recordId.stock - 1
-                }
-                updateRecord(item.recordId._id,body)
-            })
-
-            cartClearRecords(curUser);
-            setCart([]);
-            alert("compra realizada com sucesso")
+        if(userData?.card_info && userData?.address){
+            const result = await sellCart(userData._id);
+            if (!result?.error){
+                alert("compra realizada com sucesso")
+                setCart([]);
+                // await cartClearRecords(curUser);
+            }
+            else {
+                alert(result.error)
+            }
         }
         else{
             alert("cartão ou endereço ausentes")
         }
     }
 
-    const handleDelete = (productId) => {
-        cartRemoveRecord(curUser,productId);
+    const handleDelete = async (productId) => {
+        await cartRemoveRecord(curUser,productId);
         setCart(cart.filter(item => item.recordId._id != productId))
     };
 
