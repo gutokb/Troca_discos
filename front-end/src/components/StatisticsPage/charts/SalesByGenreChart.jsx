@@ -1,13 +1,13 @@
 import {Pie} from 'react-chartjs-2';
 
-const SalesByGenreChart = () => {
+const SalesByGenreChart = ({labels, values}) => {
 
     // Mock data, when back end is implemented will fetch
     const data = {
-        labels: ['Rock', 'Jazz', 'Metal', "Disco", 'Samba'],
+        labels: labels,
         datasets: [
             {
-                data: [60, 35, 20, 40, 23],
+                data: values,
                 backgroundColor: [
                     '#FF6384',
                     '#36A2EB',

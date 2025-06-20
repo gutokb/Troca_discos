@@ -13,6 +13,7 @@ import cartRouter from "./route/cartRoutes.js";
 import recordRouter from "./route/recordRoutes.js";
 import audioRouter from "./route/audioRoutes.js";
 import salesRouter from "./route/salesRoutes.js";
+import statsRouter from "./route/statsRoutes.js";
 
 // Importa o middleware CORS, que permite requisições de diferentes origens (ex: frontend em localhost:5173)
 import cors from "cors";
@@ -69,6 +70,7 @@ async function main() {
     app.use("/api/records", recordRouter); // Endpoints de produtos (discos)
     app.use("/api/audio", audioRouter);    // Endpoints para manipulação de áudios
     app.use("/api/sales", salesRouter)       // Endpoint para venda de produtos
+    app.use("/api/stats", statsRouter)
 
     // Inicia o servidor escutando na porta especificada no .env
     app.listen(process.env.PORT, (err) => {

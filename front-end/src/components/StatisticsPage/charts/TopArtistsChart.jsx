@@ -1,12 +1,12 @@
 import { Bar } from "react-chartjs-2";
 
-const TopArtistsChart = () => {
+const TopArtistsChart = ({labels, values}) => {
     const data = {
-        labels: ['The Beatles', 'Michael Jackson', 'Dire Straits', 'Zeca Pagodinho', 'Tim Maia', 'Bob Marley'],
+        labels: labels,
         datasets: [
             {
                 label: 'Votes',
-                data: [23, 19, 12, 8, 6, 3],
+                data: values,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.8)',
                     'rgba(54, 162, 235, 0.8)',
