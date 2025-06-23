@@ -1,0 +1,54 @@
+[{
+  "_id": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "name": "ADMIN",
+  "cpf": "066.689.751-43",
+  "email": "admin@admin.com",
+  "telephone": "67981880003",
+  "role": "ADMIN",
+  "password": "admin123",
+  "shoppingCart": [],
+  "createdAt": {
+    "$date": "2025-06-19T01:24:48.389Z"
+  },
+  "lastLoginAt": {
+    "$date": "2025-06-20T21:23:39.989Z"
+  },
+  "__v": 0,
+  "address": "rua 1234, bairro dos bompos",
+  "card_info": {
+    "number": "1234123412341234",
+    "cvv": "123",
+    "expiration": "12/25"
+  }
+},
+{
+  "_id": {
+    "$oid": "6854770807bbc53530951362"
+  },
+  "name": "Augusto Cavalcante Barbosa",
+  "cpf": "066.689.751-43",
+  "email": "augustocbp@usp.br",
+  "telephone": "67981880003",
+  "role": "USER",
+  "password": "123123",
+  "shoppingCart": [
+    {
+      "quantity": 6,
+      "recordId": {
+        "$oid": "685360b8897d6ce91da4520b"
+      },
+      "_id": {
+        "$oid": "6854777c07bbc53530951373"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-06-19T20:46:00.163Z"
+  },
+  "lastLoginAt": {
+    "$date": "2025-06-19T20:46:14.433Z"
+  },
+  "__v": 0
+}]

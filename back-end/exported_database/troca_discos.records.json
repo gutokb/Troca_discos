@@ -1,0 +1,465 @@
+[{
+  "_id": {
+    "$oid": "68533facd5e07a80aa4e4773"
+  },
+  "title": "The Dark Side of the Moon",
+  "artist": "Pink Floyd",
+  "year": 1973,
+  "genre": [
+    "Progressive Rock",
+    "Psychedelic Rock"
+  ],
+  "price": 79.99,
+  "stock": 8,
+  "coverImgPath": "https://upload.wikimedia.org/wikipedia/pt/3/3b/Dark_Side_of_the_Moon.png",
+  "sold": 4,
+  "createdAt": {
+    "$date": "2025-06-18T22:37:32.237Z"
+  },
+  "__v": 0,
+  "tracklist": []
+},
+{
+  "_id": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "title": "Ashes of the Wake",
+  "artist": "Lamb Of God",
+  "year": 2005,
+  "genre": [
+    "Groove Metal"
+  ],
+  "price": 111,
+  "stock": 100,
+  "coverImgPath": "https://cdn-images.dzcdn.net/images/cover/14d44bc358592c3bff238d9b74d83e2d/0x1900-000000-80-0-0.jpg",
+  "sold": 3,
+  "tracklist": [
+    {
+      "title": "Laid to rest",
+      "filePath": "/home/felipe/Documents/Usp/2025_1/web/Troca_discos/back-end/app/uploads/audio/track-1750294712423-964027606.mp3",
+      "trackNumber": 1,
+      "_id": {
+        "$oid": "685360b8897d6ce91da4520c"
+      }
+    },
+    {
+      "title": "Hourglass",
+      "filePath": "/home/felipe/Documents/Usp/2025_1/web/Troca_discos/back-end/app/uploads/audio/track-1750294712448-475137850.mp3",
+      "trackNumber": 2,
+      "_id": {
+        "$oid": "685360b8897d6ce91da4520d"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-06-19T00:58:32.470Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6855d1d3e60274e4c17a75c4"
+  },
+  "title": "Nevermind",
+  "artist": "Nirvana",
+  "year": 1991,
+  "genre": [
+    "Grunge"
+  ],
+  "price": 79.99,
+  "stock": 9,
+  "coverImgPath": "https://upload.wikimedia.org/wikipedia/pt/3/3f/Nevermind.jpg",
+  "sold": 0,
+  "tracklist": [],
+  "createdAt": {
+    "$date": "2025-06-20T21:25:39.413Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6855d250e60274e4c17a75c9"
+  },
+  "title": "Back in Black",
+  "artist": "AC/DC",
+  "year": 69,
+  "genre": [
+    "Hard Rock"
+  ],
+  "price": 69.99,
+  "stock": 7,
+  "coverImgPath": "https://upload.wikimedia.org/wikipedia/pt/b/b6/Back_in_Black.jpg",
+  "sold": 0,
+  "tracklist": [],
+  "createdAt": {
+    "$date": "2025-06-20T21:27:44.683Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6855d2a1e60274e4c17a75e4"
+  },
+  "title": "Rumours",
+  "artist": "Fleetwood Mac",
+  "year": 1977,
+  "genre": [
+    "Rock",
+    "Soft Rock"
+  ],
+  "price": 84.99,
+  "stock": 11,
+  "coverImgPath": "https://upload.wikimedia.org/wikipedia/pt/f/fb/FMacRumours.PNG",
+  "sold": 0,
+  "tracklist": [],
+  "createdAt": {
+    "$date": "2025-06-20T21:29:05.883Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6855d34ce60274e4c17a75ed"
+  },
+  "title": "A Night At The Opera",
+  "artist": "Queen",
+  "year": 1975,
+  "genre": [
+    "Glam Rock",
+    "Progressive Rock"
+  ],
+  "price": 87.49,
+  "stock": 5,
+  "coverImgPath": "https://upload.wikimedia.org/wikipedia/pt/b/bf/A_Night_at_the_Opera_Queen.jpg",
+  "sold": 0,
+  "tracklist": [],
+  "createdAt": {
+    "$date": "2025-06-20T21:31:56.921Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6855d3aae60274e4c17a75f2"
+  },
+  "title": "OK Computer",
+  "artist": "Radiohead",
+  "year": 1997,
+  "genre": [
+    "Alternative Rock",
+    "Art Rock"
+  ],
+  "price": 91.46,
+  "stock": 7,
+  "coverImgPath": "https://upload.wikimedia.org/wikipedia/pt/2/27/Okcomputer.jpg",
+  "sold": 0,
+  "tracklist": [],
+  "createdAt": {
+    "$date": "2025-06-20T21:33:30.721Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6855d431e60274e4c17a75f7"
+  },
+  "title": "Led Zeppelin IV",
+  "artist": "Led Zeppelin ",
+  "year": 1971,
+  "genre": [
+    "Hard Rock",
+    "Blues Rock"
+  ],
+  "price": 79.99,
+  "stock": 12,
+  "coverImgPath": "https://upload.wikimedia.org/wikipedia/pt/4/4b/LedZeppelinIV.jpg",
+  "sold": 0,
+  "tracklist": [],
+  "createdAt": {
+    "$date": "2025-06-20T21:35:45.211Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6855d509e60274e4c17a7602"
+  },
+  "title": "What's Going On",
+  "artist": "Marvin Gaye",
+  "year": 1971,
+  "genre": [
+    "Soul",
+    "R&B"
+  ],
+  "price": 76.99,
+  "stock": 17,
+  "coverImgPath": "https://upload.wikimedia.org/wikipedia/en/8/84/MarvinGayeWhat%27sGoingOnalbumcover.jpg",
+  "sold": 0,
+  "tracklist": [],
+  "createdAt": {
+    "$date": "2025-06-20T21:39:21.787Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6855d563e60274e4c17a7607"
+  },
+  "title": "Kind of Blue",
+  "artist": "Mile Davis",
+  "year": 1959,
+  "genre": [
+    "Jazz",
+    "modal Jazz"
+  ],
+  "price": 78,
+  "stock": 10,
+  "coverImgPath": "https://upload.wikimedia.org/wikipedia/pt/0/04/A1437070184784091709.png",
+  "sold": 0,
+  "tracklist": [],
+  "createdAt": {
+    "$date": "2025-06-20T21:40:51.617Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6855d5bde60274e4c17a760c"
+  },
+  "title": "The miseducation of Lauryn Hill",
+  "artist": "Lauryn Hill",
+  "year": 1998,
+  "genre": [
+    "Hip Hop",
+    "Neo Soul"
+  ],
+  "price": 84.99,
+  "stock": 8,
+  "coverImgPath": "https://upload.wikimedia.org/wikipedia/en/9/99/The_Miseducation_of_Lauryn_Hill.png",
+  "sold": 0,
+  "tracklist": [],
+  "createdAt": {
+    "$date": "2025-06-20T21:42:21.953Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6855d638e60274e4c17a7611"
+  },
+  "title": "Clube da Esquina",
+  "artist": "Milton Nascimento & Lô Borges",
+  "year": 1972,
+  "genre": [
+    "MPB",
+    "Progressive MPB"
+  ],
+  "price": 88.9,
+  "stock": 1,
+  "coverImgPath": "https://upload.wikimedia.org/wikipedia/pt/c/cb/Milton_Nascimento_-_Clube_da_Esquina.jpg",
+  "sold": 0,
+  "tracklist": [],
+  "createdAt": {
+    "$date": "2025-06-20T21:44:24.552Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68569b0becb5412b02332d51"
+  },
+  "title": "Thriller",
+  "artist": "Michael Jackson",
+  "year": 1982,
+  "genre": [
+    "Pop",
+    "Rock"
+  ],
+  "price": 89.99,
+  "stock": 3,
+  "coverImgPath": "https://upload.wikimedia.org/wikipedia/pt/3/30/Michael_Jackson_-_Thriller.jpg",
+  "sold": 0,
+  "tracklist": [
+    {
+      "title": "Thriller",
+      "filePath": "C:\\Users\\gutoc\\Documents\\GitHub\\Troca_discos\\back-end\\app\\uploads\\audio\\track-1750506250529-376054381.mp3",
+      "trackNumber": 1,
+      "_id": {
+        "$oid": "68569b0becb5412b02332d52"
+      }
+    },
+    {
+      "title": "The lady in My Life",
+      "filePath": "C:\\Users\\gutoc\\Documents\\GitHub\\Troca_discos\\back-end\\app\\uploads\\audio\\track-1750506250571-919513114.mp3",
+      "trackNumber": 2,
+      "_id": {
+        "$oid": "68569b0becb5412b02332d53"
+      }
+    },
+    {
+      "title": "Billie Jean",
+      "filePath": "C:\\Users\\gutoc\\Documents\\GitHub\\Troca_discos\\back-end\\app\\uploads\\audio\\track-1750506250689-424212087.mp3",
+      "trackNumber": 3,
+      "_id": {
+        "$oid": "68569b0becb5412b02332d54"
+      }
+    },
+    {
+      "title": "Human Nature",
+      "filePath": "C:\\Users\\gutoc\\Documents\\GitHub\\Troca_discos\\back-end\\app\\uploads\\audio\\track-1750506250770-919138482.mp3",
+      "trackNumber": 4,
+      "_id": {
+        "$oid": "68569b0becb5412b02332d55"
+      }
+    },
+    {
+      "title": "P.Y.T.",
+      "filePath": "C:\\Users\\gutoc\\Documents\\GitHub\\Troca_discos\\back-end\\app\\uploads\\audio\\track-1750506250839-182999690.mp3",
+      "trackNumber": 5,
+      "_id": {
+        "$oid": "68569b0becb5412b02332d56"
+      }
+    },
+    {
+      "title": "The Girl is Mine",
+      "filePath": "C:\\Users\\gutoc\\Documents\\GitHub\\Troca_discos\\back-end\\app\\uploads\\audio\\track-1750506250932-573796075.mp3",
+      "trackNumber": 6,
+      "_id": {
+        "$oid": "68569b0becb5412b02332d57"
+      }
+    },
+    {
+      "title": "Wanna Be Startin' Somethin'",
+      "filePath": "C:\\Users\\gutoc\\Documents\\GitHub\\Troca_discos\\back-end\\app\\uploads\\audio\\track-1750506251016-459003423.mp3",
+      "trackNumber": 7,
+      "_id": {
+        "$oid": "68569b0becb5412b02332d58"
+      }
+    },
+    {
+      "title": "Beat it",
+      "filePath": "C:\\Users\\gutoc\\Documents\\GitHub\\Troca_discos\\back-end\\app\\uploads\\audio\\track-1750506251169-752813835.mp3",
+      "trackNumber": 8,
+      "_id": {
+        "$oid": "68569b0becb5412b02332d59"
+      }
+    },
+    {
+      "title": "Baby Be Mine",
+      "filePath": "C:\\Users\\gutoc\\Documents\\GitHub\\Troca_discos\\back-end\\app\\uploads\\audio\\track-1750506251280-752121503.mp3",
+      "trackNumber": 9,
+      "_id": {
+        "$oid": "68569b0becb5412b02332d5a"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-06-21T11:44:11.396Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68569c99ecb5412b02332dc3"
+  },
+  "title": "Abbey Road",
+  "artist": "The Beatles",
+  "year": 1969,
+  "genre": [
+    "Rock"
+  ],
+  "price": 92.49,
+  "stock": 4,
+  "coverImgPath": "https://upload.wikimedia.org/wikipedia/pt/3/3d/Abbey_Road.jpg",
+  "sold": 0,
+  "tracklist": [
+    {
+      "title": "Come Together",
+      "filePath": "C:\\Users\\gutoc\\Documents\\GitHub\\Troca_discos\\back-end\\app\\uploads\\audio\\track-1750506648955-760971995.mp3",
+      "trackNumber": 1,
+      "_id": {
+        "$oid": "68569c99ecb5412b02332dc4"
+      }
+    },
+    {
+      "title": "Something",
+      "filePath": "C:\\Users\\gutoc\\Documents\\GitHub\\Troca_discos\\back-end\\app\\uploads\\audio\\track-1750506649005-32559519.mp3",
+      "trackNumber": 2,
+      "_id": {
+        "$oid": "68569c99ecb5412b02332dc5"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-06-21T11:50:49.074Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6856a02aecb5412b02332e3e"
+  },
+  "title": "Random Access Memories",
+  "artist": "Daft Punk",
+  "year": 2013,
+  "genre": [
+    "Disco",
+    "Eletronic"
+  ],
+  "price": 65.99,
+  "stock": 11,
+  "coverImgPath": "https://upload.wikimedia.org/wikipedia/en/2/26/Daft_Punk_-_Random_Access_Memories.png",
+  "sold": 0,
+  "tracklist": [
+    {
+      "title": "Get Lucky",
+      "filePath": "C:\\Users\\gutoc\\Documents\\GitHub\\Troca_discos\\back-end\\app\\uploads\\audio\\track-1750507562060-900414368.mp3",
+      "trackNumber": 1,
+      "_id": {
+        "$oid": "6856a02aecb5412b02332e3f"
+      }
+    },
+    {
+      "title": "Instant Crush",
+      "filePath": "C:\\Users\\gutoc\\Documents\\GitHub\\Troca_discos\\back-end\\app\\uploads\\audio\\track-1750507562331-30635823.mp3",
+      "trackNumber": 2,
+      "_id": {
+        "$oid": "6856a02aecb5412b02332e40"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-06-21T12:06:02.407Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6856a1d1ecb5412b02332e42"
+  },
+  "title": "Charge it 2 Da Game",
+  "artist": "Silkk the Shocker",
+  "year": 1988,
+  "genre": [
+    "Gangsta Rap",
+    "Hip Hop"
+  ],
+  "price": 66.66,
+  "stock": 6,
+  "coverImgPath": "https://upload.wikimedia.org/wikipedia/en/b/b7/ChargeIt2DaGame98.jpg",
+  "sold": 0,
+  "tracklist": [
+    {
+      "title": "Give Me The World",
+      "filePath": "C:\\Users\\gutoc\\Documents\\GitHub\\Troca_discos\\back-end\\app\\uploads\\audio\\track-1750507985361-707074920.mp3",
+      "trackNumber": 1,
+      "_id": {
+        "$oid": "6856a1d1ecb5412b02332e43"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-06-21T12:13:05.424Z"
+  },
+  "__v": 0
+}]

@@ -18,7 +18,8 @@ export default function ProductDetails({ productID }) {
         async function fetchProduct() {
             const response = await getRecordById(productID);
             setProductData(response);
-            
+            response.tracklist.map(track => {console.log(track.filePath)})
+            response.tracklist.map(track => {console.log(track.filePath.replaceAll("\\", "/").split("/").at(-1))})
         }
         fetchProduct();
     }, [productID]);
@@ -116,7 +117,7 @@ export default function ProductDetails({ productID }) {
                     {productData.tracklist && productData.tracklist.map((track) => (
                         <div key={track.id} className="track-item">
                             <p>{`${track.trackNumber}. ${track.title}`}</p>
-                            <AudioPlayer fileName={track.filePath.split("/").at(-1)} />
+                            <AudioPlayer fileName={track.filePath.replaceAll("\\", "/").split("/").at(-1)} />
                         </div>))
                     }
                 </div>

@@ -96,7 +96,7 @@ O Troca Discos é uma plataforma web completa para comercialização de discos d
 Crie um arquivo `.env` na pasta `back-end/` com o seguinte conteúdo:
 
 ```env
-MONGO_URI=mongodb://127.0.0.1:27017/troca_discos
+MONGO_URI=mongodb://127.0.0.1:27017/troca_discos # ou sua url mongodb
 PORT=3001
 ```
 
@@ -112,7 +112,21 @@ cd ../back-end
 npm install
 ```
 
-### 3. Rodar o projeto
+### 3. Popular o banco de dados
+
+Para testar o projeto, são necessários dados para serem inseridos no MongoDB e arquivos de áudio.
+
+Para o mongo, os dados estão exportados em json na pasta `back-end/exported_database`, para importá-los para seu MongoDB, basta executar os seguintes comandos (o comando mongoimport é instalado juntamente com o mongodb e cria a database/coleção caso não exista):
+
+```bash
+mongoimport --uri "mongodb://localhost:27017/troca_discos" --collection records --file troca_discos.records.json --jsonArray
+mongoimport --uri "mongodb://localhost:27017/troca_discos" --collection users --file troca_discos.users.json --jsonArray
+mongoimport --uri "mongodb://localhost:27017/troca_discos" --collection sales --file troca_discos.sales.json --jsonArray
+```
+
+Para os aruqivos de áudio AUGUSTO BOTA O LINK DO DRIVE
+
+### 4. Rodar o projeto
 
 ```bash
 # Iniciar backend
