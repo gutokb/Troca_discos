@@ -172,6 +172,7 @@ export default function ProductPage() {
                 setProducts([...products, newProduct]);
 
                 // Send FormData to backend
+                console.log(submissionFormData)
                 const url = `${API_URL}/records`;
                 fetch(url, {
                     method: 'POST',

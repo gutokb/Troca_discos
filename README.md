@@ -127,6 +127,9 @@ mongoimport --uri "mongodb://localhost:27017/troca_discos" --collection sales --
 Para os aruqivos de áudio AUGUSTO BOTA O LINK DO DRIVE
 
 ### 4. Rodar o projeto
+inserir a pasta uploads descomprimida presente no seguinte drive https://drive.google.com/file/d/1Q58W5eSB5ciNTSDSrnJlXxfRzESRm3S6/view?usp=drive_link dentro da pasta back-end/app
+
+### 4. Rodar o projeto
 
 ```bash
 # Iniciar backend

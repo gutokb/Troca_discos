@@ -8,12 +8,14 @@ import { CartAddRecord, cartSetQuantityRecord } from '../../services/cartService
 import AudioPlayer from "./AudioPlayer.jsx";
 
 export default function ProductDetails({ productID }) {
+
     const [productData, setProductData] = useState(null);
     const [userData, setUserData] = useState(null);
     const [cartQuantity, setCartQuantity] = useState(1);
     const navigate = useNavigate();
     const quantityRef = useRef(null); 
 
+    
     useEffect(() => {
         async function fetchProduct() {
             const response = await getRecordById(productID);
