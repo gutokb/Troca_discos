@@ -8,17 +8,20 @@ import { CartAddRecord, cartSetQuantityRecord } from '../../services/cartService
 import AudioPlayer from "./AudioPlayer.jsx";
 
 export default function ProductDetails({ productID }) {
+
     const [productData, setProductData] = useState(null);
     const [userData, setUserData] = useState(null);
     const [cartQuantity, setCartQuantity] = useState(1);
     const navigate = useNavigate();
     const quantityRef = useRef(null); 
 
+    
     useEffect(() => {
         async function fetchProduct() {
             const response = await getRecordById(productID);
             setProductData(response);
-            
+            response.tracklist.map(track => {console.log(track.filePath)})
+            response.tracklist.map(track => {console.log(track.filePath.replaceAll("\\", "/").split("/").at(-1))})
         }
         fetchProduct();
     }, [productID]);
@@ -116,7 +119,7 @@ export default function ProductDetails({ productID }) {
                     {productData.tracklist && productData.tracklist.map((track) => (
                         <div key={track.id} className="track-item">
                             <p>{`${track.trackNumber}. ${track.title}`}</p>
-                            <AudioPlayer fileName={track.filePath.split("/").at(-1)} />
+                            <AudioPlayer fileName={track.filePath.replaceAll("\\", "/").split("/").at(-1)} />
                         </div>))
                     }
                 </div>

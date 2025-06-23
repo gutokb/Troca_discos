@@ -11,6 +11,7 @@ export default function ProfilePage() {
     const [curMode, setMode] = useState("view");
     const navigate = useNavigate()
 
+
     useEffect(() => {
         async function fetchUser() {
             const data = await userService.getUserById(curUser);
