@@ -124,10 +124,8 @@ mongoimport --uri "mongodb://localhost:27017/troca_discos" --collection users --
 mongoimport --uri "mongodb://localhost:27017/troca_discos" --collection sales --file troca_discos.sales.json --jsonArray
 ```
 
-Para os aruqivos de áudio AUGUSTO BOTA O LINK DO DRIVE
+Para os aruqivos de áudio inserir a pasta uploads descomprimida presente no seguinte drive https://drive.google.com/file/d/1Q58W5eSB5ciNTSDSrnJlXxfRzESRm3S6/view?usp=drive_link dentro da pasta back-end/app
 
-### 4. Rodar o projeto
-inserir a pasta uploads descomprimida presente no seguinte drive https://drive.google.com/file/d/1Q58W5eSB5ciNTSDSrnJlXxfRzESRm3S6/view?usp=drive_link dentro da pasta back-end/app
 
 ### 4. Rodar o projeto
 
