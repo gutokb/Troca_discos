@@ -71,7 +71,7 @@ export default function StatisticsPage() {
                         <IoTrendingUp />
                     </div>
                     <div className="stat-info">
-                        <h3 className="stat-number">+{monthlyGrowth}%</h3>
+                        <h3 className="stat-number">{`${monthlyGrowth>0?"+":""}${monthlyGrowth}`}%</h3>
                         <p className="stat-label">Crescimento Mensal</p>
                     </div>
                 </div>

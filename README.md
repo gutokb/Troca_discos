@@ -141,7 +141,7 @@ cd front-end
 npm run dev
 ```
 
-Acesse o frontend em `http://localhost:5173`
+Acesse o frontend em `http://localhos[app](back-end/app)t:5173`
 
 ---
 

@@ -4,16 +4,17 @@ import * as userService from "../service/userService.js"
 import * as cartService from "../service/cartService.js"
 
 
-async function sellOne(user, record) {
+async function sellOne(user, record, quantity) {
     try {
-        const newSale =  new Sale({
-            buyerId : user._id,
-            recordId : record._id,
-            price : record.price
-        })
-        await recordService.updateRecord(record._id,  {stock : record.stock - 1, sold : record.sold + 1});
-        await newSale.save();
-        return newSale;
+        for (let i = 0; i < quantity; i++) {
+            const newSale =  new Sale({
+                buyerId : user._id,
+                recordId : record._id,
+                price : record.price
+            })
+            await newSale.save();
+        }
+        await recordService.updateRecord(record._id,  {stock : record.stock - quantity, sold : record.sold + quantity});
     }
     catch (error) {
         console.log(error);
@@ -29,9 +30,7 @@ export async function sellALl(user) {
             if (item.quantity > item.recordId.stock) {
                 throw new Error("Estoque insuficiente")
             }
-            for (let i = 0; i < item.quantity; i++) {
-                await sellOne(user, item.recordId);
-            }
+            await sellOne(user, item.recordId, item.quantity);
         }
         await cartService.clearCart(user._id);
     }

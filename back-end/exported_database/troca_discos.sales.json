@@ -10,7 +10,7 @@
   },
   "price": 111,
   "timestamp": {
-    "$date": "2025-06-20T15:07:10.835Z"
+    "$date": "2025-03-09T22:14:51.166Z"
   },
   "__v": 0
 },
@@ -26,7 +26,7 @@
   },
   "price": 111,
   "timestamp": {
-    "$date": "2025-06-20T15:39:24.498Z"
+    "$date": "2025-03-31T20:29:38.068Z"
   },
   "__v": 0
 },
@@ -42,7 +42,7 @@
   },
   "price": 111,
   "timestamp": {
-    "$date": "2025-06-20T15:39:24.702Z"
+    "$date": "2025-01-03T23:51:52.070Z"
   },
   "__v": 0
 },
@@ -58,7 +58,7 @@
   },
   "price": 111,
   "timestamp": {
-    "$date": "2025-06-20T15:39:24.906Z"
+    "$date": "2025-04-11T09:11:28.176Z"
   },
   "__v": 0
 },
@@ -74,7 +74,7 @@
   },
   "price": 111,
   "timestamp": {
-    "$date": "2025-06-20T15:39:25.111Z"
+    "$date": "2025-05-21T08:45:15.736Z"
   },
   "__v": 0
 },
@@ -90,7 +90,7 @@
   },
   "price": 111,
   "timestamp": {
-    "$date": "2025-06-20T15:39:25.166Z"
+    "$date": "2025-06-19T22:12:41.335Z"
   },
   "__v": 0
 },
@@ -106,7 +106,7 @@
   },
   "price": 79.99,
   "timestamp": {
-    "$date": "2025-06-20T15:43:04.492Z"
+    "$date": "2025-06-07T13:01:57.411Z"
   },
   "__v": 0
 },
@@ -122,7 +122,7 @@
   },
   "price": 79.99,
   "timestamp": {
-    "$date": "2025-06-20T15:43:04.675Z"
+    "$date": "2025-05-02T19:52:24.906Z"
   },
   "__v": 0
 },
@@ -138,7 +138,7 @@
   },
   "price": 79.99,
   "timestamp": {
-    "$date": "2025-06-20T15:43:04.867Z"
+    "$date": "2025-01-06T21:26:55.369Z"
   },
   "__v": 0
 },
@@ -154,7 +154,7 @@
   },
   "price": 79.99,
   "timestamp": {
-    "$date": "2025-06-20T15:43:05.041Z"
+    "$date": "2025-03-08T21:38:25.359Z"
   },
   "__v": 0
 },
@@ -170,7 +170,1911 @@
   },
   "price": 79.99,
   "timestamp": {
-    "$date": "2025-06-20T15:43:05.175Z"
+    "$date": "2025-05-21T20:06:25.119Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e586375e2ddbdc85306f"
+  },
+  "recordId": {
+    "$oid": "6855d250e60274e4c17a75c9"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 69.99,
+  "timestamp": {
+    "$date": "2025-01-23T21:00:48.191Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e587375e2ddbdc853072"
+  },
+  "recordId": {
+    "$oid": "6855d250e60274e4c17a75c9"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 69.99,
+  "timestamp": {
+    "$date": "2025-05-05T03:02:56.314Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e587375e2ddbdc853075"
+  },
+  "recordId": {
+    "$oid": "6855d250e60274e4c17a75c9"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 69.99,
+  "timestamp": {
+    "$date": "2025-05-19T17:43:29.475Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e587375e2ddbdc853078"
+  },
+  "recordId": {
+    "$oid": "6855d250e60274e4c17a75c9"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 69.99,
+  "timestamp": {
+    "$date": "2025-02-14T13:09:08.428Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e590375e2ddbdc853099"
+  },
+  "recordId": {
+    "$oid": "6855d34ce60274e4c17a75ed"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 87.49,
+  "timestamp": {
+    "$date": "2025-04-10T21:52:40.010Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e590375e2ddbdc85309c"
+  },
+  "recordId": {
+    "$oid": "6855d34ce60274e4c17a75ed"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 87.49,
+  "timestamp": {
+    "$date": "2025-06-14T20:28:33.121Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e590375e2ddbdc85309f"
+  },
+  "recordId": {
+    "$oid": "6855d34ce60274e4c17a75ed"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 87.49,
+  "timestamp": {
+    "$date": "2025-05-18T17:18:27.117Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e59b375e2ddbdc8530c4"
+  },
+  "recordId": {
+    "$oid": "6856a1d1ecb5412b02332e42"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 66.66,
+  "timestamp": {
+    "$date": "2025-05-16T13:01:36.149Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e59b375e2ddbdc8530c7"
+  },
+  "recordId": {
+    "$oid": "6856a1d1ecb5412b02332e42"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 66.66,
+  "timestamp": {
+    "$date": "2025-01-27T03:35:15.851Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e59b375e2ddbdc8530ca"
+  },
+  "recordId": {
+    "$oid": "6856a1d1ecb5412b02332e42"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 66.66,
+  "timestamp": {
+    "$date": "2025-05-03T22:01:18.184Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e59b375e2ddbdc8530cd"
+  },
+  "recordId": {
+    "$oid": "6856a1d1ecb5412b02332e42"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 66.66,
+  "timestamp": {
+    "$date": "2025-01-30T21:37:35.150Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5a7375e2ddbdc853108"
+  },
+  "recordId": {
+    "$oid": "68569c99ecb5412b02332dc3"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 92.49,
+  "timestamp": {
+    "$date": "2025-01-20T16:13:50.207Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5a7375e2ddbdc85310b"
+  },
+  "recordId": {
+    "$oid": "68569c99ecb5412b02332dc3"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 92.49,
+  "timestamp": {
+    "$date": "2025-01-21T08:58:02.797Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5b1375e2ddbdc85312f"
+  },
+  "recordId": {
+    "$oid": "6855d5bde60274e4c17a760c"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 84.99,
+  "timestamp": {
+    "$date": "2025-04-13T14:50:28.897Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5b1375e2ddbdc853132"
+  },
+  "recordId": {
+    "$oid": "6855d5bde60274e4c17a760c"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 84.99,
+  "timestamp": {
+    "$date": "2025-01-11T07:00:08.205Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5b1375e2ddbdc853135"
+  },
+  "recordId": {
+    "$oid": "6855d5bde60274e4c17a760c"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 84.99,
+  "timestamp": {
+    "$date": "2025-06-20T20:24:14.026Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5b2375e2ddbdc853138"
+  },
+  "recordId": {
+    "$oid": "6855d5bde60274e4c17a760c"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 84.99,
+  "timestamp": {
+    "$date": "2025-06-22T18:35:27.144Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5b2375e2ddbdc85313b"
+  },
+  "recordId": {
+    "$oid": "6855d5bde60274e4c17a760c"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 84.99,
+  "timestamp": {
+    "$date": "2025-03-20T00:20:28.435Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5bf375e2ddbdc853162"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-01-12T21:01:42.228Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5bf375e2ddbdc853165"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2024-12-29T03:02:15.511Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c0375e2ddbdc853168"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2024-12-26T08:25:56.679Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c0375e2ddbdc85316b"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-02-07T19:15:47.607Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c0375e2ddbdc85316e"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-03-06T13:39:58.695Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c0375e2ddbdc853171"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-01-29T02:28:48.210Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c0375e2ddbdc853177"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-02-21T04:27:06.721Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c0375e2ddbdc85317b"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-03-23T15:21:28.092Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c0375e2ddbdc85317f"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-03-06T22:57:03.559Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c0375e2ddbdc853181"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-04-02T00:08:26.344Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c0375e2ddbdc853185"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-05-26T05:59:43.700Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c0375e2ddbdc853187"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-05-31T14:15:04.612Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c0375e2ddbdc85318b"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2024-12-26T00:39:16.486Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c1375e2ddbdc85318d"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-01-16T01:47:57.511Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c1375e2ddbdc853191"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-01-19T01:51:34.432Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c1375e2ddbdc853193"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-04-27T08:06:24.365Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c1375e2ddbdc853197"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-04-01T15:35:34.688Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c1375e2ddbdc853199"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-02-27T22:17:22.818Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c1375e2ddbdc85319d"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2024-12-30T12:34:41.256Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c1375e2ddbdc85319f"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-02-21T11:37:32.263Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c1375e2ddbdc8531a3"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-05-03T17:55:47.303Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c1375e2ddbdc8531a5"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-03-18T05:58:50.800Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c2375e2ddbdc8531a9"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-04-09T21:28:26.333Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c2375e2ddbdc8531ab"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-06-02T00:27:57.952Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c2375e2ddbdc8531af"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-05-25T10:54:51.854Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c2375e2ddbdc8531b1"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-03-31T05:39:26.507Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c2375e2ddbdc8531b5"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-05-24T15:22:10.741Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c2375e2ddbdc8531b7"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-02-18T22:50:23.960Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c2375e2ddbdc8531bc"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-06-02T07:10:34.203Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c2375e2ddbdc8531c0"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-01-04T05:26:54.108Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c2375e2ddbdc8531c5"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-04-08T06:48:39.975Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c2375e2ddbdc8531c8"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-05-19T23:03:17.198Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c2375e2ddbdc8531cb"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-03-09T07:18:34.495Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c2375e2ddbdc8531ce"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-01-05T15:32:18.667Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c2375e2ddbdc8531d1"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-03-26T02:05:49.013Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c2375e2ddbdc8531d4"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-04-14T08:13:08.283Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c2375e2ddbdc8531d8"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-03-22T04:45:36.500Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c2375e2ddbdc8531da"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-03-01T00:12:51.134Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c2375e2ddbdc8531dc"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2024-12-27T04:59:31.147Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c2375e2ddbdc8531e1"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2024-12-24T14:51:56.183Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c2375e2ddbdc8531e3"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-01-11T02:52:37.071Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c2375e2ddbdc8531e5"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-03-21T06:40:18.426Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c2375e2ddbdc8531e9"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-03-27T18:52:50.794Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c2375e2ddbdc8531ec"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-06-17T18:50:01.035Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c2375e2ddbdc8531ef"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-02-22T07:37:26.165Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c2375e2ddbdc8531f2"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-04-05T01:22:17.466Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c2375e2ddbdc8531f5"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-06-07T00:18:26.169Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc8531f8"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-05-16T11:19:23.886Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc8531fb"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-03-14T07:01:19.539Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc8531fe"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-03-19T00:39:55.464Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc853201"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-06-05T00:36:18.688Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc853204"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-05-28T23:53:21.511Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc853207"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-05-29T11:12:23.958Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc85320a"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-02-03T04:18:49.502Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc85320c"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-01-06T16:56:56.761Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc853211"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-01-10T16:08:42.936Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc853213"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-04-30T13:01:09.526Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc853215"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-01-03T09:12:43.821Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc85321b"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-02-01T21:55:09.302Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc85321d"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-02-25T11:05:01.556Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc853224"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-04-22T11:25:14.840Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc853222"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2024-12-29T21:06:00.710Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc853228"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-06-11T23:53:58.033Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc85322a"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-06-24T11:39:07.851Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc85322e"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-06-17T17:21:03.944Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc853230"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-02-12T07:43:55.522Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc853234"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-06-18T14:38:36.553Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc853236"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-01-18T11:54:54.810Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc85323a"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-03-18T17:38:55.677Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc85323c"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-01-31T07:33:33.359Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc853240"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-02-11T07:18:10.848Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc853244"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-03-18T18:32:06.887Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc853247"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-05-17T22:37:53.500Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc85324a"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-01-06T10:08:36.015Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc85324d"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2024-12-27T00:17:21.606Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc853250"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-06-18T07:03:05.014Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc853253"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-01-15T21:46:59.454Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc853256"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-05-14T02:21:41.248Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc853259"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-01-07T16:59:37.207Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc85325c"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-06-23T03:34:51.179Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5c3375e2ddbdc85325f"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-05-21T09:05:39.425Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5d4375e2ddbdc853285"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2024-12-31T02:42:18.278Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5d4375e2ddbdc853288"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2024-12-29T01:13:49.642Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5d5375e2ddbdc85328b"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-02-23T21:16:02.856Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5d5375e2ddbdc85328e"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-02-17T09:45:07.883Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5d5375e2ddbdc853291"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-05-27T07:00:15.223Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5d5375e2ddbdc853294"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-03-07T17:45:25.761Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6859e5d5375e2ddbdc853297"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-05-06T17:26:29.613Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685aa04a07cf36ee303f31ae"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-03-18T11:10:07.063Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685aa04b07cf36ee303f31b1"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-06-03T14:39:43.470Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685aa0f87f1c0d49c8f3f74b"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-01-04T13:09:41.666Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685aa0f97f1c0d49c8f3f74e"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-04-17T18:51:06.026Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685aa0f97f1c0d49c8f3f751"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-03-14T09:04:01.811Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685aa0f97f1c0d49c8f3f754"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-01-07T09:07:45.954Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685aa0fa7f1c0d49c8f3f757"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-05-22T16:26:09.183Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685aa1137f1c0d49c8f3f77e"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-02-28T05:38:40.981Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685aa1bf863589f2f0f76fc4"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-02-26T18:03:18.312Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685aa1bf863589f2f0f76fc6"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-02-14T14:15:30.083Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685aa1bf863589f2f0f76fc8"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-03-14T21:04:17.922Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685aa1c0863589f2f0f76fca"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-06-13T11:18:05.630Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "685aa1c0863589f2f0f76fcc"
+  },
+  "recordId": {
+    "$oid": "685360b8897d6ce91da4520b"
+  },
+  "buyerId": {
+    "$oid": "685366e0897d6ce91da4522b"
+  },
+  "price": 111,
+  "timestamp": {
+    "$date": "2025-03-28T22:56:09.504Z"
   },
   "__v": 0
 }]
