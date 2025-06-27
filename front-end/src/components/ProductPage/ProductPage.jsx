@@ -389,7 +389,7 @@ export default function ProductPage() {
                                 <input
                                     type="text"
                                     name="cover"
-                                    defaultValue=""
+                                    defaultValue={modalMode === "edit" ? selectedProduct?.coverImgPath : ""}
                                     disabled={modalMode === 'view'}
                                 />
                             </div>

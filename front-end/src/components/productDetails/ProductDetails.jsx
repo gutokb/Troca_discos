@@ -62,7 +62,7 @@ export default function ProductDetails({ productID }) {
     const handlecart = () => {
         // Atualiza o estado da quantidade com o valor do input (converte para inteiro)
         const quantity = parseInt(quantityRef.current?.value || "1");
-        if (quantity < 0){
+        if (quantity < 1){
             window.alert("Quantidade Invalida.")
             return;
         }
@@ -84,6 +84,13 @@ export default function ProductDetails({ productID }) {
         }
         fetchUser();
     };
+
+    const handleQuantityChange = (event) => {
+        const input =  event.target;
+        if (parseInt(input.value, 10) < 1 ) {
+            input.value = 1;
+        }
+    }
 
     // Se os dados do produto ainda não foram carregados, exibe mensagem de carregamento
     if (!productData) {
@@ -132,6 +139,7 @@ export default function ProductDetails({ productID }) {
                         type='number'
                         name="quantity"
                         max={productData.stock}
+                        onChange={handleQuantityChange}
                         min={1}
                         ref={quantityRef} // Referência para pegar valor diretamente no DOM
                         defaultValue={1}
