@@ -1,62 +1,66 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './UserPage.css';
 import { IoSearchOutline, IoAdd, IoCreate, IoTrash, IoEye, IoMail, IoCall } from 'react-icons/io5';
-import {API_URL} from "../../config/api.js";
-import * as userService from "../../services/userService.js"
-import {useParams} from "react-router-dom";
+import { API_URL } from "../../config/api.js";
+import * as userService from "../../services/userService.js";
+import { useParams } from "react-router-dom";
 
+// Componente principal para gerenciar usuários (listagem, criação, edição, visualização e exclusão)
 export default function UserPage() {
+    // Estados para controlar busca, modal, modo do modal (create, edit, view), usuário selecionado, erros, lista de usuários e recarregamento
     const [searchTerm, setSearchTerm] = useState('');
     const [showModal, setShowModal] = useState(false);
-    const [modalMode, setModalMode] = useState('create'); // 'create', 'edit', 'view'
+    const [modalMode, setModalMode] = useState('create'); // modos possíveis do modal: criar, editar ou visualizar
     const [selectedUser, setSelectedUser] = useState(null);
-    // Controls state of error in operations
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState(null);
+
+    // Limpa erros quando modal abre ou fecha
     useEffect(() => {
         setError(false);
         setErrorMessage(null);
     }, [showModal]);
 
-
-
+    // Estado para armazenar a lista de usuários
     const [users, setUsers] = useState([]);
 
+    // Estado para forçar recarregamento da lista após operações
     const [reload, setReload] = useState(false);
-    // Gambiarra
-    const forceReload = () => {setReload(!reload);};
+    const forceReload = () => { setReload(!reload); };
+
+    // Busca a lista de usuários do backend sempre que "reload" mudar
     useEffect(() => {
         async function fetchUsers() {
             const data = await userService.getAllUsers();
             setUsers(data);
         }
         fetchUsers();
-    }, [reload])
+    }, [reload]);
 
+    // Função para lidar com o envio do formulário de busca (atualmente só imprime no console)
     const handleSearch = (e) => {
         e.preventDefault();
-        // TODO: Implement search logic with API call
         console.log('Searching for:', searchTerm);
     };
 
+    // Funções que configuram o modal para criar, editar ou visualizar usuário
     const handleCreate = () => {
         setModalMode('create');
         setSelectedUser(null);
         setShowModal(true);
     };
-
     const handleEdit = (user) => {
         setModalMode('edit');
         setSelectedUser(user);
         setShowModal(true);
     };
-
     const handleView = (user) => {
         setModalMode('view');
         setSelectedUser(user);
         setShowModal(true);
     };
 
+    // Função para deletar usuário, com confirmação e atualização da lista local
     const handleDelete = (userId) => {
         if (window.confirm('Tem certeza que deseja excluir este usuário?')) {
             const deleted = userService.deleteUser(userId);
@@ -68,39 +72,42 @@ export default function UserPage() {
         }
     };
 
+    // Função que lida com envio do formulário de criação/edição do usuário
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const userData = Object.fromEntries(formData);
 
         if (modalMode === 'create') {
-            const created = await userService.createUser(userData)
+            const created = await userService.createUser(userData);
             if (created?.error) {
                 setError(true);
                 setErrorMessage(created.error);
                 return;
             }
-
         } else if (modalMode === 'edit') {
-            const updated = await userService.updateUser(selectedUser._id, userData)
+            const updated = await userService.updateUser(selectedUser._id, userData);
             if (updated?.error) {
                 setError(true);
                 setErrorMessage(updated.error);
                 return;
             }
         }
-        forceReload()
-        setShowModal(false);
+        forceReload();      // Recarrega lista após operação
+        setShowModal(false); // Fecha modal
     };
 
+    // Filtra usuários conforme o termo de busca em nome, email ou função
     const filteredUsers = users.filter(user =>
         user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
         user.role.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+    // Renderização da interface principal da página de gerenciamento de usuários
     return (
         <div className="user-page">
+            {/* Cabeçalho com título e botão para criar novo usuário */}
             <div className="page-header">
                 <h1 className="page-title">Gerenciar Usuários</h1>
                 <button onClick={handleCreate} className="create-btn">
@@ -108,6 +115,7 @@ export default function UserPage() {
                 </button>
             </div>
 
+            {/* Seção de busca com input controlado */}
             <div className="search-section">
                 <form onSubmit={handleSearch} className="search-form">
                     <div className="search-input-container">
@@ -125,67 +133,70 @@ export default function UserPage() {
                 </form>
             </div>
 
+            {/* Tabela com lista de usuários filtrada */}
             <div className="table-container">
                 <table className="users-table">
                     <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Email</th>
-                        <th>Telefone</th>
-                        <th>Função</th>
-                        <th>Cadastrado em</th>
-                        <th>Último Login</th>
-                        <th>Ações</th>
-                    </tr>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Telefone</th>
+                            <th>Função</th>
+                            <th>Cadastrado em</th>
+                            <th>Último Login</th>
+                            <th>Ações</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    {filteredUsers.map(user => (
-                        <tr key={user._id}>
-                            <td>{user._id}</td>
-                            <td>
-                                <div className="user-name">
-                                    <strong>{user.name}</strong>
-                                </div>
-                            </td>
-                            <td>
-                                <div className="contact-info">
-                                    <IoMail className="contact-icon" />
-                                    {user.email}
-                                </div>
-                            </td>
-                            <td>
-                                <div className="contact-info">
-                                    <IoCall className="contact-icon" />
-                                    {user.telephone}
-                                </div>
-                            </td>
-                            <td>
+                        {filteredUsers.map(user => (
+                            <tr key={user._id}>
+                                <td>{user._id}</td>
+                                <td>
+                                    <div className="user-name">
+                                        <strong>{user.name}</strong>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className="contact-info">
+                                        <IoMail className="contact-icon" />
+                                        {user.email}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className="contact-info">
+                                        <IoCall className="contact-icon" />
+                                        {user.telephone}
+                                    </div>
+                                </td>
+                                <td>
                                     <span className={`role ${user.role.toLowerCase()}`}>
                                         {user.role}
                                     </span>
-                            </td>
-                            <td>{new Date(user.createdAt).toLocaleDateString('pt-BR')}</td>
-                            <td>{new Date(user.lastLoginAt).toLocaleDateString('pt-BR')}</td>
-                            <td>
-                                <div className="action-buttons">
-                                    <button onClick={() => handleView(user)} className="action-btn view">
-                                        <IoEye />
-                                    </button>
-                                    <button onClick={() => handleEdit(user)} className="action-btn edit">
-                                        <IoCreate />
-                                    </button>
-                                    <button onClick={() => handleDelete(user._id)} className="action-btn delete">
-                                        <IoTrash />
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                    ))}
+                                </td>
+                                <td>{new Date(user.createdAt).toLocaleDateString('pt-BR')}</td>
+                                <td>{new Date(user.lastLoginAt).toLocaleDateString('pt-BR')}</td>
+                                <td>
+                                    {/* Botões para visualizar, editar e excluir usuário */}
+                                    <div className="action-buttons">
+                                        <button onClick={() => handleView(user)} className="action-btn view">
+                                            <IoEye />
+                                        </button>
+                                        <button onClick={() => handleEdit(user)} className="action-btn edit">
+                                            <IoCreate />
+                                        </button>
+                                        <button onClick={() => handleDelete(user._id)} className="action-btn delete">
+                                            <IoTrash />
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>
 
+            {/* Modal para criação, edição ou visualização do usuário */}
             {showModal && (
                 <div className="modal-overlay">
                     <div className="modal">
@@ -199,6 +210,7 @@ export default function UserPage() {
                         </div>
 
                         <form onSubmit={handleSubmit} className="modal-form">
+                            {/* Campos do formulário com desabilitação condicional para visualização */}
                             <div className="form-group">
                                 <label>Nome Completo:</label>
                                 <input
@@ -255,10 +267,9 @@ export default function UserPage() {
                                         <option value="ADMIN">Admin</option>
                                     </select>
                                 </div>
-
-
                             </div>
 
+                            {/* Campo senha aparece apenas no modo de criação */}
                             {modalMode === 'create' && (
                                 <div className="form-group">
                                     <label>Senha:</label>
@@ -270,12 +281,15 @@ export default function UserPage() {
                                     />
                                 </div>
                             )}
-                            {error &&
-                                <div className="form-group">
-                                    <p style={{color : "red"}}>{errorMessage}</p>
 
+                            {/* Exibe mensagem de erro, caso exista */}
+                            {error && (
+                                <div className="form-group">
+                                    <p style={{ color: "red" }}>{errorMessage}</p>
                                 </div>
-                            }
+                            )}
+
+                            {/* Botões de ação aparecem apenas nos modos criar e editar */}
                             {modalMode !== 'view' && (
                                 <div className="modal-actions">
                                     <button type="button" onClick={() => setShowModal(false)} className="cancel-btn">

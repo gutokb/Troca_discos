@@ -3,7 +3,6 @@ import { Line } from 'react-chartjs-2';
 
 const MonthlySalesChart = ({labels, values}) => {
 
-    // When the back end is implemented, this info will be fetched
     const data = {
         labels: labels,
         datasets: [

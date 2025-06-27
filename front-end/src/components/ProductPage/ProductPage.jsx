@@ -1,30 +1,40 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './ProductPage.css';
 import { IoSearchOutline, IoAdd, IoCreate, IoTrash, IoEye } from 'react-icons/io5';
-import {API_URL} from "../../config/api.js";
+import { API_URL } from "../../config/api.js";
 import * as recordService from '../../services/recordService.js';
 import * as userService from "../../services/userService.js";
 import axios from "axios";
 
+// Componente principal para gerenciar produtos (discos, álbuns)
 export default function ProductPage() {
+    // Estado para controlar o termo digitado na busca
     const [searchTerm, setSearchTerm] = useState('');
+    // Estado para controlar a exibição do modal (formulário para criar/editar/visualizar)
     const [showModal, setShowModal] = useState(false);
-    const [modalMode, setModalMode] = useState('create'); // 'create', 'edit', 'view'
+    // Modo atual do modal: criar, editar ou visualizar
+    const [modalMode, setModalMode] = useState('create');
+    // Produto atualmente selecionado para editar/visualizar
     const [selectedProduct, setSelectedProduct] = useState(null);
+    // Lista de produtos carregados do backend
     const [products, setProducts] = useState([]);
+    // Lista de faixas (tracks) do álbum selecionado
     const [currentTracks, setCurrentTracks] = useState([]);
-    // Controls state of error in operations
+    // Estados para controle de erros nas operações
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState(null);
+
+    // Limpa erros sempre que o modal abrir ou fechar
     useEffect(() => {
         setError(false);
         setErrorMessage(null);
     }, [showModal]);
 
-    // Data fetching
-    // Gambiarra
+    // Estado e função para forçar recarregamento da lista de produtos (gambiarra)
     const [reload, setReload] = useState(false);
-    const forceReload = () => {setReload(!reload);};
+    const forceReload = () => { setReload(!reload); };
+
+    // Busca todos os produtos sempre que reload mudar (ou na montagem do componente)
     useEffect(() => {
         async function fetchProducts() {
             const data = await recordService.getAllRecords()
@@ -33,18 +43,19 @@ export default function ProductPage() {
         fetchProducts();
     }, [reload])
 
-    // Used for adding/updating genres
-    // Logic for displaying and updating genres as a list
+    // Estado que controla os gêneros atuais para adicionar/editar
     const [currentGenres, setCurrentGenres] = useState([]);
+
+    // Sempre que modal abrir, atualiza os gêneros para o produto selecionado (ou limpa)
     useEffect(() => {
         if (selectedProduct !== null) {
             setCurrentGenres(selectedProduct.genre)
-        }
-        else {
+        } else {
             setCurrentGenres([])
         }
     }, [showModal]);
 
+    // Sempre que modal abrir, atualiza as faixas para o produto selecionado (ou limpa)
     useEffect(() => {
         if (selectedProduct !== null && selectedProduct.tracks) {
             setCurrentTracks(selectedProduct.tracks);
@@ -53,25 +64,30 @@ export default function ProductPage() {
         }
     }, [showModal]);
 
-
+    // Adiciona uma nova faixa ao álbum
     const addTrack = () => {
         const titleInput = document.getElementById("track-title-input");
         const fileInput = document.getElementById("track-file-input");
 
+        // Verifica se título e arquivo foram preenchidos
         if (titleInput.value.trim() !== "" && fileInput.files.length > 0) {
             const newTrack = {
-                id: Date.now(), // Simple ID for React key
+                id: Date.now(), // ID simples para React key
                 title: titleInput.value.trim(),
                 file: fileInput.files[0],
                 trackNumber: currentTracks.length + 1
             };
 
+            // Atualiza a lista de faixas com a nova faixa
             setCurrentTracks([...currentTracks, newTrack]);
+
+            // Limpa os inputs após adicionar
             titleInput.value = "";
             fileInput.value = "";
         }
     };
 
+    // Remove uma faixa do álbum pelo id e reordena os números das faixas
     const removeTrack = (trackId) => {
         const updatedTracks = currentTracks
             .filter(track => track._id !== trackId)
@@ -82,30 +98,34 @@ export default function ProductPage() {
         setCurrentTracks(updatedTracks);
     };
 
+    // Função disparada ao submeter o formulário de busca (atualmente só faz log)
     const handleSearch = (e) => {
         e.preventDefault();
-        // TODO: Implement search logic with API call
         console.log('Searching for:', searchTerm);
     };
 
+    // Abre modal para criação de produto novo
     const handleCreate = () => {
         setModalMode('create');
         setSelectedProduct(null);
         setShowModal(true);
     };
 
+    // Abre modal para editar um produto existente
     const handleEdit = (product) => {
         setModalMode('edit');
         setSelectedProduct(product);
         setShowModal(true);
     };
 
+    // Abre modal para visualizar um produto (modo somente leitura)
     const handleView = (product) => {
         setModalMode('view');
         setSelectedProduct(product);
         setShowModal(true);
     };
 
+    // Função para excluir produto, com confirmação
     const handleDelete = (productId) => {
         if (window.confirm('Tem certeza que deseja excluir este produto?')) {
             const deleted = recordService.deleteRecord(productId);
@@ -113,18 +133,20 @@ export default function ProductPage() {
                 window.alert(deleted.error);
                 return;
             }
+            // Remove da lista local após exclusão
             setProducts(products.filter(product => product._id !== productId));
         }
     }
 
+    // Submete o formulário do modal para criar ou editar produto
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (modalMode === 'create' || modalMode === 'edit') {
-            // Create FormData instead of regular object for file uploads
+            // Cria FormData para envio de arquivos (como faixas)
             const formData = new FormData(e.target);
 
-            // Add basic product fields
+            // Monta dados básicos do produto
             const productData = {
                 title: formData.get('title'),
                 artist: formData.get('artist'),
@@ -135,16 +157,16 @@ export default function ProductPage() {
                 genre: currentGenres
             };
 
-            // Add tracks metadata
+            // Monta metadados das faixas para envio (sem arquivos)
             const tracksMetadata = currentTracks.map(track => ({
                 trackNumber: track.trackNumber,
                 title: track.title
             }));
 
-            // Create new FormData for the actual submission
+            // Novo FormData para envio real, incluindo arquivos
             const submissionFormData = new FormData();
 
-            // Add all product data
+            // Adiciona todos os dados ao FormData (gênero em JSON)
             Object.keys(productData).forEach(key => {
                 if (key === 'genre') {
                     submissionFormData.append(key, JSON.stringify(productData[key]));
@@ -153,10 +175,10 @@ export default function ProductPage() {
                 }
             });
 
-            // Add tracks metadata
+            // Adiciona metadados das faixas
             submissionFormData.append('tracksMetadata', JSON.stringify(tracksMetadata));
 
-            // Add track files
+            // Adiciona arquivos das faixas
             currentTracks.forEach((track, index) => {
                 if (track.file) {
                     submissionFormData.append(`trackFile_${index}`, track.file);
@@ -164,26 +186,26 @@ export default function ProductPage() {
             });
 
             if (modalMode === 'create') {
+                // Atualiza estado local com novo produto para renderizar imediatamente
                 const newProduct = {
                     ...productData,
-                    tracks: tracksMetadata // For local state display
+                    tracks: tracksMetadata
                 };
-
                 setProducts([...products, newProduct]);
 
-                // Send FormData to backend
-                console.log(submissionFormData)
+                // Envia ao backend via fetch com método POST
                 const url = `${API_URL}/records`;
                 fetch(url, {
                     method: 'POST',
-                    body: submissionFormData, // Send FormData, not JSON
+                    body: submissionFormData,
                 }).then(() => forceReload())
-                    .catch((err) => {
+                  .catch((err) => {
                     setError(true)
                     setErrorMessage(err.message)
                 });
 
             } else if (modalMode === 'edit') {
+                // Edita produto existente usando serviço
                 const result = await recordService.updateRecord(selectedProduct._id, productData);
                 if (result?.error) {
                     setError(true)
@@ -191,17 +213,19 @@ export default function ProductPage() {
                 }
             }
         }
+        // Após submissão, força recarregar a lista e fecha modal
         forceReload()
         setShowModal(false);
     };
 
+    // Filtra produtos pela busca (nome, artista ou gênero)
     const filteredProducts = products.filter(product =>
-
         product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         product.genre.some(s => s.toLowerCase().includes(searchTerm.toLowerCase())) ||
         product.artist.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+    // JSX da página principal
     return (
         <div className="product-page">
             <div className="page-header">
@@ -211,6 +235,7 @@ export default function ProductPage() {
                 </button>
             </div>
 
+            {/* Seção de busca */}
             <div className="search-section">
                 <form onSubmit={handleSearch} className="search-form">
                     <div className="search-input-container">
@@ -228,6 +253,7 @@ export default function ProductPage() {
                 </form>
             </div>
 
+            {/* Tabela de produtos */}
             <div className="table-container">
                 <table className="products-table">
                     <thead>
@@ -258,6 +284,7 @@ export default function ProductPage() {
                             <td>{new Date(product.createdAt).toLocaleDateString('pt-BR')}</td>
                             <td>
                                 <div className="action-buttons">
+                                    {/* Botões para visualizar, editar e excluir */}
                                     <button onClick={() => handleView(product)} className="action-btn view">
                                         <IoEye />
                                     </button>
@@ -275,6 +302,7 @@ export default function ProductPage() {
                 </table>
             </div>
 
+            {/* Modal para criação, edição ou visualização de produto */}
             {showModal && (
                 <div className="modal-overlay">
                     <div className="modal">
@@ -288,6 +316,7 @@ export default function ProductPage() {
                         </div>
 
                         <form onSubmit={handleSubmit} className="modal-form">
+                            {/* Campos do formulário para título, artista, ano, etc */}
                             <div className="form-group">
                                 <label>Titulo do disco:</label>
                                 <input
@@ -321,6 +350,7 @@ export default function ProductPage() {
                                 />
                             </div>
 
+                            {/* Campo para adicionar gêneros dinamicamente */}
                             <div className="form-group form-genre">
                                 <label>Genêros:</label>
                                 <input id="genre-input"
@@ -336,35 +366,38 @@ export default function ProductPage() {
                                 }}><IoAdd/></button>
                             </div>
 
-
-
+                            {/* Lista de gêneros adicionados */}
                             <div className="genre-list">
                                 <ul>
                                     {currentGenres.map((genre, index) => {
                                         return (
-                                        <li key={index} className="genre-list-item">{genre}
-                                            <button className="genre-list-button" type="button" onClick={() => {
-                                            if (modalMode ===  "create") setCurrentGenres(currentGenres.filter(g => g !== genre))
-                                        }}>
-                                                {modalMode !== "view" && <IoTrash/>}
-                                            </button>
-                                        </li>)
+                                            <li key={index} className="genre-list-item">{genre}
+                                                <button className="genre-list-button" type="button" onClick={() => {
+                                                    if (modalMode ===  "create") setCurrentGenres(currentGenres.filter(g => g !== genre))
+                                                }}>
+                                                    {modalMode !== "view" && <IoTrash />}
+                                                </button>
+                                            </li>
+                                        )
                                     })}
                                 </ul>
                             </div>
 
+                            {/* URL da imagem da capa */}
                             <div className="form-group">
                                 <label>URL da imagem de capa:</label>
-                                <input type="text"
-                                       name="cover"
-                                       defaultValue=""
-                                       disabled={modalMode === 'view'}
+                                <input
+                                    type="text"
+                                    name="cover"
+                                    defaultValue=""
+                                    disabled={modalMode === 'view'}
                                 />
                             </div>
 
+                            {/* Se estiver no modo criar, exibe seção para adicionar faixas */}
                             {modalMode === "create" && <div>
 
-                                {/* Tracklist Section */}
+                                {/* Seção para adicionar faixa */}
                                 <div className="form-group form-track">
                                     <label>Adicionar Faixa:</label>
                                     <input
@@ -378,10 +411,11 @@ export default function ProductPage() {
                                         disabled={modalMode === 'view'}
                                         onClick={addTrack}
                                     >
-                                        <IoAdd/>
+                                        <IoAdd />
                                     </button>
                                 </div>
 
+                                {/* Input para upload de arquivo da faixa */}
                                 <div className="form-group">
                                     <input
                                         id="track-file-input"
@@ -391,7 +425,7 @@ export default function ProductPage() {
                                     />
                                 </div>
 
-                                {/* Display Current Tracks */}
+                                {/* Lista das faixas adicionadas */}
                                 {currentTracks.length > 0 && (
                                     <div className="tracks-list">
                                         <h4>Faixas do Álbum:</h4>
@@ -409,7 +443,7 @@ export default function ProductPage() {
                                                             type="button"
                                                             onClick={() => removeTrack(track._id)}
                                                         >
-                                                            <IoTrash/>
+                                                            <IoTrash />
                                                         </button>
                                                     )}
                                                 </li>
@@ -419,6 +453,7 @@ export default function ProductPage() {
                                 )}
                             </div>}
 
+                            {/* Campos para preço e estoque */}
                             <div className="form-row">
                                 <div className="form-group">
                                     <label>Preço:</label>
@@ -444,13 +479,14 @@ export default function ProductPage() {
                                 </div>
                             </div>
 
-                            {error &&
+                            {/* Exibe mensagem de erro, se houver */}
+                            {error && (
                                 <div className="form-group">
-                                    <p style={{color : "red"}}>{errorMessage}</p>
-
+                                    <p style={{ color: "red" }}>{errorMessage}</p>
                                 </div>
-                            }
+                            )}
 
+                            {/* Botões de cancelar e salvar (não aparecem no modo view) */}
                             {modalMode !== 'view' && (
                                 <div className="modal-actions">
                                     <button type="button" onClick={() => setShowModal(false)} className="cancel-btn">

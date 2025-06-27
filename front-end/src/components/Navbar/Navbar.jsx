@@ -1,74 +1,76 @@
-import "./Navbar.css"
-import {Link, useNavigate} from "react-router-dom";
-import { API_URL } from "../../config/api.js";
-import { IoSearchOutline } from "react-icons/io5";
-import { useEffect, useState } from "react";
+import "./Navbar.css" // Importa estilos específicos da navbar
+import { Link, useNavigate } from "react-router-dom"; // Importa Link (não usado) e hook de navegação
+import { API_URL } from "../../config/api.js"; // Importa URL da API (não usado no código atual)
+import { IoSearchOutline } from "react-icons/io5"; // Importa ícone de busca
+import { useEffect, useState } from "react"; // Importa hooks React
 
 /*
-Component for the header/navbar for all pages
- */
+ Componente Navbar que funciona como cabeçalho para todas as páginas.
+ Controla estado de login, busca e navegação.
+*/
 
-// @Params
-// loggedIn : boolean, toggles display of login buttons
-// handleSearch : function, executed when the search input is submitted, must follow format of action handling in forms
 export default function Navbar() {
-    const navigate = useNavigate();
+    const navigate = useNavigate(); // Hook para navegação programática
 
-    // Estados para controlar se o usuário está logado e se é admin
+    // Estados para controlar se usuário está logado, é admin, nome do usuário e query de busca
     const [loggedIn, setLoggedIn] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false);
     const [userName, setUserName] = useState("");
     const [query, setQuery] = useState(null);
 
-    // Estado que guarda o termo pesquisado na barra de pesquisa
+    // Estado para o input da barra de pesquisa
     const [searchInput, setSearchInput] = useState("");
 
-    // função que lida com a pesquisa
+    // Função chamada ao submeter o formulário de busca
     const submitSearch = (e) => {
       e.preventDefault();
-      // Redireciona para a página de busca
+      // Navega para a página de busca, passando o termo via query string
       navigate(`/search?q=${encodeURIComponent(searchInput)}`);
-      if (handleSearch) handleSearch(searchInput); // opcional
+      if (handleSearch) handleSearch(searchInput); // Chama função opcional handleSearch, se existir
     };
 
-    // useEffect é executado ao carregar o componente
+    // Executado ao montar o componente para verificar se há usuário logado
     useEffect(() => {
-        const token = localStorage.getItem("token");
-        const user = JSON.parse(localStorage.getItem("user"));
+        const token = localStorage.getItem("token"); // Busca token no localStorage
+        const user = JSON.parse(localStorage.getItem("user")); // Busca usuário no localStorage
 
-        // Se houver token e usuário, considera que está logado
+        // Se token e usuário existem, define estados para login, admin e nome
         if (token && user) {
             setLoggedIn(true);
-            setIsAdmin(user.role === "ADMIN"); // Define se é admin
+            setIsAdmin(user.role === "ADMIN"); // Verifica se usuário é admin
             setUserName(user.name);
         } else {
+            // Caso contrário, reseta estados para não logado
             setLoggedIn(false);
             setIsAdmin(false);
             setUserName("");
         }
     }, []);
-    
-    useEffect(()=>{
-      if(query!=null){
-        navigate(`/product/${query.search}`)
-      }
-    },[query])
 
-    function handleSearch(e){
-      e.preventDefault()
-        const formData = new FormData(e.target);
-        const newData = Object.fromEntries(formData);
-        setQuery(newData);
-        console.log(query)
+    // useEffect que escuta mudanças no estado query para navegar para página de produto
+    useEffect(() => {
+      if (query != null) {
+        navigate(`/product/${query.search}`);
+      }
+    }, [query]);
+
+    // Função que processa o submit do formulário de busca
+    function handleSearch(e) {
+      e.preventDefault();
+      // Pega dados do formulário e converte para objeto
+      const formData = new FormData(e.target);
+      const newData = Object.fromEntries(formData);
+      setQuery(newData); // Atualiza estado query para disparar navegação
+      console.log(query); // Log para debug
     }
 
-    // Lógica do botão de logout
+    // Função para deslogar o usuário
     function handleLogout() {
-        // Remove os dados da sessão
+        // Remove dados de sessão
         localStorage.removeItem("token");
         localStorage.removeItem("user");
 
-        // Atualiza os estados
+        // Atualiza estados para refletir logout
         setLoggedIn(false);
         setIsAdmin(false);
         setUserName("");
@@ -77,17 +79,18 @@ export default function Navbar() {
         navigate("/login");
     }
 
-    // Redireciona para o carrinho
+    // Navega para o carrinho de compras
     function shoppingCartNavigate() {
         navigate("/shopping-cart");
     }
 
-    // Redireciona para o perfil
+    // Navega para a página de perfil
     function profileNavigate() {
         navigate("/profile");
     }
 
 
+    // JSX do componente navbar
     return (
     <header className="app-header">
       <div className="nav-container-1">
@@ -107,7 +110,7 @@ export default function Navbar() {
             type="text"
             placeholder="Pesquisar"
             value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
+            onChange={(e) => setSearchInput(e.target.value)} // Atualiza input controlado
           />
           <span className="search-icon">
             <IoSearchOutline />
@@ -116,10 +119,7 @@ export default function Navbar() {
       </div>
 
       <div className="nav-container-2">
-
-        
-
-        {/* Botões "Cadastro" e "Login" só aparecem se NÃO estiver logado */}
+        {/* Botões Cadastro e Login exibidos somente se usuário NÃO está logado */}
         {!loggedIn && (
           <>
             <button onClick={() => navigate("/register")} className="header-button">
@@ -131,7 +131,7 @@ export default function Navbar() {
           </>
         )}
 
-        {/* Botão de Logout aparece somente se estiver logado */}
+        {/* Se usuário estiver logado, exibe nome, botão logout */}
         {loggedIn && (
             <>
             <span className="user-name">Olá, {userName}!</span>
@@ -141,14 +141,14 @@ export default function Navbar() {
             </>
         )}
 
-        {/* Botão Admin aparece só se for admin */}
+        {/* Botão Admin aparece só para usuários com role admin */}
         {isAdmin && (
           <button onClick={() => navigate("/admin")} className="header-button">
             Admin
           </button>
         )}
 
-        {/* Ícones de perfil e carrinho, clicáveis */}
+        {/* Ícones clicáveis para perfil e carrinho */}
         <img
           onClick={profileNavigate}
           className="nav-img"
