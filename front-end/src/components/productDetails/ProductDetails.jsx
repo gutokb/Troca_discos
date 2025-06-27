@@ -61,7 +61,12 @@ export default function ProductDetails({ productID }) {
     // Função disparada ao clicar para adicionar ao carrinho
     const handlecart = () => {
         // Atualiza o estado da quantidade com o valor do input (converte para inteiro)
-        setCartQuantity(parseInt(quantityRef.current?.value || "1"))
+        const quantity = parseInt(quantityRef.current?.value || "1");
+        if (quantity < 0){
+            window.alert("Quantidade Invalida.")
+            return;
+        }
+        setCartQuantity(quantity);
         
         // Função interna para buscar dados do usuário logado
         async function fetchUser() {
