@@ -87,7 +87,8 @@ export default function ProductDetails({ productID }) {
 
     const handleQuantityChange = (event) => {
         const input =  event.target;
-        if (parseInt(input.value, 10) < 1 ) {
+        const q = parseInt(input.value, 10)
+        if (q < 1 || q > productData.stock) {
             input.value = 1;
         }
     }

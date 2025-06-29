@@ -140,23 +140,23 @@ export async function create(req, res) {
                 const { title, tracksMetadata } = req.body;
 
                 // Parse tracks metadata
-                // let tracks;
-                // try {
-                //     tracks = JSON.parse(tracksMetadata);
-                // } catch (parseError) {
-                //     return res.status(400).json({
-                //         success: false,
-                //         message: 'Invalid tracks metadata format'
-                //     });
-                // }
+                let tracks;
+                try {
+                    tracks = JSON.parse(tracksMetadata);
+                } catch (parseError) {
+                    return res.status(400).json({
+                        success: false,
+                        message: 'Invalid tracks metadata format'
+                    });
+                }
 
                 // Validate that we have uploaded files
-                // if (!req.files || req.files.length === 0) {
-                //     return res.status(400).json({
-                //         success: false,
-                //         message: 'No audio files uploaded'
-                //     });
-                // }
+                if (!req.files || req.files.length === 0) {
+                    return res.status(400).json({
+                        success: false,
+                        message: 'No audio files uploaded'
+                    });
+                }
 
                 // Process uploaded files and match with track metadata
                 const processedTracks = await processTrackFiles(req.files, tracks);
