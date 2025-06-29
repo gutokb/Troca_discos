@@ -2,7 +2,6 @@ import {Pie} from 'react-chartjs-2';
 
 const SalesByGenreChart = ({labels, values}) => {
 
-    // Mock data, when back end is implemented will fetch
     const data = {
         labels: labels,
         datasets: [

@@ -3,9 +3,11 @@ import { Link, useLocation } from 'react-router-dom';
 import './Sidebar.css';
 import { IoStatsChart, IoStorefront, IoPeople } from 'react-icons/io5';
 
+// Componente Sidebar recebe: isOpen (estado da sidebar), onClose (função para fechar em mobile) e isMobile (verifica se está em tela pequena)
 export default function Sidebar({ isOpen, onClose, isMobile }) {
-    const location = useLocation();
+    const location = useLocation(); // hook para saber qual é a URL atual
 
+    // Itens do menu lateral
     const menuItems = [
         {
             path: '/admin/statistics',
@@ -27,6 +29,7 @@ export default function Sidebar({ isOpen, onClose, isMobile }) {
         }
     ];
 
+    // Fecha o menu caso esteja em tela mobile
     const handleLinkClick = () => {
         if (isMobile && onClose) {
             onClose();
